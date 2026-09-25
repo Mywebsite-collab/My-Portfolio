@@ -324,6 +324,7 @@ ul {
     justify-content: center;
     align-items: center;
     min-height: 400px;
+    width: 100%;
 }
 .floating-elements {
     position: absolute;
@@ -367,6 +368,254 @@ ul {
     color: var(--text-secondary);
     animation: bounceDown 2s infinite;
     will-change: transform;
+}
+
+/* ===== كود الكتاب ثلاثي الأبعاد (3D Book) ===== */
+.book-wrapper {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.book-container {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    perspective: 1200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.book-shadow {
+    position: absolute;
+    bottom: -20px;
+    width: 80%;
+    height: 30px;
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.4) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(8px);
+}
+
+.book {
+    position: relative;
+    width: 380px;
+    height: 480px;
+    transform-style: preserve-3d;
+    transform: rotateY(-4deg) rotateX(2deg);
+    transition: transform 0.3s ease;
+    will-change: transform;
+}
+
+.page {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+    transform-style: preserve-3d;
+    transform-origin: left center;
+    transition: transform 0.85s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+.page.flipped {
+    transform: rotateY(-180deg);
+}
+
+.page-front,
+.page-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+.page-front {
+    transform: rotateY(0deg);
+}
+
+.page-back {
+    transform: rotateY(180deg);
+}
+
+.page-front img,
+.page-back img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.book-cover {
+    background: linear-gradient(135deg, #1a0033 0%, #2d0052 50%, #1a0033 100%);
+    border-radius: 8px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.8);
+}
+
+.cover-inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.cover-inner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at top right, rgba(102, 252, 241, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.cover-logo {
+    font-size: 3rem;
+    margin-bottom: 30px;
+    animation: pulse 2s infinite;
+}
+
+.cover-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 30px;
+    border: 3px solid rgba(102, 252, 241, 0.5);
+    box-shadow: 0 0 30px rgba(102, 252, 241, 0.3);
+}
+
+.cover-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cover-inner h2,
+.cover-inner h3 {
+    color: #fff;
+    text-align: center;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin: 0;
+}
+
+.cover-inner h2 {
+    font-size: 2.5rem;
+    margin-bottom: 8px;
+}
+
+.cover-inner h3 {
+    font-size: 1.2rem;
+    color: rgba(102, 252, 241, 0.8);
+    margin-bottom: 20px;
+}
+
+.cover-divider {
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(102, 252, 241, 0.6), transparent);
+    margin: 20px 0;
+}
+
+.cover-inner p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    text-align: center;
+    margin-top: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.back-description {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 20px;
+    text-align: center;
+    line-height: 1.6;
+}
+
+.cover-shine {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%, rgba(255, 255, 255, 0.05) 100%);
+    pointer-events: none;
+}
+
+.book-back-cover {
+    background: linear-gradient(135deg, #0f001a 0%, #1a0033 50%, #0f001a 100%);
+    transform: rotateY(180deg);
+}
+
+/* Navigation Buttons */
+.book-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(69, 162, 158, 0.2);
+    border: 2px solid var(--accent);
+    color: var(--accent-glow);
+    cursor: pointer;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 50;
+    backdrop-filter: blur(10px);
+}
+
+.book-nav:hover:not(:disabled) {
+    background: rgba(69, 162, 158, 0.4);
+    box-shadow: 0 0 20px rgba(69, 162, 158, 0.6);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.book-nav:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.book-nav.prev {
+    left: -70px;
+}
+
+.book-nav.next {
+    right: -70px;
+}
+
+/* Page Indicator */
+.book-indicator {
+    position: absolute;
+    bottom: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--glass-border);
+    padding: 8px 16px;
+    border-radius: 30px;
+    backdrop-filter: blur(10px);
+    font-size: 0.85rem;
+    color: var(--accent-glow);
+    white-space: nowrap;
+    letter-spacing: 1px;
 }
 
 /* ----- SECTIONS ----- */
@@ -999,1102 +1248,66 @@ ul {
     .contact-grid {
         grid-template-columns: 1fr;
     }
-    .nav-list {
-        display: none;
-        flex-direction: column;
-        background: var(--bg-primary);
-        position: absolute;
-        top: 70px;
-        left: 0;
-        width: 100%;
-        padding: 30px;
-        gap: 20px;
-        border-bottom: 1px solid var(--glass-border);
+    .book-nav.prev {
+        left: -60px;
     }
-    .nav-list.open {
-        display: flex;
-    }
-    .menu-toggle {
-        display: flex;
-    }
-    .hero-title {
-        font-size: 2.2rem;
+    .book-nav.next {
+        right: -60px;
     }
 }
 
-@media (max-width: 576px) {
-    .projects-grid {
-        grid-template-columns: 1fr;
-    }
-    .testimonial-card {
-        min-width: 280px;
-    }
+@media (max-width: 768px) {
     .hero-title {
-        font-size: 1.8rem;
-    }
-    .hero-visual {
-        min-height: 250px;
+        font-size: 2.2rem;
     }
     .skills-grid {
         grid-template-columns: 1fr;
     }
-    .skill-category ul li {
-        flex-wrap: wrap;
+    .book {
+        width: 300px;
+        height: 380px;
     }
-    .skill-img {
-        width: 24px;
-        height: 24px;
+    .book-container {
+        height: 400px;
     }
-    .contact-form {
-        padding: 24px 16px;
+    .book-nav.prev {
+        left: -50px;
     }
-    .social-links {
-        flex-direction: column;
-    }
-    .social-link {
-        justify-content: center;
-    }
-}
-
-/* ============================================================
-   أنماط الكتاب ثلاثي الأبعاد (3D Book) - النسخة المصححة
-   ============================================================ */
-
-.book-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    -webkit-perspective: 1500px;
-    perspective: 1500px;
-    width: 100%;
-    min-height: 400px;
-}
-
-.book-container {
-    position: relative;
-    width: 420px;
-    height: 520px;
-    -webkit-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-    /* ✅ الأداء: عزل الطبقة */
-    contain: layout;
-    isolation: isolate;
-}
-
-.book-shadow {
-    position: absolute;
-    bottom: -30px;
-    left: 10%;
-    width: 80%;
-    height: 40px;
-    background: radial-gradient(ellipse, rgba(0, 0, 0, 0.6) 0%, transparent 70%);
-    filter: blur(7px);
-    border-radius: 50%;
-    transform: rotateX(10deg);
-    z-index: 0;
-    transition: width 0.45s ease, left 0.45s ease, opacity 0.45s ease;
-}
-.book-container:hover .book-shadow {
-    width: 90%;
-    left: 5%;
-    opacity: 0.8;
-}
-
-.book {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    -webkit-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-    transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
-    transform: rotateY(-8deg) rotateX(4deg);
-    transform-origin: center center;
-}
-.book-container:hover .book {
-    transform: rotateY(-4deg) rotateX(2deg) scale(1.01);
-}
-
-.book-cover {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 12px 4px 4px 12px;
-    background: linear-gradient(145deg, #1a2a2e, #0f1a1d);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-    transform: rotateY(0deg) translateZ(2px);
-    -webkit-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    z-index: 10;
-    border: 1px solid rgba(69, 162, 158, 0.15);
-    overflow: hidden;
-}
-
-/* ===== محتوى الغلاف ===== */
-.cover-inner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap;
-    height: 100%;
-    padding: 30px 20px;
-    text-align: center;
-    position: relative;
-    z-index: 2;
-}
-
-/* ==========================
-   الصورة الدائرية (Avatar)
-   ========================== */
-.cover-avatar {
-    /* ===== التحكم في الدائرة كاملة ===== */
-    --x: 0px;
-    --y: -10px;
-    --scale: 1;
-    --rotate: 0deg;
-
-    position: relative;
-    width: clamp(80px, 12vw, 120px);
-    height: clamp(80px, 12vw, 120px);
-    flex-shrink: 0;
-    margin: 0 auto 6px;
-    border-radius: 50%;
-    overflow: hidden;
-    transform:
-        translate(var(--x), var(--y))
-        scale(var(--scale))
-        rotate(var(--rotate));
-    background: rgba(25, 40, 44, 0.92);
-    border: 2px solid rgba(102, 252, 241, 0.45);
-    box-shadow:
-        0 0 0 4px rgba(255, 255, 255, 0.03),
-        0 0 18px rgba(102, 252, 241, 0.25),
-        0 12px 35px rgba(0, 0, 0, 0.45),
-        inset 0 1px 1px rgba(255, 255, 255, 0.18);
-    transition:
-        transform 0.45s cubic-bezier(0.23, 1, 0.32, 1),
-        box-shadow 0.45s,
-        border-color 0.45s;
-    z-index: 3;
-}
-.cover-avatar::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 50%;
-    background: radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.28), transparent 55%);
-    pointer-events: none;
-}
-.cover-avatar::after {
-    content: "";
-    position: absolute;
-    inset: -2px;
-    border-radius: 50%;
-    background: conic-gradient(from 180deg, transparent, rgba(102, 252, 241, 0.45), transparent);
-    opacity: 0;
-    transition: opacity 0.45s;
-    pointer-events: none;
-}
-.cover-avatar img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    display: block;
-    border-radius: inherit;
-    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), filter 0.45s;
-}
-
-.cover-logo {
-    font-size: 4.5rem;
-    font-weight: 900;
-    color: #66fcf1;
-    text-shadow: 0 0 40px rgba(102, 252, 241, 0.2);
-    margin-bottom: 6px;
-    animation: pulseLogo 3s ease-in-out infinite;
-}
-
-@keyframes pulseLogo {
-    0%, 100% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.05); opacity: 0.8; }
-}
-
-.cover-inner h2 {
-    font-size: clamp(1.4rem, 3vw, 2.2rem);
-    font-weight: 700;
-    letter-spacing: 4px;
-    color: #f0f0f0;
-    margin: 4px 0 0;
-    z-index: 2;
-}
-.cover-inner h3 {
-    font-size: clamp(1rem, 2.5vw, 1.6rem);
-    font-weight: 300;
-    letter-spacing: 3px;
-    color: #66fcf1;
-    margin: -2px 0 0;
-    z-index: 2;
-}
-.cover-divider {
-    width: 60px;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #45a29e, transparent);
-    margin: 8px 0;
-    z-index: 2;
-}
-.cover-inner p {
-    font-size: clamp(0.75rem, 1.2vw, 0.9rem);
-    color: #8899a0;
-    letter-spacing: 1px;
-    margin: 4px 0 0;
-    z-index: 2;
-}
-
-.cover-shine {
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(ellipse at 30% 30%, rgba(255, 255, 255, 0.06) 0%, transparent 60%);
-    pointer-events: none;
-    z-index: 1;
-    transform: rotate(-25deg);
-}
-
-/* =========================================================
-   BACK COVER - نسخة موحّدة (تم دمج التعريفات المكررة)
-   ========================================================= */
-.book-back-cover {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(145deg, #1a2a2e, #0f1a1d);
-    border-radius: 4px 8px 8px 4px;
-    box-shadow:
-        0 20px 60px rgba(0, 0, 0, 0.55),
-        inset 0 1px 0 rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(69, 162, 158, 0.15);
-    -webkit-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    /* ✅ توحيد translateZ مع الغلاف الأمامي */
-    transform: rotateY(180deg) translateZ(2px);
-    overflow: hidden;
-    z-index: 3;
-}
-
-.book-back-cover .cover-inner {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    overflow: hidden;
-}
-.book-back-cover .cover-logo {
-    margin-bottom: 18px;
-}
-.book-back-cover h2,
-.book-back-cover h3 {
-    margin-left: 0;
-    margin-right: 0;
-}
-.book-back-cover .cover-divider {
-    margin: 18px auto;
-}
-.book-back-cover p {
-    margin: 0;
-}
-.book-back-cover .cover-shine {
-    pointer-events: none;
-}
-
-.back-description {
-    max-width: 75%;
-    margin-top: 25px;
-    font-family: "Inter", "Tajawal", sans-serif;
-    font-size: 12px;
-    line-height: 1.7;
-    opacity: 0.72;
-    direction: ltr;
-    text-align: center;
-}
-
-/* ----- الصفحات الداخلية للكتاب (نسخة موحّدة) ----- */
-.page {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    -webkit-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-    -webkit-transform-origin: left center;
-    transform-origin: left center;
-    transition: transform 0.9s cubic-bezier(0.23, 1, 0.32, 1);
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    z-index: 2;
-    touch-action: pan-y;
-}
-.page .page-front,
-.page .page-back {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 4px 8px 8px 4px;
-    background: rgba(20, 30, 35, 0.96);
-    border: 1px solid rgba(255, 255, 255, 0.04);
-    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.22);
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    overflow-y: auto;
-    padding: 18px 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.page .page-front {
-    transform: rotateY(0deg) translateZ(1px);
-}
-.page .page-back {
-    transform: rotateY(180deg) translateZ(1px);
-}
-.page .page-front::-webkit-scrollbar,
-.page .page-back::-webkit-scrollbar {
-    width: 3px;
-}
-.page .page-front::-webkit-scrollbar-track,
-.page .page-back::-webkit-scrollbar-track {
-    background: transparent;
-}
-.page .page-front::-webkit-scrollbar-thumb,
-.page .page-back::-webkit-scrollbar-thumb {
-    background: rgba(69, 162, 158, 0.3);
-    border-radius: 10px;
-}
-.page.flipped {
-    transform: rotateY(-180deg);
-}
-
-/* ----- داخل الصفحة – بطاقات المشاريع ----- */
-.project-card-inner {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    width: 100%;
-    height: 100%;
-    justify-content: flex-start;
-}
-.project-img {
-    position: relative;
-    border-radius: 8px;
-    overflow: hidden;
-    background: #1a2428;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-    aspect-ratio: 16 / 9;
-    flex-shrink: 0;
-}
-.project-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.5s ease;
-}
-.project-img:hover img {
-    transform: scale(1.03);
-}
-.project-tag {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: rgba(10, 15, 18, 0.92);
-    padding: 3px 12px;
-    border-radius: 20px;
-    font-size: 0.65rem;
-    font-weight: 600;
-    color: #fff;
-    letter-spacing: 0.5px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-.project-info-inner {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    flex: 1;
-}
-.project-info-inner h3 {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: #f0f0f0;
-    line-height: 1.2;
-}
-.project-type {
-    font-size: 0.8rem;
-    color: #66fcf1;
-    font-weight: 500;
-}
-.project-tech {
-    font-size: 0.75rem;
-    color: #8899a0;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-.project-tech i {
-    color: #45a29e;
-    font-size: 0.7rem;
-}
-.project-desc {
-    font-size: 0.8rem;
-    color: #b0b8c0;
-    line-height: 1.5;
-    margin-top: 2px;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
-.project-actions {
-    display: flex;
-    gap: 10px;
-    margin-top: 6px;
-    flex-wrap: wrap;
-}
-.btn-preview,
-.btn-details {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 6px 16px;
-    border-radius: 30px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-    border: none;
-    cursor: pointer;
-    text-decoration: none;
-}
-.btn-preview {
-    background: linear-gradient(135deg, #45a29e, #2a6d6a);
-    color: #fff;
-    box-shadow: 0 4px 15px rgba(69, 162, 158, 0.2);
-}
-.btn-preview:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(69, 162, 158, 0.35);
-}
-.btn-details {
-    background: rgba(255, 255, 255, 0.06);
-    color: #c5c6c7;
-    border: 1px solid rgba(255, 255, 255, 0.06);
-}
-.btn-details:hover {
-    background: rgba(255, 255, 255, 0.1);
-    color: #fff;
-    border-color: rgba(69, 162, 158, 0.3);
-}
-
-.book-nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: rgba(20, 30, 35, 0.92);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    color: #c5c6c7;
-    font-size: 1.2rem;
-    cursor: pointer;
-    z-index: 20;
-    transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.book-nav:hover {
-    background: rgba(69, 162, 158, 0.15);
-    border-color: #45a29e;
-    color: #fff;
-    transform: translateY(-50%) scale(1.05);
-}
-.book-nav.prev { left: -22px; }
-.book-nav.next { right: -22px; }
-
-.book-indicator {
-    position: absolute;
-    bottom: -32px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 4px;
-    font-size: 0.85rem;
-    color: #667780;
-    letter-spacing: 1px;
-    padding: 4px 14px;
-    border-radius: 30px;
-    background: rgba(10, 15, 18, 0.92);
-    border: 1px solid rgba(255, 255, 255, 0.04);
-}
-.book-indicator .current-page {
-    color: #66fcf1;
-    font-weight: 600;
-}
-
-/* ----- استجابة الكتاب ----- */
-@media (max-width: 1200px) {
-    .book-container { width: 360px; height: 460px; }
-}
-@media (max-width: 992px) {
-    .book-wrapper { min-height: 300px; }
-    .book-container { width: 340px; height: 430px; }
-    .book-nav.prev { left: -14px; }
-    .book-nav.next { right: -14px; }
-}
-@media (max-width: 768px) {
-    .book-container { width: 300px; height: 390px; }
-    .book-nav { width: 36px; height: 36px; font-size: 1rem; }
-    .book-nav.prev { left: -10px; }
-    .book-nav.next { right: -10px; }
-}
-@media (max-width: 576px) {
-    .book-container { width: 260px; height: 340px; }
-    .book-nav { width: 32px; height: 32px; font-size: 0.8rem; }
-    .book-nav.prev { left: -8px; }
-    .book-nav.next { right: -8px; }
-    .cover-inner {
-        gap: 6px;
-        padding: 20px 12px;
-    }
-    .cover-avatar {
-        width: 70px;
-        height: 70px;
-        margin-bottom: 4px;
-    }
-    .cover-logo {
-        font-size: 3.0rem;
-    }
-    .cover-inner h2 {
-        font-size: 1.2rem;
-        letter-spacing: 2px;
-    }
-    .cover-inner h3 {
-        font-size: 0.9rem;
-        letter-spacing: 1px;
-    }
-    .cover-divider {
-        width: 40px;
-        margin: 4px 0;
-    }
-    .project-info-inner h3 { font-size: 0.95rem; }
-    .project-desc { font-size: 0.7rem; }
-    .btn-preview, .btn-details { font-size: 0.65rem; padding: 4px 12px; }
-    .book-indicator { font-size: 0.7rem; padding: 2px 12px; bottom: -26px; }
-}
-
-/* ============================================================
-   قواعد مضافة للتوافق الكامل
-   ============================================================ */
-
-/* ===== Scroll Progress Bar ===== */
-.scroll-progress {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 0%;
-    height: 3px;
-    background: linear-gradient(90deg, var(--accent), var(--accent-glow));
-    z-index: 10000;
-    box-shadow: 0 0 10px var(--accent-glow);
-    will-change: width;
-    transition: none;
-}
-
-/* ===== Noise Overlay ===== */
-.noise-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 9999;
-    opacity: 0.018;
-    background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.06) 0 1px, transparent 1px);
-    background-size: 4px 4px;
-}
-
-/* ===== Scroll Reveal Animations ===== */
-.reveal {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-.reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* ===== Scroll Arrow ===== */
-.scroll-arrow {
-    width: 24px;
-    height: 24px;
-    border-right: 2px solid var(--accent);
-    border-bottom: 2px solid var(--accent);
-    transform: rotate(45deg);
-    margin-top: 4px;
-    animation: bounceArrow 1.8s infinite;
-    will-change: transform, opacity;
-}
-@keyframes bounceArrow {
-    0%, 100% { transform: rotate(45deg) translate(0, 0); opacity: 1; }
-    50% { transform: rotate(45deg) translate(4px, 4px); opacity: 0.5; }
-}
-
-/* ===== Glossy Button Effect ===== */
-.glossy {
-    position: relative;
-    overflow: hidden;
-}
-.glossy::after {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -60%;
-    width: 50%;
-    height: 200%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
-    transform: skewX(-20deg);
-    transition: left 0.6s ease;
-    pointer-events: none;
-}
-.glossy:hover::after {
-    left: 130%;
-}
-
-/* ===== Magnetic Buttons ===== */
-.magnetic {
-    will-change: transform;
-    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-/* ===== Cursor hover state ===== */
-.cursor-follower.hover {
-    width: 60px;
-    height: 60px;
-    background: rgba(102, 252, 241, 0.15);
-    border-color: var(--accent-glow);
-}
-
-/* ===== تحسينات الأداء 60FPS ===== */
-.book,
-.page,
-.book-shadow,
-.cover-avatar,
-.cursor,
-.cursor-follower,
-.floating-element,
-.scroll-arrow {
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-}
-
-.book img,
-.project-card img,
-.project-img img,
-.cover-avatar img {
-    image-rendering: auto;
-}
-
-/* Hover-only effects */
-@media (hover: hover) and (pointer: fine) {
-    .book-container:hover .book {
-        transform: rotateY(-4deg) rotateX(2deg) scale(1.01);
-    }
-    .book-container:hover .book-shadow {
-        width: 90%;
-        left: 5%;
-        opacity: 0.8;
-    }
-}
-
-/* Touch devices */
-@media (hover: none), (pointer: coarse) {
-    body {
-        cursor: auto !important;
-    }
-    .cursor,
-    .cursor-follower {
-        display: none !important;
-    }
-    .book-container:hover .book {
-        transform: rotateY(-8deg) rotateX(4deg);
-    }
-    .book-cover:hover .cover-avatar {
-        transform:
-            translate(var(--x), var(--y))
-            scale(var(--scale))
-            rotate(var(--rotate));
-    }
-    .book-cover:hover .cover-avatar img {
-        transform: none;
-        filter: none;
-    }
-    .book-cover:hover .cover-avatar::after {
-        opacity: 0;
-    }
-    .project-img:hover img,
-    .project-card:hover img {
-        transform: none;
-    }
-    .skill-category:hover,
-    .service-card:hover,
-    .project-card:hover {
-        transform: none;
-    }
-}
-
-/* Smaller devices */
-@media (max-width: 768px) {
-    .book-shadow {
-        filter: blur(5px);
-        opacity: 0.65;
-    }
-    .book-cover {
-        box-shadow:
-            0 12px 32px rgba(0, 0, 0, 0.48),
-            inset 0 1px 0 rgba(255, 255, 255, 0.04);
-    }
-    .page .page-front,
-    .page .page-back {
-        box-shadow: inset 0 0 14px rgba(0, 0, 0, 0.18);
-    }
-    .noise-overlay {
-        display: none;
-    }
-    .floating-lights {
-        animation: none;
-        opacity: 0.8;
-    }
-}
-
-/* Very small screens */
-@media (max-width: 576px) {
-    .floating-element,
-    .skill-level span::after,
-    .scroll-arrow {
-        animation: none;
-    }
-    .book-shadow {
-        filter: blur(4px);
-        opacity: 0.55;
+    .book-nav.next {
+        right: -50px;
     }
     .book-indicator {
-        background: rgba(10, 15, 18, 0.96);
+        bottom: -50px;
+        font-size: 0.75rem;
     }
 }
 
-/* Accessibility */
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 1.8rem;
     }
-    .reveal {
-        opacity: 1;
-        transform: none;
+    .book {
+        width: 260px;
+        height: 330px;
     }
-}
-
-/* ----- تفاعلات الأفاتار عند المرور ----- */
-.book-cover:hover .cover-avatar {
-    transform: translateY(-3px) scale(1.03);
-    border-color: rgba(102, 252, 241, 0.9);
-    box-shadow:
-        0 0 0 5px rgba(255, 255, 255, 0.05),
-        0 0 30px rgba(102, 252, 241, 0.45),
-        0 18px 45px rgba(0, 0, 0, 0.55),
-        inset 0 1px 2px rgba(255, 255, 255, 0.25);
-}
-.book-cover:hover .cover-avatar::after {
-    opacity: 1;
-}
-.book-cover:hover .cover-avatar img {
-    transform: scale(1.08);
-    filter: contrast(1.05) saturate(1.08);
-}
-/* ============================================================
-   FINAL BACK COVER - نسخة مصححة
-   ✅ يبقى ثابتاً في وسط الكتاب بدون دوران
-   ============================================================ */
-
-.final-back-cover-page {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-
-    /* ✅ لا دوران - يبقى في مكانه تماماً */
-    transform: none;
-
-    -webkit-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-
-    /* ✅ انتقال سلس للظهور فقط */
-    transition: opacity 0.6s ease, visibility 0.6s ease;
-
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-
-    /* ✅ مخفي افتراضياً */
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-
-    z-index: 1;
-}
-
-/* ✅ يظهر عند الوصول لآخر صفحة */
-.final-back-cover-page.active {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-    z-index: 15;
-}
-
-/* ✅ الغلاف الخلفي - ثابت في وسط الكتاب */
-.final-back-cover-page > .book-back-cover {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    margin: 0;
-    padding: 0;
-
-    /* ✅ بدون دوران */
-    transform: none;
-
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-
-    overflow: hidden;
-
-    /* ✅ نفس شكل الغلاف الأمامي */
-    border-radius: 12px 4px 4px 12px;
-
-    background: linear-gradient(145deg, #1a2a2e, #0f1a1d);
-
-    box-shadow:
-        0 20px 60px rgba(0, 0, 0, 0.55),
-        inset 0 1px 0 rgba(255, 255, 255, 0.05);
-
-    border: 1px solid rgba(69, 162, 158, 0.15);
-}
-
-/* ✅ محتوى الغلاف */
-.final-back-cover-page .cover-inner {
-    width: 100%;
-    height: 100%;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    text-align: center;
-
-    padding: 30px 20px;
-
-    position: relative;
-    z-index: 2;
-}
-
-/* ✅ الشعار */
-.final-back-cover-page .cover-logo {
-    position: relative;
-
-    font-size: 4.5rem;
-    font-weight: 900;
-
-    color: #66fcf1;
-
-    margin-bottom: 18px;
-
-    text-shadow: 0 0 40px rgba(102, 252, 241, 0.2);
-}
-
-/* ✅ الاسم */
-.final-back-cover-page h2 {
-    margin: 0;
-
-    font-size: clamp(1.4rem, 3vw, 2.2rem);
-    font-weight: 700;
-
-    letter-spacing: 4px;
-
-    color: #f0f0f0;
-}
-
-/* ✅ PORTFOLIO */
-.final-back-cover-page h3 {
-    margin: 8px 0 0;
-
-    font-size: clamp(1rem, 2.5vw, 1.6rem);
-    font-weight: 300;
-
-    letter-spacing: 3px;
-
-    color: #66fcf1;
-}
-
-/* ✅ الخط الفاصل */
-.final-back-cover-page .cover-divider {
-    width: 60px;
-    height: 2px;
-
-    margin: 18px 0;
-
-    background: linear-gradient(
-        90deg,
-        transparent,
-        #45a29e,
-        transparent
-    );
-}
-
-/* ✅ النص */
-.final-back-cover-page .back-description {
-    max-width: 75%;
-    margin: 0;
-
-    font-family: "Inter", "Tajawal", sans-serif;
-    font-size: 12px;
-    line-height: 1.7;
-
-    color: #c5c6c7;
-    opacity: 0.72;
-
-    direction: ltr;
-    text-align: center;
-}
-
-/* ✅ اللمعة */
-.final-back-cover-page .cover-shine {
-    position: absolute;
-    top: -50%;
-    left: -50%;
-
-    width: 200%;
-    height: 200%;
-
-    pointer-events: none;
-    z-index: 1;
-
-    transform: rotate(-25deg);
-
-    background: radial-gradient(
-        ellipse at 30% 30%,
-        rgba(255, 255, 255, 0.06) 0%,
-        transparent 60%
-    );
-}
-
-/* ✅ الهاتف */
-@media (max-width: 576px) {
-    .final-back-cover-page .cover-inner {
-        padding: 20px 12px;
+    .book-container {
+        height: 350px;
     }
-    .final-back-cover-page .cover-logo {
-        font-size: 3rem;
-        margin-bottom: 12px;
-    }
-    .final-back-cover-page h2 {
-        font-size: 1.2rem;
-        letter-spacing: 2px;
-    }
-    .final-back-cover-page h3 {
-        font-size: 0.9rem;
-        letter-spacing: 1px;
-    }
-    .final-back-cover-page .cover-divider {
+    .book-nav {
         width: 40px;
-        margin: 10px 0;
+        height: 40px;
+        font-size: 1rem;
     }
-    .final-back-cover-page .back-description {
-        font-size: 10px;
-        max-width: 85%;
+    .book-nav.prev {
+        left: -50px;
     }
-}
-/* ============================================================
-   تأثير التراجع التلقائي (Auto Reverse)
-   ============================================================ */
-
-/* تسريع الانتقال أثناء التراجع */
-.book.is-reversing .page {
-    transition: transform 0.5s cubic-bezier(0.5, 0, 0.75, 0) !important;
-}
-
-/* اهتزاز خفيف للكتاب عند بدء التراجع */
-@keyframes bookShakeReverse {
-    0%   { transform: rotateY(-8deg) rotateX(4deg) scale(1); }
-    25%  { transform: rotateY(-10deg) rotateX(5deg) scale(1.02); }
-    50%  { transform: rotateY(-6deg) rotateX(3deg) scale(0.99); }
-    100% { transform: rotateY(-8deg) rotateX(4deg) scale(1); }
-}
-.book.is-reversing {
-    animation: bookShakeReverse 0.6s ease-in-out;
-}
-
-/* وميض ختامي حول الكتاب عند إعادة التعيين */
-@keyframes resetFlash {
-    0%   { box-shadow: 0 0 0 rgba(102, 252, 241, 0); }
-    50%  { box-shadow: 0 0 60px rgba(102, 252, 241, 0.4); }
-    100% { box-shadow: 0 0 0 rgba(102, 252, 241, 0); }
-}
-.book-container.is-resetting {
-    animation: resetFlash 0.8s ease-out;
-}
-
-/* احترام تفضيل تقليل الحركة */
-@media (prefers-reduced-motion: reduce) {
-    .book.is-reversing,
-    .book-container.is-resetting {
-        animation: none;
+    .book-nav.next {
+        right: -50px;
     }
-    .book.is-reversing .page {
-        transition-duration: 0.2s !important;
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+    .section-title {
+        font-size: 1.8rem;
     }
 }

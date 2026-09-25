@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <meta name="description" content="بورتفوليو احترافي لمطور ومصمم مواقع – نعمل على تحويل أفكارك إلى تجارب رقمية استثنائية" />
     <meta name="keywords" content="مطور مواقع, مصمم UI/UX, بورتفوليو, تصميم مواقع, تطوير واجهات, تجربة المستخدم" />
     <meta name="author" content="بلال عشير" />
@@ -12,7 +11,6 @@
     <meta property="og:description" content="تصاميم فريدة وتجارب مستخدم ساحرة – فريق متخصص في إنشاء مواقع الجيل التالي" />
     <meta property="og:image" content="assets/images/og-image.jpg" />
     <meta property="og:url" content="https://portfolio-example.com" />
-
     <meta name="twitter:card" content="summary_large_image" />
 
     <link rel="shortcut icon" href="assets/icons/favicon.ico" type="image/x-icon" />
@@ -20,7 +18,7 @@
     <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/icon-192.png" />
     <link rel="manifest" href="manifest.json" />
 
-    <title>بورتفيليو المصمم – UI/UX & Front-End Developer</title>
+    <title>بورتفوليو المصمم – UI/UX & Front-End Developer</title>
 
     <script type="application/ld+json">
     {
@@ -30,8 +28,8 @@
         "jobTitle": "مطور واجهات أمامية ومصمم تجربة مستخدم",
         "url": "https://portfolio-example.com",
         "sameAs": [
-            "https://github.com/Mywebsite-collab?tab=repositories",
-            "https://www.linkedin.com/me?trk=p_mwlite_feed-secondary_nav",
+            "https://github.com/Mywebsite-collab",
+            "https://www.linkedin.com/in/bilal-achir",
             "https://x.com/Buffi97174487"
         ]
     }
@@ -39,22 +37,13 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&family=Inter:wght@300;400;600;700&display=swap"
-        rel="stylesheet"
-    />
-
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
-
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3H4UJKlCC5gO2/FITe23fTmRvQXYZacsH5nBeeN7vsgBgwRYpREw651mW0K5uJL4F7bnaPgeLVzw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="assets/css/main.css" />
 </head>
 
 <body>
-
+    <!-- Loading Screen -->
     <div id="loading-screen" class="loading-screen" aria-hidden="true">
         <div class="loading-logo">⊹˚مرحباً بكم˚⊹</div>
         <div class="loading-progress">
@@ -62,18 +51,18 @@
         </div>
     </div>
 
+    <!-- Custom Cursor -->
     <div class="cursor" id="cursor" aria-hidden="true"></div>
     <div class="cursor-follower" id="cursor-follower" aria-hidden="true"></div>
 
-    <div class="noise-overlay" aria-hidden="true"></div>
-
+    <!-- Scroll Progress Bar -->
     <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
+    <!-- Header -->
     <header class="header glass" id="header">
         <div class="container header-inner">
-
             <a href="#hero" class="logo" aria-label="الصفحة الرئيسية">
-                <span class="logo-text">|꧁•𝖇𝖎𝖑𝖊𝖑_𝖙𝖊𝖈𝖍𖥂⟣</span>
+                <span class="logo-text">꧁𝖇𝖎𝖑𝖆𝖑_𝖙𝖊𝖈𝖍꧂</span>
             </a>
 
             <nav class="nav" id="nav" aria-label="القائمة الرئيسية">
@@ -91,26 +80,23 @@
                 <span></span>
                 <span></span>
             </button>
-
         </div>
     </header>
 
     <main>
-
+        <!-- Hero Section -->
         <section class="hero" id="hero">
-
             <div class="hero-bg">
                 <canvas id="particles-canvas"></canvas>
                 <div class="floating-lights"></div>
             </div>
 
             <div class="container hero-content">
-
                 <div class="hero-text reveal">
                     <div class="hero-badge glass">مطوّر ومصمم مواقع • جودة عالمية</div>
 
                     <h1 class="hero-title">
-                        <span class="text-line">نحوِّل أفكارك</span>
+                        <span class="text-line">نحوِّل أفكارك</span>
                         <span class="text-line gradient-text">إلى مواقع</span>
                         <span class="text-line">لا تُنسى</span>
                     </h1>
@@ -124,1075 +110,90 @@
                         <a href="#projects" class="btn glass magnetic">
                             <span>استعرض أعمالي</span>
                         </a>
-
                         <a href="#contact" class="btn btn-outline glossy">
                             <span>تواصل معي</span>
                         </a>
                     </div>
                 </div>
 
-               <div class="hero-visual">
-
-    <div class="book-wrapper">
-
-        <div class="book-container">
-
-            <div class="book-shadow" aria-hidden="true"></div>
-
-            <div class="book">
-
-                <!-- =========================
-                     FRONT COVER
-                     ========================= -->
-                <div
-                    class="page book-cover active"
-                    data-page="0"
-                    aria-label="الغلاف الأمامي"
-                >
-
-                    <div class="cover-inner">
-
-                        <div class="cover-logo">
-                            ꧁-🅱–꧂
-                        </div>
-
-                        <div class="cover-avatar">
-                            <img
-                                src="assets/avatar book 📚/wmremove-transformed.png"
-                                alt="Bilal Achir"
-                                loading="eager"
-                                decoding="async"
-                                fetchpriority="high"
-                            />
-                        </div>
-
-                        <h2>PORTFOLIO</h2>
-
-                        <h3>COLLECTION</h3>
-
-                        <div class="cover-divider"></div>
-
-                        <p>2026 · بلال عشير</p>
-
-                        <div
-                            class="cover-shine"
-                            aria-hidden="true">
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- =========================
-                     PAGE 1
-                     ========================= -->
-                <div class="page" data-page="1">
-
-                    <div class="page-front">
-                        <img
-                            src="assets/images/project0.jpg"
-                            alt="صورة المشروع 1"
-                            loading="eager"
-                            decoding="async"
-                        />
-                    </div>
-
-                    <div class="page-back">
-                        <img
-                            src="assets/images/project1.jpg"
-                            alt="صورة المشروع 2"
-                            loading="lazy"
-                            decoding="async"
-                        />
-                    </div>
-
-                </div>
-
-
-                <!-- PAGE 2 -->
-                <div class="page" data-page="2">
-
-                    <div class="page-front">
-                        <img
-                            src="assets/images/project2.jpg"
-                            alt="صورة المشروع 3"
-                            loading="lazy"
-                            decoding="async"
-                        />
-                    </div>
-
-                    <div class="page-back">
-                        <img
-                            src="assets/images/project3.jpg"
-                            alt="صورة المشروع 4"
-                            loading="lazy"
-                            decoding="async"
-                        />
-                    </div>
-
-                </div>
-
-
-                <!-- PAGE 3 -->
-                <div class="page" data-page="3">
-
-                    <div class="page-front">
-                        <img
-                            src="assets/images/project4.jpg"
-                            alt="صورة المشروع 5"
-                            loading="lazy"
-                            decoding="async"
-                        />
-                    </div>
-
-                    <div class="page-back">
-                        <img
-                            src="assets/images/project5.jpg"
-                            alt="صورة المشروع 6"
-                            loading="lazy"
-                            decoding="async"
-                        />
-                    </div>
-
-                </div>
-
-
-                <!-- PAGE 4 -->
-                <div class="page" data-page="4">
-
-                    <div class="page-front">
-                        <img
-                            src="assets/images/project6.jpg"
-                            alt="صورة المشروع 7"
-                            loading="lazy"
-                            decoding="async"
-                        />
-                    </div>
-
-                    <div class="page-back">
-                        <img
-                            src="assets/images/project7.jpg"
-                            alt="صورة المشروع 8"
-                            loading="lazy"
-                            decoding="async"
-                        />
-                    </div>
-
-                </div>
-
-
-                <!-- PAGE 5 -->
-                <div class="page" data-page="5">
-
-                    <div class="page-front">
-                        <img
-                            src="assets/images/project8.jpg"
-                            alt="صورة المشروع 9"
-                            loading="lazy"
-                            decoding="async"
-                        />
-                    </div>
-
-                    <div class="page-back">
-                        <img
-                            src="assets/images/project9.jpg"
-                            alt="صورة المشروع 10"
-                            loading="lazy"
-                            decoding="async"
-                        />
-                    </div>
-
-                </div>
-
-
-                <!-- PAGE 6 -->
-                <div class="page" data-page="6">
-
-                    <div class="page-front">
-                        <img
-                            src="assets/images/project10.jpg"
-                            alt="صورة المشروع 11"
-                            loading="lazy"
-                            decoding="async"
-                        />
-                    </div>
-
-                    <div class="page-back">
-                        <img
-                            src="assets/images/project11.jpg"
-                            alt="صورة المشروع 12"
-                            loading="lazy"
-                            decoding="async"
-                        />
-                    </div>
-
-                </div>
-
-
-                <!-- PAGE 7 -->
-                <div class="page" data-page="7">
-
-                    <div class="page-front">
-                        <img
-                            src="assets/images/project12.jpg"
-                            alt="صورة المشروع 13"
-                            loading="lazy"
-                            decoding="async"
-                        />
-                    </div>
-
-                    <div class="page-back">
-                        <img
-                            src="assets/images/project13.jpg"
-                            alt="صورة المشروع 14"
-                            loading="lazy"
-                            decoding="async"
-                        />
-                    </div>
-
-                </div>
-
-
-                <!-- PAGE 8 -->
-                <div class="page" data-page="8">
-
-                    <div class="page-front">
-                        <img
-                            src="assets/images/project14.jpg"
-                            alt="صورة المشروع 15"
-                            loading="lazy"
-                            decoding="async"
-                        />
-                    </div>
-
-                    <div class="page-back">
-                        <img
-                            src="assets/images/project15.jpg"
-                            alt="صورة المشروع 16"
-                            loading="lazy"
-                            decoding="async"
-                        />
-                    </div>
-
-                </div>
-
-
-                <!-- PAGE 9 -->
-                <div class="page" data-page="9">
-
-                    <div class="page-front">
-                        <img
-                            src="assets/images/project16.jpg"
-                            alt="صورة المشروع 17"
-                            loading="lazy"
-                            decoding="async"
-                        />
-                    </div>
-
-                    <div class="page-back">
-                        <img
-                            src="assets/images/project17.jpg"
-                            alt="صورة المشروع 18"
-                            loading="lazy"
-                            decoding="async"
-                        />
-                    </div>
-
-                </div>
-
-
-                <!-- PAGE 10 -->
-                <div class="page" data-page="10">
-
-                    <div class="page-front">
-                        <img
-                            src="assets/images/project18.jpg"
-                            alt="صورة المشروع 19"
-                            loading="lazy"
-                            decoding="async"
-                        />
-                    </div>
-
-                    <div class="page-back">
-                        <img
-                            src="assets/images/project19.jpg"
-                            alt="صورة المشروع 20"
-                            loading="lazy"
-                            decoding="async"
-                        />
-                    </div>
-
-                </div>
-
-
-                <!-- PAGE 11 -->
-                <div class="page" data-page="11">
-
-                    <div class="page-front">
-                        <img
-                            src="assets/images/project20.jpg"
-                            alt="صورة المشروع 21"
-                            loading="lazy"
-                            decoding="async"
-                        />
-                    </div>
-
-                    <div class="page-back">
-                        <img
-                            src="assets/images/project21.jpg"
-                            alt="صورة المشروع 22"
-                            loading="lazy"
-                            decoding="async"
-                        />
-                    </div>
-
-                </div>
-
-
-                <!-- =========================
-                     PAGE 12
-                     LAST IMAGE + BACK COVER
-                     ========================= -->
-                <div class="page" data-page="12">
-
-                    <div class="page-front">
-                        <img
-                            src="assets/images/project22.jpg"
-                            alt="صورة المشروع 23"
-                            loading="lazy"
-                            decoding="async"
-                        />
-                    </div>
-
-                    <div
-                        class="page-back book-back-cover"
-                        aria-label="الغلاف الخلفي"
-                    >
-
-                        <div class="cover-inner">
-
-                            <div class="cover-logo">
-                                🅱
+                <!-- 3D Book Section -->
+                <div class="hero-visual">
+                    <div class="book-wrapper">
+                        <div class="book-container">
+                            <div class="book-shadow" aria-hidden="true"></div>
+
+                            <div class="book">
+                                <!-- Front Cover -->
+                                <div class="page book-cover" data-page="0" aria-label="الغلاف الأمامي">
+                                    <div class="cover-inner">
+                                        <div class="cover-logo">꧁🅱꧂</div>
+                                        <div class="cover-avatar">
+                                            <img src="assets/avatar-book/portrait.png" alt="بلال عشير" loading="eager" decoding="async" fetchpriority="high" />
+                                        </div>
+                                        <h2>PORTFOLIO</h2>
+                                        <h3>COLLECTION</h3>
+                                        <div class="cover-divider"></div>
+                                        <p>2026 · بلال عشير</p>
+                                        <div class="cover-shine" aria-hidden="true"></div>
+                                    </div>
+                                </div>
+
+                                <!-- Project Pages (1-11) -->
+                                <div class="page" data-page="1"><div class="page-front"><img src="assets/images/project0.jpg" alt="المشروع 1" loading="eager" decoding="async" /></div><div class="page-back"><img src="assets/images/project1.jpg" alt="المشروع 2" loading="lazy" decoding="async" /></div></div>
+                                <div class="page" data-page="2"><div class="page-front"><img src="assets/images/project2.jpg" alt="المشروع 3" loading="lazy" decoding="async" /></div><div class="page-back"><img src="assets/images/project3.jpg" alt="المشروع 4" loading="lazy" decoding="async" /></div></div>
+                                <div class="page" data-page="3"><div class="page-front"><img src="assets/images/project4.jpg" alt="المشروع 5" loading="lazy" decoding="async" /></div><div class="page-back"><img src="assets/images/project5.jpg" alt="المشروع 6" loading="lazy" decoding="async" /></div></div>
+                                <div class="page" data-page="4"><div class="page-front"><img src="assets/images/project6.jpg" alt="المشروع 7" loading="lazy" decoding="async" /></div><div class="page-back"><img src="assets/images/project7.jpg" alt="المشروع 8" loading="lazy" decoding="async" /></div></div>
+                                <div class="page" data-page="5"><div class="page-front"><img src="assets/images/project8.jpg" alt="المشروع 9" loading="lazy" decoding="async" /></div><div class="page-back"><img src="assets/images/project9.jpg" alt="المشروع 10" loading="lazy" decoding="async" /></div></div>
+                                <div class="page" data-page="6"><div class="page-front"><img src="assets/images/project10.jpg" alt="المشروع 11" loading="lazy" decoding="async" /></div><div class="page-back"><img src="assets/images/project11.jpg" alt="المشروع 12" loading="lazy" decoding="async" /></div></div>
+                                <div class="page" data-page="7"><div class="page-front"><img src="assets/images/project12.jpg" alt="المشروع 13" loading="lazy" decoding="async" /></div><div class="page-back"><img src="assets/images/project13.jpg" alt="المشروع 14" loading="lazy" decoding="async" /></div></div>
+                                <div class="page" data-page="8"><div class="page-front"><img src="assets/images/project14.jpg" alt="المشروع 15" loading="lazy" decoding="async" /></div><div class="page-back"><img src="assets/images/project15.jpg" alt="المشروع 16" loading="lazy" decoding="async" /></div></div>
+                                <div class="page" data-page="9"><div class="page-front"><img src="assets/images/project16.jpg" alt="المشروع 17" loading="lazy" decoding="async" /></div><div class="page-back"><img src="assets/images/project17.jpg" alt="المشروع 18" loading="lazy" decoding="async" /></div></div>
+                                <div class="page" data-page="10"><div class="page-front"><img src="assets/images/project18.jpg" alt="المشروع 19" loading="lazy" decoding="async" /></div><div class="page-back"><img src="assets/images/project19.jpg" alt="المشروع 20" loading="lazy" decoding="async" /></div></div>
+                                <div class="page" data-page="11"><div class="page-front"><img src="assets/images/project20.jpg" alt="المشروع 21" loading="lazy" decoding="async" /></div><div class="page-back"><img src="assets/images/project21.jpg" alt="المشروع 22" loading="lazy" decoding="async" /></div></div>
+
+                                <!-- Last Page + Back Cover -->
+                                <div class="page" data-page="12">
+                                    <div class="page-front"><img src="assets/images/project22.jpg" alt="المشروع 23" loading="lazy" decoding="async" /></div>
+                                    <div class="page-back book-back-cover" aria-label="الغلاف الخلفي">
+                                        <div class="cover-inner">
+                                            <div class="cover-logo">🅱</div>
+                                            <h2>PORTFOLIO</h2>
+                                            <h3>COLLECTION</h3>
+                                            <div class="cover-divider"></div>
+                                            <p>2026 · بلال عشير</p>
+                                            <div class="back-description">A collection of creativity, ideas and digital work.</div>
+                                            <div class="cover-shine" aria-hidden="true"></div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
-                            <h2>PORTFOLIO</h2>
-
-                            <h3>COLLECTION</h3>
-
-                            <div class="cover-divider"></div>
-
-                            <p>2026 · بلال عشير</p>
-
-                            <div class="back-description">
-                                A collection of creativity,
-                                ideas and digital work.
-                            </div>
-
-                            <div
-                                class="cover-shine"
-                                aria-hidden="true">
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- BOOK NAVIGATION -->
-
-            <button
-                class="book-nav prev"
-                type="button"
-                aria-label="الصفحة السابقة"
-            >
-                <i class="fas fa-chevron-right"></i>
-            </button>
-
-            <button
-                class="book-nav next"
-                type="button"
-                aria-label="الصفحة التالية"
-            >
-                <i class="fas fa-chevron-left"></i>
-            </button>
-
-
-            <!-- PAGE INDICATOR -->
-
-            <div
-                class="book-indicator"
-                aria-live="polite"
-            >
-                <span class="current-page">1</span>
-                <span class="total-pages">/ 13</span>
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- FLOATING ELEMENTS -->
-
-    <div class="floating-elements">
-
-        <div
-            class="floating-element shape-1"
-            data-speed="0.5"
-            aria-hidden="true">
-        </div>
-
-        <div
-            class="floating-element shape-2"
-            data-speed="0.3"
-            aria-hidden="true">
-        </div>
-
-    </div>
-
-</div>
-                <div class="hero-scroll-indicator">
-                    <span>انزل لمزيد من التفاصيل</span>
-                    <div class="scroll-arrow"></div>
-                </div>
-
-            </div>
-        </section>
-
-        <section class="section about" id="about">
-            <div class="container">
-
-                <div class="section-heading reveal">
-                    <span class="section-badge">من أنا</span>
-                    <h2 class="section-title">خبرة تجمع التصميم والبرمجة</h2>
-                    <p class="section-subtitle">أجعل الواجهات تنبض بالحياة</p>
-                </div>
-
-                <div class="about-grid">
-
-                    <div class="about-image reveal">
-                        <div class="image-wrapper glass">
-                            <img
-                                src="assets/images/placeholder-avatar.jpg"
-                                alt="بلال 🄳🄴🅅"
-                                loading="lazy"
-                            />
-                        </div>
-                    </div>
-
-                    <div class="about-text reveal">
-
-                        <p class="about-paragraph">
-                            أكثر من 4 عملاء راضيين من تصميم وتطوير الواجهات الأمامية. أعمل مع شركات ناشئة
-                            ووكالات عالمية لأصنع مواقع تفاعلية سريعة، متجاوبة، ومليئة بالتفاصيل الدقيقة.
-                        </p>
-
-                        <p class="about-paragraph">
-                            أؤمن بأن كل بكسل يجب أن يكون هادفًا. أستخدم أحدث التقنيات مثل Glassmorphism،
-                            Three.js، و GSAP لأقدّم تجارب لا تشبه أي شيء آخر.
-                        </p>
-
-                        <div class="about-stats">
-
-                            <div class="stat glass">
-                                <span class="stat-number" data-count="8">0</span>
-                                <span class="stat-label">+ مشروع</span>
-                            </div>
-
-                            <div class="stat glass">
-                                <span class="stat-number" data-count="20">0</span>
-                                <span class="stat-label">عميل راضٍ</span>
-                            </div>
-
-                            <div class="stat glass">
-                                <span class="stat-number" data-count="2">0</span>
-                                <span class="stat-label">سنوات خبرة</span>
-                            </div>
-
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <section class="section skills" id="skills">
-            <div class="container">
-
-                <div class="section-heading reveal">
-                    <span class="section-badge">مهاراتي</span>
-                    <h2 class="section-title">تقنيات العصر الحديث</h2>
-                    <p class="section-subtitle">
-                        أدوات وتقنيات أستخدمها لإنشاء تجارب رقمية استثنائية
-                    </p>
-                </div>
-
-                <div class="skills-grid reveal">
-
-                    <div class="skill-category glass">
-                        <div class="skill-category-header">
-                            <div class="skill-category-icon">🎨</div>
-                            <h3>تصميم UX/UI</h3>
-                        </div>
-
-                        <ul>
-
-                            <li>
-                                <img
-                                    src="https://cdn.dribbble.com/userupload/12787191/file/original-b7ce54b4984cb5bc7559dc995a23143e.png?resize=752x&vertical=center"
-                                    alt="Figma"
-                                    class="skill-img"
-                                />
-                                <span>Figma &amp; Sketch</span>
-                                <span class="skill-level">
-                                    <span style="width: 90%"></span>
-                                </span>
-                            </li>
-
-                            <li>
-                                <img
-                                    src="https://www.svgrepo.com/show/520505/research.svg"
-                                    alt="User Research"
-                                    class="skill-img"
-                                />
-                                <span>User Research</span>
-                                <span class="skill-level">
-                                    <span style="width: 85%"></span>
-                                </span>
-                            </li>
-
-                            <li>
-                                <img
-                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcLPpc9tUP_zVYJfhjIV9sxOY638tkX2XgFkScSUkDAw&s=10"
-                                    alt="Wireframing"
-                                    class="skill-img"
-                                />
-                                <span>Wireframing</span>
-                                <span class="skill-level">
-                                    <span style="width: 95%"></span>
-                                </span>
-                            </li>
-
-                            <li>
-                                <img
-                                    src="https://cdn-icons-png.flaticon.com/256/2452/2452663.png"
-                                    alt="Design Systems"
-                                    class="skill-img"
-                                />
-                                <span>Design Systems</span>
-                                <span class="skill-level">
-                                    <span style="width: 80%"></span>
-                                </span>
-                            </li>
-
-                        </ul>
-                    </div>
-
-                    <div class="skill-category glass">
-                        <div class="skill-category-header">
-                            <div class="skill-category-icon">⚛️</div>
-                            <h3>Front-End</h3>
-                        </div>
-
-                        <ul>
-
-                            <li>
-                                <img
-                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbB0yu2tVlng7RY-CIWzIWXxFom4b6Cblgw9TClTKBfA&s=10"
-                                    alt="HTML CSS JS"
-                                    class="skill-img"
-                                />
-                                <span>HTML5 / CSS3 / JS ES6</span>
-                                <span class="skill-level">
-                                    <span style="width: 95%"></span>
-                                </span>
-                            </li>
-
-                            <li>
-                                <img
-                                    src="https://westsideelectronics.com/content/images/2020/06/react_vue-1.JPG"
-                                    alt="React & Vue"
-                                    class="skill-img"
-                                />
-                                <span>React &amp; Vue.js</span>
-                                <span class="skill-level">
-                                    <span style="width: 88%"></span>
-                                </span>
-                            </li>
-
-                            <li>
-                                <img
-                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQA_Qhd1xCSaKVczHb4FUcE1-SzbG1TML-20dcAQ_QqO2PLRhc8YQGG30b-&s=10"
-                                    alt="GSAP & Three.js"
-                                    class="skill-img"
-                                />
-                                <span>GSAP &amp; Three.js</span>
-                                <span class="skill-level">
-                                    <span style="width: 82%"></span>
-                                </span>
-                            </li>
-
-                            <li>
-                                <img
-                                    src="https://miro.medium.com/v2/1*bFUWUdBjOeWR6hTYehwg7A.png"
-                                    alt="Tailwind & SCSS"
-                                    class="skill-img"
-                                />
-                                <span>Tailwind &amp; SCSS</span>
-                                <span class="skill-level">
-                                    <span style="width: 90%"></span>
-                                </span>
-                            </li>
-
-                        </ul>
-                    </div>
-
-                    <div class="skill-category glass">
-                        <div class="skill-category-header">
-                            <div class="skill-category-icon">🛠️</div>
-                            <h3>أدوات متقدمة</h3>
-                        </div>
-
-                        <ul>
-
-                            <li>
-                                <img
-                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEmOAcPbkJi6p3gixndXw3Ca5WhYDmIgdqJ32xxbb9Olz7882dZtOumB4&s=10"
-                                    alt="Webpack & Vite"
-                                    class="skill-img"
-                                />
-                                <span>Webpack / Vite</span>
-                                <span class="skill-level">
-                                    <span style="width: 85%"></span>
-                                </span>
-                            </li>
-
-                            <li>
-                                <img
-                                    src="https://media.licdn.com/dms/image/v2/C4E12AQHWNdMspEJHVg/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1612113737018?e=2147483647&v=beta&t=Pd-NDj73ee4AiZQI8p5QKNEU7Z_dZY0CUCzaSVjw-VU"
-                                    alt="Git & CI/CD"
-                                    class="skill-img"
-                                />
-                                <span>Git &amp; CI/CD</span>
-                                <span class="skill-level">
-                                    <span style="width: 80%"></span>
-                                </span>
-                            </li>
-
-                            <li>
-                                <img
-                                    src="https://resources.americaneagle.com/aecom-blobs/images/default-source/blog-images/google-lighthouse-explained.png?sfvrsn=3cafe498_1"
-                                    alt="Lighthouse & SEO"
-                                    class="skill-img"
-                                />
-                                <span>Lighthouse / SEO</span>
-                                <span class="skill-level">
-                                    <span style="width: 88%"></span>
-                                </span>
-                            </li>
-
-                            <li>
-                                <img
-                                    src="https://accessibleweb.com/wp-content/uploads/2019/09/aweb-logo.jpg"
-                                    alt="Web Accessibility"
-                                    class="skill-img"
-                                />
-                                <span>Web Accessibility</span>
-                                <span class="skill-level">
-                                    <span style="width: 75%"></span>
-                                </span>
-                            </li>
-
-                        </ul>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <section class="section services" id="services">
-            <div class="container">
-
-                <div class="section-heading reveal">
-                    <span class="section-badge">خدماتي</span>
-                    <h2 class="section-title">ما أقدمه لك</h2>
-                </div>
-
-                <div class="services-grid">
-
-                    <div class="service-card glass reveal">
-                        <div class="service-icon">📸</div>
-                        <h3>تصميم UI/UX احترافي</h3>
-                        <p>🌈 واجهات بديهية، ألوان متناسقة، وتجربة مستخدم سلسة تركز على أهداف عملك.</p>
-                    </div>
-
-                    <div class="service-card glass reveal">
-                        <div class="service-icon">🔥</div>
-                        <h3>تطوير Front-End عالي الأداء</h3>
-                        <p>⚡ أكواد نظيفة وسريعة، أداء مذهل على جميع الأجهزة، مع أحدث التقنيات.</p>
-                    </div>
-
-                    <div class="service-card glass reveal">
-                        <div class="service-icon">✨</div>
-                        <h3>مؤثرات بصرية فريدة</h3>
-                        <p>أنيميشينات ساحرة، تفاعلات جريئة، وخلفيات متحركة تجعل موقعك لا يُنسى.</p>
-                    </div>
-
-                    <div class="service-card glass reveal">
-                        <div class="service-icon">🔍</div>
-                        <h3>تحسين SEO و Speed</h3>
-                        <p>🔭 ظهور ممتاز في محركات البحث وسرعة تحميل خارقة 🔮 بفضل أفضل التقنيات في التطوير.</p>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <section class="section projects" id="projects">
-            <div class="container">
-
-                <div class="section-heading reveal">
-                    <span class="section-badge">أعمالي</span>
-                    <h2 class="section-title">معرض المشاريع</h2>
-                </div>
-
-                <div class="filter-container reveal">
-                    <button class="filter-btn active" data-filter="all">الكل</button>
-                    <button class="filter-btn" data-filter="ui">تصميم UI</button>
-                    <button class="filter-btn" data-filter="dev">تطوير</button>
-                    <button class="filter-btn" data-filter="full">متكامل</button>
-                </div>
-
-                <div class="projects-grid" id="projectsGrid">
-                </div>
-
-            </div>
-        </section>
-
-        <section class="section testimonials" id="testimonials">
-            <div class="container">
-
-                <div class="section-heading reveal">
-                    <span class="section-badge">آراء العملاء</span>
-                    <h2 class="section-title">ماذا يقولون عني</h2>
-                </div>
-
-                <div class="testimonials-slider">
-
-                    <div class="testimonial-card glass reveal">
-                        <p>“بلال صمم لنا موقعًا يتجاوز التوقعات. التفاصيل والإبداع في العمل كانا مذهلين.”</p>
-
-                        <div class="testimonial-author">
-                            <img
-                                src="assets/images/client1.jpg"
-                                alt="صورة العميل"
-                                loading="lazy"
-                            />
-
-                            <div>
-                                <strong>حنان زناتي</strong>
-                                <span> صاحبة صفحة هبوط – hanan boutique</span>
+                            <!-- Navigation Buttons -->
+                            <button class="book-nav prev" aria-label="الصفحة السابقة">←</button>
+                            <button class="book-nav next" aria-label="الصفحة التالية">→</button>
+
+                            <!-- Page Indicator -->
+                            <div class="book-indicator">
+                                <span class="current-page">1</span>
+                                <span class="total-pages"> / 13</span>
                             </div>
                         </div>
                     </div>
-
-                    <div class="testimonial-card glass reveal">
-                        <p>“تعاملت معه في مشروع معقد، وكانت النتيجة أعلى من المطلوب. احترافية عالية.”</p>
-
-                        <div class="testimonial-author">
-                            <img
-                                src="assets/images/client2.jpg"
-                                alt="صورة العميل"
-                                loading="lazy"
-                            />
-
-                            <div>
-                                <strong>يوسف ديكور</strong>
-                                <span>مؤسس متجر إلكتروني</span>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
             </div>
         </section>
-
-        <section class="section timeline" id="timeline">
-            <div class="container">
-
-                <div class="section-heading reveal">
-                    <span class="section-badge">المسيرة</span>
-                    <h2 class="section-title">رحلتي المهنية</h2>
-                </div>
-
-                <div class="timeline-line reveal">
-
-                    <div class="timeline-item glass">
-                        <span class="year">2020</span>
-                        <p>بداية العمل كمصمم مستقل – أول 10 مشاريع</p>
-                    </div>
-
-                    <div class="timeline-item glass">
-                        <span class="year">2021</span>
-                        <p>انضمام إلى وكالة رقمية – تطوير مهارات Front-End</p>
-                    </div>
-
-                    <div class="timeline-item glass">
-                        <span class="year">2023</span>
-                        <p>تأسيس علامتي التجارية الخاصة والتركيز على المشاريع المتميزة</p>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <section class="section faq" id="faq">
-            <div class="container">
-
-                <div class="section-heading reveal">
-                    <span class="section-badge">الأسئلة الشائعة</span>
-                    <h2 class="section-title">الإجابات التي تحتاجها</h2>
-                </div>
-
-                <div class="faq-list reveal">
-
-                    <div class="faq-item glass">
-                        <button class="faq-question">
-                            كم يستغرق تصميم موقع متكامل؟
-                            <span class="faq-icon">+</span>
-                        </button>
-
-                        <div class="faq-answer">
-                            <p>حسب تعقيد المشروع، عادةً بين 4 إلى 8 أيام.</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-item glass">
-                        <button class="faq-question">
-                            هل توفرون خدمات الصيانة بعد الإطلاق؟
-                            <span class="faq-icon">+</span>
-                        </button>
-
-                        <div class="faq-answer">
-                            <p>نعم، أوفر حزم صيانة شهرية لتحديث المحتوى وضمان الأمان.</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-item glass">
-                        <button class="faq-question">
-                            ما هي التقنيات المستخدمة بشكل أساسي؟
-                            <span class="faq-icon">+</span>
-                        </button>
-
-                        <div class="faq-answer">
-                            <p>أستخدم HTML5, CSS3, JavaScript, React/Next.js, GSAP, و Three.js.</p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <section class="section cta" id="cta">
-            <div class="container cta-content glass reveal">
-                <h2>هل لديك فكرة مشروع؟</h2>
-                <p>دعنا نحولها إلى واقع رقمي يبهر الجميع.</p>
-                <a href="#contact" class="btn glass magnetic">📲 تواصل الآن</a>
-            </div>
-        </section>
-
-        <section class="section contact" id="contact">
-            <div class="container">
-
-                <div class="section-heading reveal">
-                    <span class="section-badge">تواصل</span>
-                    <h2 class="section-title">دعنا نعمل معًا</h2>
-                </div>
-
-                <div class="contact-grid">
-
-                    <form class="contact-form glass reveal" id="contactForm" novalidate>
-
-                        <div class="form-group">
-                            <label for="name">الاسم</label>
-                            <input
-                                type="text"
-                                id="name"
-                                name="name"
-                                required
-                                placeholder="اسمك الكريم"
-                            />
-                        </div>
-
-                        <div class="form-group">
-                            <label for="email">البريد الإلكتروني</label>
-                            <input
-                                type="email"
-                                id="email"
-                                name="email"
-                                required
-                                placeholder="you@example.com"
-                            />
-                        </div>
-
-                        <div class="form-group">
-                            <label for="message">رسالتك</label>
-                            <textarea
-                                id="message"
-                                name="message"
-                                required
-                                rows="5"
-                                placeholder="صف فكرتك أو استفسارك..."
-                            ></textarea>
-                        </div>
-
-                        <button
-                            type="submit"
-                            class="btn glass magnetic loading-btn"
-                            id="submitBtn"
-                        >
-                            <span>أرسل رسالة جميلة مثلك 🌺</span>
-                            <div class="loading-spinner"></div>
-                        </button>
-
-                        <div
-                            class="toast"
-                            id="toast"
-                            role="alert"
-                            aria-live="polite">
-                        </div>
-
-                    </form>
-
-                    <div class="contact-info reveal">
-
-                        <div class="info-item glass">
-                            <span>📧</span>
-                            <a href="mailto:achirbilal10@gmail.com">
-                                achirbilal10@gmail.com
-                            </a>
-                        </div>
-
-                        <div class="info-item glass">
-                            <span>📱</span>
-                            <a href="tel:+213795619382">213795619382+</a>
-                        </div>
-
-                        <div class="social-links">
-
-                            <a
-                                href="https://github.com/Mywebsite-collab?tab=repositories"
-                                class="social-link glass"
-                                target="_blank"
-                                rel="noopener"
-                            >
-                                <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.15 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.62.24 2.85.12 3.15.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
-                                </svg>
-                                <span>GitHub</span>
-                            </a>
-
-                            <a
-                                href="https://www.linkedin.com/me?trk=p_mwlite_feed-secondary_nav"
-                                class="social-link glass"
-                                target="_blank"
-                                rel="noopener"
-                            >
-                                <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                                </svg>
-                                <span>LinkedIn</span>
-                            </a>
-
-                            <a
-                                href="https://x.com/Buffi97174487"
-                                class="social-link glass"
-                                target="_blank"
-                                rel="noopener"
-                            >
-                                <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                                </svg>
-                                <span>Twitter </span>
-                            </a>
-
-                            <a
-                                href="https://youtube.com/channel/UCaBldHjugBhEP9w3DlRAerg?si=pPTsItDDOoXELRqC"
-                                class="social-link glass"
-                                target="_blank"
-                                rel="noopener"
-                            >
-                                <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-                                </svg>
-                                <span>YouTube</span>
-                            </a>
-
-                            <a
-                                href="https://www.instagram.com/xx_b_ilel_xx?igsh=OTUxazVwMzZ2NXow"
-                                class="social-link glass"
-                                target="_blank"
-                                rel="noopener"
-                            >
-                                <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.28-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.012-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
-                                </svg>
-                                <span>Instagram</span>
-                            </a>
-
-                            <a
-                                href="https://www.tiktok.com/@webscaleai"
-                                class="social-link glass"
-                                target="_blank"
-                                rel="noopener"
-                            >
-                                <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M19.589 6.686a4.793 4.793 0 0 1-3.77-4.237h-3.177v12.918a2.716 2.716 0 1 1-2.716-2.716c.297 0 .584.048.853.136V9.548a5.944 5.944 0 1 0 5.04 5.819V8.794a8.008 8.008 0 0 0 4.77 1.578V7.2a4.772 4.772 0 0 1-1-.514z"/>
-                                </svg>
-                                <span>TikTok</span>
-                            </a>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
     </main>
 
     <footer class="footer">
         <div class="container footer-inner">
-           
- <p>© 2025 موقع من تصميم_ المصمم.𝖇𝖎𝖑𝖆𝖑 
-<a>
-# 𝕯𝖊𝖛 # |جميع الحقوق محفوظة ® 
-</p>
-</div>
- </nav>
-            <nav class="footer-nav">
-                <a href="#hero">الرئيسية</a>
-                <a href="#about">نبذة</a>
-                <a href="#services">خدماتي</a>
-                <a href="#projects">أعمالي</a>
-            </nav>
+            <p>&copy; 2026 بلال عشير. جميع الحقوق محفوظة.</p>
         </div>
     </footer>
 
-    <a
-        href="#hero"
-        class="back-to-top glass"
-        id="backToTop"
-        aria-label="🔼العودة إلى الأعلى">
-        ↑
-    </a>
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="العودة للأعلى">↑</button>
 
-    <script src="assets/js/data.js"></script>
-    <script src="assets/js/main.js"></script>
-
+    <!-- Scripts -->
+    <script src="assets/js/main.js" defer></script>
 </body>
 </html>

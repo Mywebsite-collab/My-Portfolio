@@ -411,6 +411,8 @@
         let currentPage = 0;
         const totalPages = pageEls.length;
         let isAnimating = false;
+        let isReversing = false;
+        let reverseTimer = null;
 
         if (totalPagesEl) totalPagesEl.textContent = '/ ' + totalPages;
 
@@ -420,15 +422,15 @@
             }
             if (prevBtn) {
                 const isFirst = (currentPage === 0);
-                prevBtn.disabled = isFirst;
-                prevBtn.style.opacity = isFirst ? '0.4' : '1';
-                prevBtn.style.cursor = isFirst ? 'default' : 'pointer';
+                prevBtn.disabled = isFirst || isReversing;
+                prevBtn.style.opacity = (isFirst || isReversing) ? '0.4' : '1';
+                prevBtn.style.cursor = (isFirst || isReversing) ? 'default' : 'pointer';
             }
             if (nextBtn) {
                 const isLast = (currentPage === totalPages);
-                nextBtn.disabled = isLast;
-                nextBtn.style.opacity = isLast ? '0.4' : '1';
-                nextBtn.style.cursor = isLast ? 'default' : 'pointer';
+                nextBtn.disabled = isLast || isReversing;
+                nextBtn.style.opacity = (isLast || isReversing) ? '0.4' : '1';
+                nextBtn.style.cursor = (isLast || isReversing) ? 'default' : 'pointer';
             }
             pageEls.forEach((page, index) => {
                 if (page.classList.contains('flipped')) {
@@ -440,7 +442,7 @@
         }
 
         function flipPage(direction) {
-            if (isAnimating) return;
+            if (isAnimating || isReversing) return;
             const newPage = currentPage + direction;
             if (newPage < 0 || newPage > totalPages) return;
             if (direction === -1 && currentPage === 0) return;
@@ -461,15 +463,111 @@
             setTimeout(() => { isAnimating = false; }, 850);
         }
 
+        // ===== Auto Reverse System (التراجع العكسي) =====
+        function startAutoReverse() {
+            // إذا كنا لم نصل إلى آخر صفحة، لا نبدأ التراجع
+            if (currentPage !== totalPages) return;
+
+            // إذا كان التراجع قيد التشغيل بالفعل، لا نبدأ آخر
+            if (isReversing) return;
+
+            // إلغاء أي timer قديم
+            if (reverseTimer) clearTimeout(reverseTimer);
+
+            // وضع العلم
+            isReversing = true;
+            book.classList.add('is-reversing');
+            updateUI();
+
+            // انتظر 2500ms قبل البدء بالتراجع
+            reverseTimer = setTimeout(() => {
+                performAutoReverse();
+            }, 2500);
+        }
+
+        function performAutoReverse() {
+            // دالة مساعدة لتراجع صفحة واحدة كل 250ms
+            function reverseOneStep() {
+                if (currentPage <= 0) {
+                    // وصلنا إلى الغلاف الأمامي - انهي التراجع
+                    finishAutoReverse();
+                    return;
+                }
+
+                // تراجع صفحة واحدة
+                flipPage(-1);
+
+                // جدول الخطوة التالية بعد 250ms
+                reverseTimer = setTimeout(reverseOneStep, 250);
+            }
+
+            // ابدأ التراجع
+            reverseOneStep();
+        }
+
+        function finishAutoReverse() {
+            // تأكد من الوصول إلى الصفحة 0 (الغلاف الأمامي)
+            if (currentPage > 0) {
+                currentPage = 0;
+                updateUI();
+            }
+
+            // أزل جميع الصفحات المقلوبة
+            pageEls.forEach(page => page.classList.remove('flipped'));
+
+            // أعد تعيين z-index
+            pageEls.forEach((page, index) => {
+                page.style.zIndex = totalPages - index;
+            });
+
+            // أزل العلم والحالات
+            isReversing = false;
+            book.classList.remove('is-reversing');
+
+            // أعد تفعيل التنقل
+            updateUI();
+
+            // إلغاء أي timer متبقي
+            if (reverseTimer) clearTimeout(reverseTimer);
+            reverseTimer = null;
+        }
+
+        function cancelAutoReverse() {
+            if (!isReversing) return;
+
+            // إلغاء Timer
+            if (reverseTimer) clearTimeout(reverseTimer);
+            reverseTimer = null;
+
+            // أزل الحالات
+            isReversing = false;
+            book.classList.remove('is-reversing');
+
+            // أعد تفعيل التنقل
+            updateUI();
+        }
+
+        // ===== Event Listeners للأزرار =====
         if (nextBtn) {
             nextBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
+                if (isReversing) return;
                 flipPage(1);
+                // تحقق من إذا وصلنا إلى آخر صفحة
+                setTimeout(() => {
+                    if (currentPage === totalPages) {
+                        startAutoReverse();
+                    }
+                }, 850);
             });
         }
         if (prevBtn) {
             prevBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
+                if (isReversing) {
+                    cancelAutoReverse();
+                    return;
+                }
                 flipPage(-1);
             });
         }
@@ -478,8 +576,18 @@
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
                 e.preventDefault();
+                if (isReversing) {
+                    cancelAutoReverse();
+                    return;
+                }
                 if (e.key === 'ArrowLeft') flipPage(1);
                 else flipPage(-1);
+                // تحقق من التراجع بعد التقليب
+                setTimeout(() => {
+                    if (currentPage === totalPages) {
+                        startAutoReverse();
+                    }
+                }, 850);
             }
         });
 
@@ -488,15 +596,25 @@
         const bookContainer = document.querySelector('.book-container');
 
         if (bookContainer) {
-            const handleStart = (clientX) => { startX = clientX; isDragging = true; };
+            const handleStart = (clientX) => { 
+                if (isReversing) return;
+                startX = clientX; 
+                isDragging = true; 
+            };
             const handleMove = (clientX) => {
-                if (!isDragging) return;
+                if (!isDragging || isReversing) return;
                 const deltaX = clientX - startX;
                 if (Math.abs(deltaX) > 40) {
                     if (deltaX < 0) flipPage(1);
                     else flipPage(-1);
                     isDragging = false;
                     startX = 0;
+                    // تحقق من التراجع
+                    setTimeout(() => {
+                        if (currentPage === totalPages) {
+                            startAutoReverse();
+                        }
+                    }, 850);
                 }
             };
             const handleEnd = () => { isDragging = false; startX = 0; };
@@ -530,12 +648,19 @@
         // النقر على الصفحة للتنقل
         pageEls.forEach((page, index) => {
             page.addEventListener('click', (e) => {
+                if (isReversing) return;
                 if (e.target.closest('a') || e.target.closest('.btn-preview') || e.target.closest('.btn-details')) return;
                 if (!page.classList.contains('flipped')) {
                     if (currentPage <= index) flipPage(1);
                 } else {
                     if (currentPage > index + 1) flipPage(-1);
                 }
+                // تحقق من التراجع
+                setTimeout(() => {
+                    if (currentPage === totalPages) {
+                        startAutoReverse();
+                    }
+                }, 850);
             });
         });
 
@@ -551,7 +676,7 @@
             if (isDragging) e.preventDefault();
         });
 
-        if (typeof console !== 'undefined') console.log('📖 3D Portfolio Book ready!');
+        if (typeof console !== 'undefined') console.log('📖 3D Portfolio Book ready with Auto Reverse!');
     }
 
 })();

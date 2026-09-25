@@ -1,10 +1,8 @@
 // Main Portfolio JavaScript
-// بدون أي أخطاء - نسخة نظيفة محسّنة الأداء 60fps
-
+// النسخة النهائية: تم إصلاح أخطاء قلب الصفحات والروابط المكسورة
 ;(function() {
     'use strict';
 
-    // ===== Performance Utilities =====
     function throttle(fn, limit) {
         let inThrottle = false, lastArgs = null;
         return function() {
@@ -25,7 +23,6 @@
         };
     }
 
-    // ===== Loading Screen =====
     const loading = document.getElementById('loading-screen');
     const progressBar = loading ? loading.querySelector('.loading-progress span') : null;
     if (loading && progressBar) {
@@ -53,17 +50,10 @@
         }, 5000);
     }
 
-    // ===== Custom Cursor =====
     const cursor = document.getElementById('cursor');
     const follower = document.getElementById('cursor-follower');
     if (cursor && follower) {
         let mouseX = 0, mouseY = 0, followerX = 0, followerY = 0, rafId = null;
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-            cursor.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
-            if (!rafId) rafId = requestAnimationFrame(updateFollower);
-        });
         function updateFollower() {
             followerX += (mouseX - followerX) * 0.18;
             followerY += (mouseY - followerY) * 0.18;
@@ -74,13 +64,18 @@
                 rafId = null;
             }
         }
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            cursor.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
+            if (!rafId) rafId = requestAnimationFrame(updateFollower);
+        });
         document.querySelectorAll('a, button, .btn').forEach(el => {
             el.addEventListener('mouseenter', () => follower.classList.add('hover'));
             el.addEventListener('mouseleave', () => follower.classList.remove('hover'));
         });
     }
 
-    // ===== Header Scroll Effect =====
     const header = document.getElementById('header');
     const menuToggle = document.getElementById('menuToggle');
     const navList = document.querySelector('.nav-list');
@@ -89,7 +84,6 @@
     const sections = document.querySelectorAll('section[id]');
     const backToTop = document.getElementById('backToTop');
 
-    // ===== Unified Scroll Listener =====
     const onScroll = throttle(() => {
         const scrollY = window.scrollY;
         if (header) header.classList.toggle('scrolled', scrollY > 100);
@@ -120,7 +114,6 @@
         backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
     }
 
-    // ===== Scroll Reveal Animations =====
     const revealElements = document.querySelectorAll('.reveal');
     if ('IntersectionObserver' in window) {
         const revealObserver = new IntersectionObserver((entries) => {
@@ -136,7 +129,6 @@
         revealElements.forEach(el => el.classList.add('visible'));
     }
 
-    // ===== 3D Book Logic =====
     const book = document.querySelector('.book');
     const bookContainer = document.querySelector('.book-container');
     const allPages = document.querySelectorAll('.page');
@@ -146,11 +138,12 @@
     const totalPagesEl = document.querySelector('.total-pages');
 
     if (book && bookContainer && allPages.length > 0) {
-        let currentPage = 0;
         const totalPages = allPages.length;
+        let currentPage = 0;
         let isAnimating = false;
         let isReversing = false;
         let reverseTimer = null;
+        let startX = 0, isDragging = false;
 
         if (totalPagesEl) totalPagesEl.textContent = ' / ' + totalPages;
 
@@ -162,21 +155,22 @@
                 prevBtn.style.opacity = (isFirst || isReversing) ? '0.4' : '1';
             }
             if (nextBtn) {
-                const isLast = currentPage === totalPages;
+                const isLast = currentPage >= totalPages - 1;
                 nextBtn.disabled = isLast || isReversing;
                 nextBtn.style.opacity = (isLast || isReversing) ? '0.4' : '1';
             }
             allPages.forEach((page, index) => {
-                page.style.zIndex = page.classList.contains('flipped') ? 10 + index : totalPages - index;
+                const isFlipped = page.classList.contains('flipped');
+                page.style.zIndex = isFlipped ? (10 + index) : (totalPages - index);
             });
         }
 
         function flipPage(direction) {
             if (isAnimating || isReversing) return;
             const newPage = currentPage + direction;
-            if (newPage < 0 || newPage > totalPages) return;
+            if (newPage < 0 || newPage >= totalPages) return;
             if (direction === -1 && currentPage === 0) return;
-            if (direction === 1 && currentPage === totalPages) return;
+            if (direction === 1 && currentPage >= totalPages - 1) return;
 
             isAnimating = true;
             const pageIndex = direction === 1 ? currentPage : currentPage - 1;
@@ -191,7 +185,7 @@
         }
 
         function startAutoReverse() {
-            if (currentPage !== totalPages || isReversing) return;
+            if (currentPage !== totalPages - 1 || isReversing) return;
             if (reverseTimer) clearTimeout(reverseTimer);
             isReversing = true;
             book.classList.add('is-reversing');
@@ -217,7 +211,9 @@
                 updateUI();
             }
             allPages.forEach(page => page.classList.remove('flipped'));
-            allPages.forEach((page, index) => { page.style.zIndex = totalPages - index; });
+            allPages.forEach((page, index) => {
+                page.style.zIndex = totalPages - index;
+            });
             isReversing = false;
             book.classList.remove('is-reversing');
             updateUI();
@@ -234,15 +230,17 @@
             updateUI();
         }
 
-        // Event Listeners
         if (nextBtn) {
             nextBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
                 if (isReversing) return;
                 flipPage(1);
-                setTimeout(() => { if (currentPage === totalPages) startAutoReverse(); }, 850);
+                setTimeout(() => {
+                    if (currentPage >= totalPages - 1) startAutoReverse();
+                }, 850);
             });
         }
+
         if (prevBtn) {
             prevBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
@@ -251,21 +249,24 @@
             });
         }
 
-        // Keyboard Navigation
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
                 e.preventDefault();
                 if (isReversing) { cancelAutoReverse(); return; }
                 if (e.key === 'ArrowLeft') flipPage(1);
                 else flipPage(-1);
-                setTimeout(() => { if (currentPage === totalPages) startAutoReverse(); }, 850);
+                setTimeout(() => {
+                    if (currentPage >= totalPages - 1) startAutoReverse();
+                }, 850);
             }
         });
 
-        // Mouse/Touch Drag
-        let startX = 0, isDragging = false;
         if (bookContainer) {
-            const handleStart = (clientX) => { if (isReversing) return; startX = clientX; isDragging = true; };
+            const handleStart = (clientX) => {
+                if (isReversing) return;
+                startX = clientX;
+                isDragging = true;
+            };
             const handleMove = (clientX) => {
                 if (!isDragging || isReversing) return;
                 const deltaX = clientX - startX;
@@ -274,7 +275,9 @@
                     else flipPage(-1);
                     isDragging = false;
                     startX = 0;
-                    setTimeout(() => { if (currentPage === totalPages) startAutoReverse(); }, 850);
+                    setTimeout(() => {
+                        if (currentPage >= totalPages - 1) startAutoReverse();
+                    }, 850);
                 }
             };
             const handleEnd = () => { isDragging = false; startX = 0; };
@@ -283,10 +286,11 @@
             document.addEventListener('mousemove', (e) => handleMove(e.clientX));
             document.addEventListener('mouseup', handleEnd);
             bookContainer.addEventListener('touchstart', (e) => handleStart(e.touches[0].clientX), { passive: true });
-            document.addEventListener('touchmove', (e) => { if (isDragging) handleMove(e.touches[0].clientX); }, { passive: true });
+            document.addEventListener('touchmove', (e) => {
+                if (isDragging) handleMove(e.touches[0].clientX);
+            }, { passive: true });
             document.addEventListener('touchend', handleEnd, { passive: true });
 
-            // Tilt Effect
             let tiltRaf = null;
             bookContainer.addEventListener('mousemove', (e) => {
                 if (tiltRaf) cancelAnimationFrame(tiltRaf);
@@ -303,7 +307,6 @@
             });
         }
 
-        // Click Page Navigation
         allPages.forEach((page, index) => {
             page.addEventListener('click', (e) => {
                 if (isReversing || e.target.closest('a') || e.target.closest('button')) return;
@@ -312,21 +315,22 @@
                 } else {
                     if (currentPage > index + 1) flipPage(-1);
                 }
-                setTimeout(() => { if (currentPage === totalPages) startAutoReverse(); }, 850);
+                setTimeout(() => {
+                    if (currentPage >= totalPages - 1) startAutoReverse();
+                }, 850);
             });
         });
 
-        // Prevent Text Selection During Drag
         document.addEventListener('selectstart', (e) => {
             if (isDragging) e.preventDefault();
         });
 
         updateUI();
-        setTimeout(() => { if (totalPages > 1) flipPage(1); }, 1500);
-        console.log('📖 3D Portfolio Book initialized successfully!');
+        setTimeout(() => {
+            if (totalPages > 1) flipPage(1);
+        }, 1500);
     }
 
-    // ===== Particles Background =====
     const canvas = document.getElementById('particles-canvas');
     if (canvas && canvas.getContext) {
         const ctx = canvas.getContext('2d');
@@ -377,7 +381,10 @@
                 entries.forEach(entry => {
                     isHeroVisible = entry.isIntersecting;
                     if (isHeroVisible && !animationId) animateParticles();
-                    else if (!isHeroVisible && animationId) { cancelAnimationFrame(animationId); animationId = null; }
+                    else if (!isHeroVisible && animationId) {
+                        cancelAnimationFrame(animationId);
+                        animationId = null;
+                    }
                 });
             }, { threshold: 0 });
             heroObserver.observe(heroSection);
@@ -403,8 +410,8 @@
             }
             if (isHeroVisible) animationId = requestAnimationFrame(animateParticles);
         }
-        animateParticles();
 
+        animateParticles();
         const onResize = throttle(() => { resizeCanvas(); initParticles(); }, 200);
         window.addEventListener('resize', onResize, { passive: true });
     }

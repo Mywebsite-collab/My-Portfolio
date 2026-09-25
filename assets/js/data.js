@@ -3,12 +3,12 @@
 const projectsData = [
     {
         id: 1,
-        title: 'منصة تعليمية تفاعلية',
+        title: 'منصة شخصية ',
         category: 'full',
         image: 'pages/photos/هوية.jpg',
         description: 'تصميم وتطوير كامل لمنصة بتجربة مستخدم استثنائية ومؤثرات بصرية.',
-        live: '#',
-        github: '#',
+        live: 'https://mywebsite-collab.github.io/youcefdecor/',
+        github: 'https://github.com/Mywebsite-collab/youcefdecor',
         caseStudy: 'pages/project-1.html'
     },
     {

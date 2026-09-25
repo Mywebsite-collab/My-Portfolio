@@ -398,15 +398,15 @@
     // =============================================
     // ===== كود الكتاب ثلاثي الأبعاد (3D Book) =====
     // =============================================
+    const bookContainer = document.querySelector('.book-container');
     const book = document.querySelector('.book');
-    const pages = document.querySelectorAll('.book');
     const allPages = document.querySelectorAll('.page');
     const prevBtn = document.querySelector('.book-nav.prev');
     const nextBtn = document.querySelector('.book-nav.next');
     const currentPageEl = document.querySelector('.current-page');
     const totalPagesEl = document.querySelector('.total-pages');
 
-    if (book && allPages.length > 0) {
+    if (book && bookContainer && allPages.length > 0) {
         const pageEls = allPages;
         let currentPage = 0;
         const totalPages = pageEls.length;
@@ -593,7 +593,6 @@
 
         // السحب بالماوس واللمس
         let startX = 0, isDragging = false;
-        const bookContainer = document.querySelector('.book-container');
 
         if (bookContainer) {
             const handleStart = (clientX) => { 

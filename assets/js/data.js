@@ -5,8 +5,8 @@ const projectsData = [
         id: 1,
         title: 'منصة تعليمية تفاعلية',
         category: 'full',
-        image: 'assets/images/project1.jpg',
-        description: 'تصميم وتطوير كامل لمنصة تعليمية بتجربة مستخدم استثنائية ومؤثرات بصرية.',
+        image: 'pages/photos/هوية.jpg',
+        description: 'تصميم وتطوير كامل لمنصة بتجربة مستخدم استثنائية ومؤثرات بصرية.',
         live: '#',
         github: '#',
         caseStudy: 'pages/project-1.html'

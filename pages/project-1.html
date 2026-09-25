@@ -3,219 +3,1609 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="منصة تعليمية تفاعلية – تصميم وتطوير كامل لمنصة تعليمية بتجربة مستخدم استثنائية ومؤثرات بصرية">
-    <title>نموذج المنصة – منصة تعليمية تفاعلية | بلال المصمم</title>
-    <link rel="shortcut icon" href="../assets/icons/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="../assets/css/main.css">
+
+    <meta name="description"
+          content="دراسة حالة للهوية البصرية وموقع Youcef Décor – تصميم هوية راقية مستوحاة من عالم الديكور والتشطيبات الداخلية.">
+
+    <meta name="theme-color" content="#201b16">
+
+    <title>Youcef Décor — دراسة حالة الهوية البصرية | بلال المصمم</title>
+
+    <link rel="shortcut icon"
+          href="../assets/icons/favicon.ico"
+          type="image/x-icon">
+
+    <link rel="stylesheet"
+          href="../assets/css/main.css">
+
     <style>
-        /* تنسيقات إضافية خاصة بصفحات دراسة الحالة */
-        .case-hero {
-            min-height: 60vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            background: linear-gradient(135deg, rgba(11,12,16,0.9), rgba(31,40,51,0.8));
-            border-bottom: 1px solid var(--glass-border);
-        }
-        .case-hero h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
-        .case-hero .badge {
-            display: inline-block;
-            padding: 8px 24px;
-            border-radius: 40px;
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
-            color: var(--accent-glow);
-            font-weight: 500;
-            margin-bottom: 20px;
-        }
-        .case-body {
-            padding: 80px 0;
-        }
-        .case-body .container {
-            max-width: 800px;
-        }
-        .case-body h2 {
-            font-size: 2rem;
-            margin: 40px 0 20px;
-            color: var(--accent-glow);
-        }
-        .case-body p {
-            color: var(--text-secondary);
-            line-height: 2;
-            margin-bottom: 20px;
-        }
-        .case-body ul {
-            list-style: none;
-            padding: 0;
-        }
-        .case-body ul li {
-            padding: 12px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            color: var(--text-secondary);
-        }
-        .case-body ul li::before {
-            content: '✦ ';
-            color: var(--accent);
-        }
-        .back-link {
-            display: inline-block;
-            margin-top: 40px;
-            padding: 12px 32px;
-            border-radius: 40px;
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
-            color: var(--text-primary);
-            transition: all var(--transition);
-        }
-        .back-link:hover {
-            background: var(--accent);
-            color: var(--bg-primary);
-            transform: translateY(-3px);
-        }
-        .tech-stack {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin: 20px 0;
-        }
-        .tech-stack span {
-            padding: 6px 18px;
-            border-radius: 30px;
-            background: rgba(69,162,158,0.15);
-            border: 1px solid rgba(69,162,158,0.3);
-            font-size: 0.85rem;
-            color: var(--accent-glow);
-        }
-        .case-image {
-            width: 100%;
-            border-radius: 20px;
-            margin: 30px 0;
-            border: 1px solid var(--glass-border);
+        /* =========================================================
+           YOUCEF DÉCOR — VISUAL IDENTITY CASE STUDY
+           Premium Interior Design / Warm Editorial Style
+        ========================================================= */
+
+        :root {
+            --yd-bg: #f4f0e9;
+            --yd-bg-soft: #ebe4d9;
+            --yd-paper: #faf8f4;
+
+            --yd-dark: #201b16;
+            --yd-dark-2: #302821;
+            --yd-brown: #675442;
+
+            --yd-gold: #ad8951;
+            --yd-gold-light: #d1b27b;
+
+            --yd-text: #27231e;
+            --yd-muted: #756e64;
+
+            --yd-border: rgba(39, 35, 30, .12);
+
+            --yd-shadow:
+                0 20px 60px rgba(45, 35, 25, .10);
+
+            --yd-shadow-heavy:
+                0 35px 100px rgba(45, 35, 25, .16);
+
+            --yd-radius: 22px;
+            --yd-radius-lg: 34px;
+
+            --yd-ease:
+                cubic-bezier(.22, 1, .36, 1);
         }
 
-        /* ===== Logo Image ===== */
-        .logo-img {
-            height: 40px;
-            width: auto;
-            object-fit: contain;
-            transition: transform 0.3s ease;
+
+        /* =========================================================
+           BASE
+        ========================================================= */
+
+        body {
+            background:
+                radial-gradient(
+                    circle at 80% 10%,
+                    rgba(173, 137, 81, .08),
+                    transparent 28%
+                ),
+                var(--yd-bg);
+
+            color: var(--yd-text);
         }
-        .logo-img:hover {
-            transform: scale(1.05);
+
+        ::selection {
+            background: var(--yd-gold);
+            color: #fff;
         }
-        @media (max-width: 576px) {
-            .logo-img {
-                height: 32px;
+
+
+        /* =========================================================
+           HERO
+        ========================================================= */
+
+        .yd-hero {
+            position: relative;
+            min-height: 88vh;
+
+            display: flex;
+            align-items: center;
+
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    120deg,
+                    rgba(32, 27, 22, .98),
+                    rgba(48, 40, 33, .94)
+                );
+
+            color: #fff;
+        }
+
+        .yd-hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+
+            background:
+                radial-gradient(
+                    circle at 75% 30%,
+                    rgba(209, 178, 123, .18),
+                    transparent 28%
+                ),
+                radial-gradient(
+                    circle at 20% 80%,
+                    rgba(173, 137, 81, .12),
+                    transparent 30%
+                );
+        }
+
+        .yd-hero::after {
+            content: "";
+            position: absolute;
+            width: 520px;
+            height: 520px;
+
+            left: -220px;
+            bottom: -280px;
+
+            border: 1px solid rgba(209, 178, 123, .18);
+            border-radius: 50%;
+
+            box-shadow:
+                0 0 0 80px rgba(209, 178, 123, .025),
+                0 0 0 160px rgba(209, 178, 123, .018);
+        }
+
+        .yd-hero-inner {
+            position: relative;
+            z-index: 2;
+
+            width: min(1180px, 92%);
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: 1fr .85fr;
+            align-items: center;
+
+            gap: 70px;
+
+            padding: 100px 0;
+        }
+
+
+        /* =========================================================
+           HERO CONTENT
+        ========================================================= */
+
+        .yd-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+
+            padding: 9px 17px;
+
+            border: 1px solid rgba(209, 178, 123, .3);
+            border-radius: 50px;
+
+            background: rgba(255, 255, 255, .045);
+
+            color: var(--yd-gold-light);
+
+            font-size: .82rem;
+            letter-spacing: .08em;
+
+            margin-bottom: 28px;
+        }
+
+        .yd-eyebrow::before {
+            content: "";
+            width: 7px;
+            height: 7px;
+
+            border-radius: 50%;
+            background: var(--yd-gold-light);
+
+            box-shadow:
+                0 0 15px rgba(209, 178, 123, .8);
+        }
+
+        .yd-hero h1 {
+            margin: 0;
+
+            font-size: clamp(3.2rem, 7vw, 6.8rem);
+
+            line-height: .95;
+
+            letter-spacing: -.05em;
+
+            font-weight: 700;
+        }
+
+        .yd-hero h1 span {
+            display: block;
+
+            color: var(--yd-gold-light);
+
+            font-family: Georgia, serif;
+
+            font-weight: 400;
+
+            margin-top: 12px;
+        }
+
+        .yd-hero-description {
+            max-width: 650px;
+
+            margin-top: 30px;
+
+            color: rgba(255,255,255,.68);
+
+            line-height: 2;
+
+            font-size: 1.05rem;
+        }
+
+        .yd-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+
+            margin-top: 32px;
+        }
+
+        .yd-meta span {
+            padding: 9px 15px;
+
+            border: 1px solid rgba(255,255,255,.12);
+
+            background: rgba(255,255,255,.045);
+
+            border-radius: 50px;
+
+            color: rgba(255,255,255,.78);
+
+            font-size: .82rem;
+        }
+
+
+        /* =========================================================
+           HERO VISUAL
+        ========================================================= */
+
+        .yd-hero-visual {
+            position: relative;
+        }
+
+        .yd-image-frame {
+            position: relative;
+
+            padding: 13px;
+
+            border-radius: var(--yd-radius-lg);
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,.18),
+                    rgba(255,255,255,.035)
+                );
+
+            box-shadow: var(--yd-shadow-heavy);
+
+            transform: rotate(2deg);
+
+            transition:
+                transform .7s var(--yd-ease);
+        }
+
+        .yd-image-frame:hover {
+            transform: rotate(0deg) translateY(-8px);
+        }
+
+        .yd-image-frame img {
+            display: block;
+
+            width: 100%;
+            aspect-ratio: 4 / 5;
+
+            object-fit: cover;
+
+            border-radius: calc(var(--yd-radius-lg) - 10px);
+
+            filter:
+                saturate(.82)
+                contrast(1.04);
+        }
+
+        .yd-floating-label {
+            position: absolute;
+
+            left: -35px;
+            bottom: 35px;
+
+            padding: 18px 22px;
+
+            border-radius: 16px;
+
+            background: rgba(32,27,22,.9);
+
+            border: 1px solid rgba(209,178,123,.25);
+
+            backdrop-filter: blur(15px);
+
+            box-shadow: var(--yd-shadow);
+
+            color: #fff;
+        }
+
+        .yd-floating-label small {
+            display: block;
+
+            color: var(--yd-gold-light);
+
+            margin-bottom: 5px;
+        }
+
+
+        /* =========================================================
+           INTRO
+        ========================================================= */
+
+        .yd-intro {
+            padding: 120px 0 70px;
+
+            background: var(--yd-bg);
+        }
+
+        .yd-container {
+            width: min(1050px, 90%);
+            margin: auto;
+        }
+
+        .yd-section-label {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+
+            margin-bottom: 20px;
+
+            color: var(--yd-gold);
+
+            font-size: .8rem;
+
+            text-transform: uppercase;
+
+            letter-spacing: .12em;
+        }
+
+        .yd-section-label::after {
+            content: "";
+
+            width: 45px;
+            height: 1px;
+
+            background: var(--yd-gold);
+        }
+
+        .yd-intro h2 {
+            max-width: 850px;
+
+            margin: 0;
+
+            font-size: clamp(2rem, 4vw, 4rem);
+
+            line-height: 1.25;
+
+            letter-spacing: -.035em;
+        }
+
+        .yd-intro h2 span {
+            color: var(--yd-gold);
+        }
+
+        .yd-intro p {
+            max-width: 780px;
+
+            margin-top: 25px;
+
+            color: var(--yd-muted);
+
+            line-height: 2.1;
+
+            font-size: 1.03rem;
+        }
+
+
+        /* =========================================================
+           VISUAL SYSTEM
+        ========================================================= */
+
+        .yd-system {
+            padding: 70px 0 120px;
+
+            background: var(--yd-paper);
+        }
+
+        .yd-heading {
+            margin-bottom: 45px;
+        }
+
+        .yd-heading h2 {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+
+            margin: 0 0 12px;
+
+            letter-spacing: -.04em;
+        }
+
+        .yd-heading p {
+            color: var(--yd-muted);
+
+            max-width: 650px;
+
+            line-height: 1.9;
+        }
+
+
+        /* =========================================================
+           COLOR PALETTE
+        ========================================================= */
+
+        .yd-palette {
+            display: grid;
+
+            grid-template-columns:
+                repeat(5, 1fr);
+
+            gap: 12px;
+
+            margin-top: 35px;
+        }
+
+        .yd-color {
+            min-height: 190px;
+
+            border-radius: var(--yd-radius);
+
+            padding: 18px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+
+            box-shadow: var(--yd-shadow);
+
+            overflow: hidden;
+
+            transition:
+                transform .5s var(--yd-ease);
+        }
+
+        .yd-color:hover {
+            transform: translateY(-8px);
+        }
+
+        .yd-color span {
+            font-size: .78rem;
+            opacity: .72;
+        }
+
+        .yd-color strong {
+            font-size: .95rem;
+            margin-top: 5px;
+        }
+
+        .yd-color-1 {
+            background: #201b16;
+            color: #fff;
+        }
+
+        .yd-color-2 {
+            background: #675442;
+            color: #fff;
+        }
+
+        .yd-color-3 {
+            background: #ad8951;
+            color: #fff;
+        }
+
+        .yd-color-4 {
+            background: #d1b27b;
+            color: #201b16;
+        }
+
+        .yd-color-5 {
+            background: #f4f0e9;
+            color: #201b16;
+
+            border: 1px solid var(--yd-border);
+        }
+
+
+        /* =========================================================
+           DESIGN PRINCIPLES
+        ========================================================= */
+
+        .yd-principles {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 18px;
+
+            margin-top: 55px;
+        }
+
+        .yd-card {
+            padding: 30px;
+
+            background: #fff;
+
+            border:
+                1px solid var(--yd-border);
+
+            border-radius: var(--yd-radius);
+
+            box-shadow:
+                0 10px 40px rgba(45,35,25,.055);
+
+            transition:
+                transform .5s var(--yd-ease),
+                box-shadow .5s var(--yd-ease);
+        }
+
+        .yd-card:hover {
+            transform: translateY(-7px);
+
+            box-shadow: var(--yd-shadow);
+        }
+
+        .yd-card-number {
+            font-family: Georgia, serif;
+
+            color: var(--yd-gold);
+
+            font-size: 2.4rem;
+
+            margin-bottom: 20px;
+        }
+
+        .yd-card h3 {
+            margin: 0 0 12px;
+
+            font-size: 1.15rem;
+        }
+
+        .yd-card p {
+            color: var(--yd-muted);
+
+            line-height: 1.9;
+
+            margin: 0;
+        }
+
+
+        /* =========================================================
+           PROJECT IMAGE
+        ========================================================= */
+
+        .yd-showcase {
+            padding: 100px 0;
+
+            background: var(--yd-dark);
+        }
+
+        .yd-showcase .yd-section-label {
+            color: var(--yd-gold-light);
+        }
+
+        .yd-showcase-title {
+            color: #fff;
+
+            font-size: clamp(2.2rem, 5vw, 4.5rem);
+
+            line-height: 1.15;
+
+            margin-bottom: 45px;
+        }
+
+        .yd-showcase-title span {
+            color: var(--yd-gold-light);
+        }
+
+        .yd-large-image {
+            position: relative;
+
+            overflow: hidden;
+
+            border-radius: var(--yd-radius-lg);
+
+            border:
+                1px solid rgba(255,255,255,.1);
+
+            box-shadow: var(--yd-shadow-heavy);
+        }
+
+        .yd-large-image::after {
+            content: "";
+
+            position: absolute;
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    transparent 60%,
+                    rgba(20,16,12,.35)
+                );
+
+            pointer-events: none;
+        }
+
+        .yd-large-image img {
+            display: block;
+
+            width: 100%;
+
+            max-height: 680px;
+
+            object-fit: cover;
+
+            transition:
+                transform 1s var(--yd-ease);
+        }
+
+        .yd-large-image:hover img {
+            transform: scale(1.025);
+        }
+
+
+        /* =========================================================
+           CHALLENGES / SOLUTIONS
+        ========================================================= */
+
+        .yd-content {
+            padding: 110px 0;
+
+            background: var(--yd-bg);
+        }
+
+        .yd-content-grid {
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 25px;
+
+            margin-top: 45px;
+        }
+
+        .yd-info-box {
+            padding: 35px;
+
+            border-radius: var(--yd-radius);
+
+            background: rgba(255,255,255,.65);
+
+            border:
+                1px solid var(--yd-border);
+        }
+
+        .yd-info-box.dark {
+            background: var(--yd-dark);
+
+            color: #fff;
+
+            border-color: transparent;
+        }
+
+        .yd-info-box h3 {
+            margin-top: 0;
+
+            font-size: 1.4rem;
+        }
+
+        .yd-info-box p {
+            line-height: 2;
+
+            color: var(--yd-muted);
+        }
+
+        .yd-info-box.dark p {
+            color: rgba(255,255,255,.65);
+        }
+
+        .yd-list {
+            list-style: none;
+
+            padding: 0;
+
+            margin: 25px 0 0;
+        }
+
+        .yd-list li {
+            display: flex;
+
+            gap: 12px;
+
+            padding: 13px 0;
+
+            border-bottom:
+                1px solid var(--yd-border);
+
+            color: var(--yd-muted);
+
+            line-height: 1.7;
+        }
+
+        .yd-list li:last-child {
+            border-bottom: 0;
+        }
+
+        .yd-list li::before {
+            content: "—";
+
+            color: var(--yd-gold);
+
+            font-weight: bold;
+        }
+
+        .dark .yd-list li {
+            border-color: rgba(255,255,255,.08);
+        }
+
+
+        /* =========================================================
+           TYPOGRAPHY
+        ========================================================= */
+
+        .yd-type-demo {
+            margin-top: 35px;
+
+            padding: 50px;
+
+            background: var(--yd-dark);
+
+            color: #fff;
+
+            border-radius: var(--yd-radius-lg);
+
+            overflow: hidden;
+
+            position: relative;
+        }
+
+        .yd-type-demo::before {
+            content: "Aa";
+
+            position: absolute;
+
+            left: -20px;
+            bottom: -80px;
+
+            font-family: Georgia, serif;
+
+            font-size: 300px;
+
+            color: rgba(255,255,255,.025);
+        }
+
+        .yd-type-demo small {
+            color: var(--yd-gold-light);
+        }
+
+        .yd-type-demo h3 {
+            position: relative;
+
+            margin: 20px 0 10px;
+
+            font-size: clamp(2rem, 5vw, 4.5rem);
+
+            font-weight: 500;
+        }
+
+        .yd-type-demo p {
+            position: relative;
+
+            color: rgba(255,255,255,.65);
+
+            max-width: 650px;
+
+            line-height: 2;
+        }
+
+
+        /* =========================================================
+           TECH / FEATURES
+        ========================================================= */
+
+        .yd-tags {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 10px;
+
+            margin-top: 25px;
+        }
+
+        .yd-tag {
+            padding: 10px 18px;
+
+            background: #fff;
+
+            border: 1px solid var(--yd-border);
+
+            border-radius: 50px;
+
+            color: var(--yd-brown);
+
+            font-size: .85rem;
+
+            transition: all .35s var(--yd-ease);
+        }
+
+        .yd-tag:hover {
+            background: var(--yd-dark);
+
+            color: #fff;
+
+            border-color: var(--yd-dark);
+
+            transform: translateY(-3px);
+        }
+
+
+        /* =========================================================
+           CTA
+        ========================================================= */
+
+        .yd-cta {
+            padding: 110px 0;
+
+            background:
+                radial-gradient(
+                    circle at 20% 30%,
+                    rgba(209,178,123,.15),
+                    transparent 30%
+                ),
+                var(--yd-dark);
+
+            text-align: center;
+
+            color: #fff;
+        }
+
+        .yd-cta h2 {
+            margin: 0 auto 18px;
+
+            max-width: 800px;
+
+            font-size: clamp(2.2rem, 5vw, 4.5rem);
+
+            line-height: 1.15;
+        }
+
+        .yd-cta p {
+            max-width: 650px;
+
+            margin: 0 auto;
+
+            color: rgba(255,255,255,.65);
+
+            line-height: 2;
+        }
+
+        .yd-actions {
+            display: flex;
+
+            justify-content: center;
+
+            flex-wrap: wrap;
+
+            gap: 12px;
+
+            margin-top: 35px;
+        }
+
+        .yd-btn {
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            min-height: 50px;
+
+            padding: 0 25px;
+
+            border-radius: 50px;
+
+            text-decoration: none;
+
+            transition:
+                transform .4s var(--yd-ease),
+                background .4s ease;
+        }
+
+        .yd-btn-primary {
+            background: var(--yd-gold);
+
+            color: #fff;
+        }
+
+        .yd-btn-primary:hover {
+            background: var(--yd-gold-light);
+
+            color: var(--yd-dark);
+
+            transform: translateY(-4px);
+        }
+
+        .yd-btn-outline {
+            border: 1px solid rgba(255,255,255,.2);
+
+            color: #fff;
+
+            background: rgba(255,255,255,.04);
+        }
+
+        .yd-btn-outline:hover {
+            background: #fff;
+
+            color: var(--yd-dark);
+
+            transform: translateY(-4px);
+        }
+
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+
+        @media (max-width: 900px) {
+
+            .yd-hero-inner {
+                grid-template-columns: 1fr;
+
+                gap: 45px;
+
+                padding: 90px 0;
+            }
+
+            .yd-hero-visual {
+                max-width: 560px;
+
+                width: 90%;
+
+                margin: auto;
+            }
+
+            .yd-palette {
+                grid-template-columns:
+                    repeat(3, 1fr);
+            }
+
+            .yd-principles {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .yd-content-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+        @media (max-width: 600px) {
+
+            .yd-hero {
+                min-height: auto;
+            }
+
+            .yd-hero-inner {
+                padding: 75px 0;
+            }
+
+            .yd-hero h1 {
+                font-size: 3.25rem;
+            }
+
+            .yd-hero-description {
+                font-size: .95rem;
+            }
+
+            .yd-floating-label {
+                left: 10px;
+                bottom: 20px;
+            }
+
+            .yd-palette {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .yd-color {
+                min-height: 145px;
+            }
+
+            .yd-principles {
+                grid-template-columns: 1fr;
+            }
+
+            .yd-card {
+                padding: 25px;
+            }
+
+            .yd-info-box {
+                padding: 25px;
+            }
+
+            .yd-type-demo {
+                padding: 32px 25px;
+            }
+
+            .yd-showcase,
+            .yd-content,
+            .yd-intro,
+            .yd-system {
+                padding-top: 75px;
+                padding-bottom: 75px;
+            }
+        }
+
+
+        /* =========================================================
+           REDUCED MOTION
+        ========================================================= */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+
+                transition-duration: .01ms !important;
+
+                animation-duration: .01ms !important;
             }
         }
     </style>
 </head>
+
+
 <body>
 
-    
+<main>
 
-    <main>
-        <!-- Hero Section -->
-        <section class="case-hero">
-            <div class="container">
-                <span class="badge">🎓 نموذج المنصة </span>
-                <h1>منصة تعليمية تفاعلية</h1>
-                <p style="color: var(--text-secondary); font-size: 1.2rem; max-width: 600px; margin: 0 auto;">
-                    تصميم وتطوير كامل لمنصة تعليمية بتجربة مستخدم استثنائية ومؤثرات بصرية جذابة.
-                </p>
-            </div>
-        </section>
+    <!-- =========================================================
+         HERO
+    ========================================================= -->
 
-        <!-- Case Study Content -->
-        <section class="case-body">
-            <div class="container">
-                <img src="../assets/images/project1.jpg" alt="منصة تعليمية تفاعلية" class="case-image" loading="lazy">
+    <section class="yd-hero">
 
-                <h2>نبذة عن المشروع</h2>
-                <p>
-                    منصة تعليمية تفاعلية تهدف إلى تقديم تجربة تعلم فريدة من نوعها، تجمع بين المحتوى التعليمي الغني والتفاعلات البصرية الجذابة. صممت المنصة لتكون سهلة الاستخدام للطلاب والمعلمين على حد سواء، مع تركيز خاص على تجربة المستخدم وتحفيز المتعلمين.
-                </p>
+        <div class="yd-hero-inner">
 
-                <h2>التحديات</h2>
-                <ul>
-                    <li>تصميم واجهة جذابة تناسب جميع الفئات العمرية</li>
-                    <li>توفير تجربة تعلم تفاعلية مع مؤثرات بصرية محفزة</li>
-                    <li>نظام إدارة محتوى مرن يسمح للمعلمين بإضافة الدروس بسهولة</li>
-                    <li>تكامل مع أنظمة الفيديو والصوت لتقديم محتوى غني</li>
-                    <li>متوافق مع جميع الأجهزة (موبايل، جهاز لوحي، حاسوب)</li>
-                </ul>
+            <div>
 
-                <h2>الحلول المقدمة</h2>
-                <ul>
-                    <li>تصميم واجهة مستخدم حديثة بتقنية Glassmorphism</li>
-                    <li>استخدام Three.js لإنشاء خلفيات ثلاثية الأبعاد تفاعلية</li>
-                    <li>تطوير نظام تتبع لتقدم الطالب مع لوحات تحكم شخصية</li>
-                    <li>دمج تقنيات التعلم التفاعلي مع اختبارات فورية وتقييمات ذكية</li>
-                    <li>تحسين الأداء لضمان تجربة سلسة حتى مع اتصال إنترنت ضعيف</li>
-                </ul>
-
-                <h2>التقنيات المستخدمة</h2>
-                <div class="tech-stack">
-                    <span>React 18</span>
-                    <span>Next.js 14</span>
-                    <span>TypeScript</span>
-                    <span>Tailwind CSS</span>
-                    <span>Framer Motion</span>
-                    <span>Three.js</span>
-                    <span>GraphQL</span>
-                    <span>MongoDB</span>
-                    <span>Node.js</span>
-                    <span>Vercel</span>
+                <div class="yd-eyebrow">
+                    دراسة حالة · هوية بصرية
                 </div>
 
-                <h2>الميزات الرئيسية</h2>
-                <ul>
-                    <li>📚 دروس تفاعلية مع أنيماشينات تعليمية</li>
-                    <li>🎯 نظام تتبع التقدم الشخصي</li>
-                    <li>🏆 نظام نقاط ومكافآت لتحفيز الطلاب</li>
-                    <li>💬 منتدى نقاش مجتمعي</li>
-                    <li>📊 لوحة تحكم للمعلمين لمتابعة أداء الطلاب</li>
-                    <li>📱 تصميم متجاوب بالكامل مع جميع الأجهزة</li>
-                </ul>
+                <h1>
+                    Youcef
+                    <span>Décor</span>
+                </h1>
 
-                <h2>النتائج</h2>
-                <ul>
-                    <li>🚀 6 آلاف مستخدم نشط في أول شهر</li>
-                    <li>📈 زيادة بنسبة 2% في معدل إنجاز الدورات التعليمية</li>
-                    <li>⭐ 94% من المستخدمين يوصون بالمنصة</li>
-                    <li>⏱️ سرعة تحميل 1.2 ثانية</li>
-                </ul>
+                <p class="yd-hero-description">
+                    دراسة حالة لتصميم الهوية البصرية والتجربة الرقمية
+                    لمشروع متخصص في الديكور والتشطيبات الداخلية،
+                    بهوية تجمع بين الأناقة، الدفء، البساطة والثقة.
+                </p>
 
-                <div style="display: flex; gap: 16px; flex-wrap: wrap; margin-top: 40px;">
-                    <a href="#" class="btn glass" target="_blank" rel="noopener">🔗 زيارة المنصة مباشر</a>
-                    <a href="#" class="btn btn-outline" target="_blank" rel="noopener">💻 GitHub</a>
-                    <a href="../index.html#projects" class="back-link">← العودة إلى المعرض</a>
+                <div class="yd-meta">
+                    <span>Visual Identity</span>
+                    <span>Web Design</span>
+                    <span>Interior Design</span>
+                    <span>Art Direction</span>
                 </div>
-            </div>
-        </section>
-    </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container footer-inner">
-            <p>© 2025 بلال المصمم 
-|
- جميع الحقوق محفوظة.</p>
-            <nav class="footer-nav">
-                <a href="../index.html#hero">الرئيسية</a>
-                <a href="../index.html#about">نبذة</a>
-                <a href="../index.html#projects">أعمالي</a>
-            </nav>
+            </div>
+
+
+            <div class="yd-hero-visual">
+
+                <div class="yd-image-frame">
+
+                    <img
+                        src="../pages/photos/Youcef_decor.jpg"
+                        alt="Youcef Décor"
+                        loading="eager"
+                    >
+
+                    <div class="yd-floating-label">
+
+                        <small>Brand Direction</small>
+
+                        <strong>
+                            Elegant · Warm · Timeless
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
-    </footer>
 
-    <script src="../assets/js/data.js"></script>
-    <script src="../assets/js/main.js"></script>
+    </section>
+
+
+
+    <!-- =========================================================
+         INTRODUCTION
+    ========================================================= -->
+
+    <section class="yd-intro">
+
+        <div class="yd-container">
+
+            <div class="yd-section-label">
+                01 · Concept
+            </div>
+
+            <h2>
+                عندما تصبح المساحة
+                <span>هوية.</span>
+            </h2>
+
+            <p>
+                تم بناء الهوية البصرية لـ Youcef Décor حول فكرة أساسية:
+                الديكور ليس مجرد ألوان ومواد، بل هو الطريقة التي يشعر
+                بها الإنسان داخل المكان.
+                لذلك تم اختيار لغة بصرية هادئة وفاخرة تعتمد على
+                الدرجات الترابية، التفاصيل الذهبية، الصور الكبيرة
+                والمساحات النظيفة.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         VISUAL SYSTEM
+    ========================================================= -->
+
+    <section class="yd-system">
+
+        <div class="yd-container">
+
+            <div class="yd-heading">
+
+                <div class="yd-section-label">
+                    02 · Visual System
+                </div>
+
+                <h2>
+                    النظام البصري
+                </h2>
+
+                <p>
+                    تم تصميم النظام البصري ليعكس طبيعة العلامة:
+                    هادئة، راقية، دافئة وقابلة للاستخدام عبر الموقع
+                    ووسائل التواصل والمواد التسويقية.
+                </p>
+
+            </div>
+
+
+            <!-- COLOR PALETTE -->
+
+            <div class="yd-palette">
+
+                <div class="yd-color yd-color-1">
+                    <span>Primary</span>
+                    <strong>#201B16</strong>
+                </div>
+
+                <div class="yd-color yd-color-2">
+                    <span>Secondary</span>
+                    <strong>#675442</strong>
+                </div>
+
+                <div class="yd-color yd-color-3">
+                    <span>Accent</span>
+                    <strong>#AD8951</strong>
+                </div>
+
+                <div class="yd-color yd-color-4">
+                    <span>Highlight</span>
+                    <strong>#D1B27B</strong>
+                </div>
+
+                <div class="yd-color yd-color-5">
+                    <span>Background</span>
+                    <strong>#F4F0E9</strong>
+                </div>
+
+            </div>
+
+
+            <!-- PRINCIPLES -->
+
+            <div class="yd-principles">
+
+                <article class="yd-card">
+
+                    <div class="yd-card-number">
+                        01
+                    </div>
+
+                    <h3>
+                        الدفء
+                    </h3>
+
+                    <p>
+                        درجات البني والبيج تمنح الهوية إحساسًا
+                        منزليًا وهادئًا يتناسب مع مجال الديكور.
+                    </p>
+
+                </article>
+
+
+                <article class="yd-card">
+
+                    <div class="yd-card-number">
+                        02
+                    </div>
+
+                    <h3>
+                        الفخامة الهادئة
+                    </h3>
+
+                    <p>
+                        تم استخدام الذهبي كلون تفصيلي وليس كلون
+                        طاغٍ، للحفاظ على طابع راقٍ وغير مبالغ فيه.
+                    </p>
+
+                </article>
+
+
+                <article class="yd-card">
+
+                    <div class="yd-card-number">
+                        03
+                    </div>
+
+                    <h3>
+                        البساطة
+                    </h3>
+
+                    <p>
+                        مساحات واسعة، عناصر قليلة، صور واضحة
+                        وتسلسل بصري يجعل المحتوى سهل القراءة.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         SHOWCASE
+    ========================================================= -->
+
+    <section class="yd-showcase">
+
+        <div class="yd-container">
+
+            <div class="yd-section-label">
+                03 · Digital Experience
+            </div>
+
+            <h2 class="yd-showcase-title">
+                الهوية عندما
+                <span>تتحول إلى تجربة رقمية.</span>
+            </h2>
+
+            <div class="yd-large-image">
+
+                <img
+                    src="../pages/photos/هوية.jpg"
+                    alt="تصميم موقع Youcef Décor"
+                    loading="lazy"
+                >
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         CHALLENGES / SOLUTIONS
+    ========================================================= -->
+
+    <section class="yd-content">
+
+        <div class="yd-container">
+
+            <div class="yd-heading">
+
+                <div class="yd-section-label">
+                    04 · Process
+                </div>
+
+                <h2>
+                    من الفكرة إلى الهوية
+                </h2>
+
+            </div>
+
+
+            <div class="yd-content-grid">
+
+                <article class="yd-info-box">
+
+                    <h3>
+                        التحدي
+                    </h3>
+
+                    <p>
+                        إنشاء حضور بصري يميز Youcef Décor
+                        عن المواقع التقليدية لخدمات الديكور،
+                        مع الحفاظ على سهولة الاستخدام والتركيز
+                        على الأعمال المنجزة.
+                    </p>
+
+                    <ul class="yd-list">
+
+                        <li>
+                            بناء هوية قابلة للتذكر.
+                        </li>
+
+                        <li>
+                            إبراز جودة المشاريع من خلال الصور.
+                        </li>
+
+                        <li>
+                            خلق إحساس بالفخامة دون تعقيد.
+                        </li>
+
+                        <li>
+                            الحفاظ على وضوح المعلومات والخدمات.
+                        </li>
+
+                    </ul>
+
+                </article>
+
+
+                <article class="yd-info-box dark">
+
+                    <h3>
+                        الحل البصري
+                    </h3>
+
+                    <p>
+                        تم اعتماد أسلوب Editorial حديث يمزج بين
+                        الصور الكبيرة، التدرجات الترابية، الخطوط
+                        النظيفة والتفاصيل الذهبية الصغيرة.
+                    </p>
+
+                    <ul class="yd-list">
+
+                        <li>
+                            نظام ألوان مستوحى من خامات الديكور.
+                        </li>
+
+                        <li>
+                            تصميم يضع المشاريع في مركز التجربة.
+                        </li>
+
+                        <li>
+                            تسلسل بصري واضح للصفحات.
+                        </li>
+
+                        <li>
+                            واجهة متجاوبة مع مختلف الشاشات.
+                        </li>
+
+                    </ul>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         TYPOGRAPHY
+    ========================================================= -->
+
+    <section class="yd-system">
+
+        <div class="yd-container">
+
+            <div class="yd-heading">
+
+                <div class="yd-section-label">
+                    05 · Typography
+                </div>
+
+                <h2>
+                    لغة بصرية هادئة
+                </h2>
+
+                <p>
+                    تم اعتماد أسلوب Typography واضح يسمح للمحتوى
+                    أن يبدو فاخرًا دون التضحية بسهولة القراءة.
+                </p>
+
+            </div>
+
+
+            <div class="yd-type-demo">
+
+                <small>
+                    YOUCEF DÉCOR
+                </small>
+
+                <h3>
+                    تفاصيل تصنع الفرق.
+                </h3>
+
+                <p>
+                    تصميم الهوية لا يعتمد على عنصر واحد،
+                    بل على انسجام اللون والصورة والمساحة
+                    والطباعة في تجربة واحدة متكاملة.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         DESIGN LANGUAGE
+    ========================================================= -->
+
+    <section class="yd-content">
+
+        <div class="yd-container">
+
+            <div class="yd-heading">
+
+                <div class="yd-section-label">
+                    06 · Design Language
+                </div>
+
+                <h2>
+                    عناصر الهوية
+                </h2>
+
+                <p>
+                    مجموعة من العناصر التي يمكن استخدامها
+                    لبناء حضور متناسق للعلامة التجارية.
+                </p>
+
+            </div>
+
+
+            <div class="yd-tags">
+
+                <span class="yd-tag">Minimal Layout</span>
+
+                <span class="yd-tag">Warm Palette</span>
+
+                <span class="yd-tag">Editorial Design</span>
+
+                <span class="yd-tag">Premium Photography</span>
+
+                <span class="yd-tag">Responsive UI</span>
+
+                <span class="yd-tag">Elegant Typography</span>
+
+                <span class="yd-tag">Interior Design</span>
+
+                <span class="yd-tag">Brand Identity</span>
+
+                <span class="yd-tag">UX Design</span>
+
+                <span class="yd-tag">Art Direction</span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         CTA
+    ========================================================= -->
+
+    <section class="yd-cta">
+
+        <div class="yd-container">
+
+            <h2>
+                هوية تجعل العلامة
+                <br>
+                <span style="color:#d1b27b;">
+                    تُرى وتُتذكر.
+                </span>
+            </h2>
+
+            <p>
+                مشروع بصري يركز على بناء حضور احترافي
+                لـ Youcef Décor من خلال الهوية، الموقع
+                والتجربة الرقمية.
+            </p>
+
+            <div class="yd-actions">
+
+                <a
+                    href="https://mywebsite-collab.github.io/youcefdecor/"
+                    class="yd-btn yd-btn-primary"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    زيارة الموقع ↗
+                </a>
+
+                <a
+                    href="../index.html#projects"
+                    class="yd-btn yd-btn-outline"
+                >
+                    ← العودة إلى المعرض
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer class="footer">
+
+    <div class="container footer-inner">
+
+        <p>
+            © 2025 بلال المصمم |
+            جميع الحقوق محفوظة.
+        </p>
+
+        <nav class="footer-nav">
+
+            <a href="../index.html#hero">
+                الرئيسية
+            </a>
+
+            <a href="../index.html#about">
+                نبذة
+            </a>
+
+            <a href="../index.html#projects">
+                أعمالي
+            </a>
+
+        </nav>
+
+    </div>
+
+</footer>
+
+
+<script src="../assets/js/data.js"></script>
+<script src="../assets/js/main.js"></script>
+
 </body>
 </html>

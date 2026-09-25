@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="دراسة حالة – هوية بصرية لشركة ناشئة – تصميم نظام متكامل">
+    <title>دراسة حالة – هوية بصرية لشركة ناشئة | بلال المصمم</title>
+    <link rel="shortcut icon" href="../assets/icons/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <style>
+        .case-hero {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(11,12,16,0.9), rgba(31,40,51,0.8));
+            border-bottom: 1px solid var(--glass-border);
+        }
+        .case-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        .case-hero .badge {
+            display: inline-block;
+            padding: 8px 24px;
+            border-radius: 40px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            color: var(--accent-glow);
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+        .case-body {
+            padding: 80px 0;
+        }
+        .case-body .container {
+            max-width: 800px;
+        }
+        .case-body h2 {
+            font-size: 2rem;
+            margin: 40px 0 20px;
+            color: var(--accent-glow);
+        }
+        .case-body p {
+            color: var(--text-secondary);
+            line-height: 2;
+            margin-bottom: 20px;
+        }
+        .case-body ul {
+            list-style: none;
+            padding: 0;
+        }
+        .case-body ul li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            color: var(--text-secondary);
+        }
+        .case-body ul li::before {
+            content: '✦ ';
+            color: var(--accent);
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 12px 32px;
+            border-radius: 40px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            color: var(--text-primary);
+            transition: all var(--transition);
+        }
+        .back-link:hover {
+            background: var(--accent);
+            color: var(--bg-primary);
+            transform: translateY(-3px);
+        }
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .tech-stack span {
+            padding: 6px 18px;
+            border-radius: 30px;
+            background: rgba(69,162,158,0.15);
+            border: 1px solid rgba(69,162,158,0.3);
+            font-size: 0.85rem;
+            color: var(--accent-glow);
+        }
+        .case-image {
+            width: 100%;
+            border-radius: 20px;
+            margin: 30px 0;
+            border: 1px solid var(--glass-border);
+        }
+        .brand-colors {
+            display: flex;
+            gap: 20px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        .brand-colors .color-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 20px;
+            border-radius: 12px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+        }
+        .brand-colors .color-swatch {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header glass" id="header">
+        <div class="container header-inner">
+            <a href="../index.html" class="logo" aria-label="الصفحة الرئيسية">
+                <span class="logo-text">A</span>
+            </a>
+            <nav class="nav" aria-label="القائمة الرئيسية">
+                <ul class="nav-list">
+                    <li><a href="../index.html#hero" class="nav-link">الرئيسية</a></li>
+                    <li><a href="../index.html#about" class="nav-link">نبذة</a></li>
+                    <li><a href="../index.html#services" class="nav-link">خدماتي</a></li>
+                    <li><a href="../index.html#projects" class="nav-link">أعمالي</a></li>
+                    <li><a href="../index.html#contact" class="nav-link">تواصل</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="case-hero">
+            <div class="container">
+                <span class="badge">🎨 دراسة حالة</span>
+                <h1>هوية بصرية لشركة ناشئة</h1>
+                <p style="color: var(--text-secondary); font-size: 1.2rem; max-width: 600px; margin: 0 auto;">
+                    تصميم هوية متكاملة ونظام تصميم (Design System) لشركة تقنية ناشئة في مجال الذكاء الاصطناعي.
+                </p>
+            </div>
+        </section>
+
+        <!-- Case Study Content -->
+        <section class="case-body">
+            <div class="container">
+                <img src="../assets/images/project3.jpg" alt="هوية بصرية لشركة ناشئة" class="case-image" loading="lazy">
+
+                <h2>نبذة عن المشروع</h2>
+                <p>
+                    شركة ناشئة في مجال الذكاء الاصطناعي أرادت هوية بصرية تعكس الابتكار والحداثة. 
+                    المطلوب كان إنشاء نظام تصميم متكامل يشمل الشعار، الألوان، الخطوط، والأيقونات، 
+                    بالإضافة إلى دليل استخدام العلامة التجارية.
+                </p>
+
+                <h2>التحديات</h2>
+                <ul>
+                    <li>صياغة هوية بصرية تعكس التكنولوجيا المتطورة والثقة</li>
+                    <li>إنشاء نظام تصميم قابل للتوسع مع نمو الشركة</li>
+                    <li>توفير مرونة كافية لاستخدام الهوية في مختلف المنصات</li>
+                    <li>تمييز العلامة عن المنافسين في مجال الذكاء الاصطناعي</li>
+                </ul>
+
+                <h2>الحلول المقدمة</h2>
+                <ul>
+                    <li>تصميم شعار عصري يجمع بين الحروف والأشكال الهندسية</li>
+                    <li>اختيار لوحة ألوان تعبر عن التكنولوجيا والثقة (أزرق داكن + أرجواني)</li>
+                    <li>إنشاء نظام أيقونات مخصص متكامل</li>
+                    <li>تطوير دليل هوية شامل (Brand Guidelines)</li>
+                    <li>تصميم نماذج تطبيقات (Mockups) لاستخدامات متعددة</li>
+                </ul>
+
+                <h2>لوحة الألوان</h2>
+                <div class="brand-colors">
+                    <div class="color-item">
+                        <div class="color-swatch" style="background: #0a192f;"></div>
+                        <span>#0A192F</span>
+                    </div>
+                    <div class="color-item">
+                        <div class="color-swatch" style="background: #6c63ff;"></div>
+                        <span>#6C63FF</span>
+                    </div>
+                    <div class="color-item">
+                        <div class="color-swatch" style="background: #00d4ff;"></div>
+                        <span>#00D4FF</span>
+                    </div>
+                    <div class="color-item">
+                        <div class="color-swatch" style="background: #f8f9fa;"></div>
+                        <span>#F8F9FA</span>
+                    </div>
+                </div>
+
+                <h2>التقنيات المستخدمة</h2>
+                <div class="tech-stack">
+                    <span>Figma</span>
+                    <span>Adobe Illustrator</span>
+                    <span>Adobe Photoshop</span>
+                    <span>FontForge</span>
+                    <span>Zeplin</span>
+                    <span>Storybook</span>
+                </div>
+
+                <h2>النتائج</h2>
+                <ul>
+                    <li>✨ هوية بصرية متكاملة جاهزة للتطبيق على جميع المنصات</li>
+                    <li>📈 زيادة التعرف على العلامة التجارية بنسبة 65%</li>
+                    <li>🔄 نظام تصميم مرن وقابل للتوسع</li>
+                    <li>💼 تم استخدام الهوية في التطبيق الرسمي والموقع الإلكتروني والمواد التسويقية</li>
+                </ul>
+
+                <div style="display: flex; gap: 16px; flex-wrap: wrap; margin-top: 40px;">
+                    <a href="#" class="btn glass" target="_blank" rel="noopener">🔗 مشاهدة المشروع</a>
+                    <a href="#" class="btn btn-outline" target="_blank" rel="noopener">📂 ملفات التصميم</a>
+                    <a href="../index.html#projects" class="back-link">← العودة إلى المعرض</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            <p>© 2025 بلال المصمم. جميع الحقوق محفوظة.</p>
+            <nav class="footer-nav">
+                <a href="../index.html#hero">الرئيسية</a>
+                <a href="../index.html#about">نبذة</a>
+                <a href="../index.html#projects">أعمالي</a>
+            </nav>
+        </div>
+    </footer>
+
+    </body>
+</html>

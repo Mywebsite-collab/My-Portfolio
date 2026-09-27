@@ -41,7 +41,6 @@ const testimonialsData = [
         role: 'مديرة تسويق – شركة أبتك'
     },
     {
-        text: 'تعاملت معه في مشروع معقد، وكانت النتيجة أعلى من المطلوب. احترافية عالية.',
 proof: 'assets/images/testimonials/chat1.jpg',
         img: 'assets/images/client2.jpg',
         name: 'يوسف',

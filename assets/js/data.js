@@ -32,18 +32,3 @@ const projectsData = [
         caseStudy: 'pages/project-3.html'
     }
 ];
-
-const testimonialsData = [
-    {
-        .',
-        img: 'assets/images/client1.jpg',
-        name: 'سارة المحمد',
-        role: 'مديرة تسويق – شركة أبتك'
-    },
-    {
-proof: 'assets/images/testimonials/chat1.jpg',
-        img: 'assets/images/client2.jpg',
-        name: 'يوسف',
-        role: 'مؤسس متجر إلكتروني'
-    }
-];

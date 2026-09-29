@@ -35,7 +35,7 @@ const projectsData = [
 
 const testimonialsData = [
     {
-        text: 'بلال عشير صمم لنا موقعًا يتجاوز التوقعات التفاصيل والإبداع في العمل كانا مذهلين.',
+        .',
         img: 'assets/images/client1.jpg',
         name: 'سارة المحمد',
         role: 'مديرة تسويق – شركة أبتك'

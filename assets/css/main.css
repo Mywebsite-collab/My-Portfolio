@@ -1060,77 +1060,11 @@ ul {
    أنماط الكتاب ثلاثي الأبعاد (3D Book) - النسخة المصححة
    ============================================================ */
 
-.book-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    -webkit-perspective: 1500px;
-    perspective: 1500px;
-    width: 100%;
-    min-height: 400px;
-}
-
-.book-container {
-    position: relative;
-    width: 420px;
-    height: 520px;
-    -webkit-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-    /* ✅ الأداء: عزل الطبقة */
-    contain: layout;
-    isolation: isolate;
-}
-
-.book-shadow {
-    position: absolute;
-    bottom: -30px;
-    left: 10%;
-    width: 80%;
-    height: 40px;
-    background: radial-gradient(ellipse, rgba(0, 0, 0, 0.6) 0%, transparent 70%);
-    filter: blur(7px);
-    border-radius: 50%;
-    transform: rotateX(10deg);
-    z-index: 0;
-    transition: width 0.45s ease, left 0.45s ease, opacity 0.45s ease;
-}
-.book-container:hover .book-shadow {
-    width: 90%;
-    left: 5%;
-    opacity: 0.8;
-}
-
-.book {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    -webkit-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-    transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
-    transform: rotateY(-8deg) rotateX(4deg);
-    transform-origin: center center;
-}
-.book-container:hover .book {
-    transform: rotateY(-4deg) rotateX(2deg) scale(1.01);
-}
+/* ملاحظة: أنماط .book-wrapper و .book-container و .book و .book-shadow
+   نُقلت إلى قسم "الكتاب المتجاوب" في نهاية هذا الملف. */
 
 .book-cover {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 12px 4px 4px 12px;
-    background: linear-gradient(145deg, #1a2a2e, #0f1a1d);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-    transform: rotateY(0deg) translateZ(2px);
-    -webkit-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
     z-index: 10;
-    border: 1px solid rgba(69, 162, 158, 0.15);
-    overflow: hidden;
 }
 
 /* ===== محتوى الغلاف ===== */
@@ -1561,57 +1495,6 @@ ul {
     font-weight: 600;
 }
 
-/* ----- استجابة الكتاب ----- */
-@media (max-width: 1200px) {
-    .book-container { width: 360px; height: 460px; }
-}
-@media (max-width: 992px) {
-    .book-wrapper { min-height: 300px; }
-    .book-container { width: 340px; height: 430px; }
-    .book-nav.prev { left: -14px; }
-    .book-nav.next { right: -14px; }
-}
-@media (max-width: 768px) {
-    .book-container { width: 300px; height: 390px; }
-    .book-nav { width: 36px; height: 36px; font-size: 1rem; }
-    .book-nav.prev { left: -10px; }
-    .book-nav.next { right: -10px; }
-}
-@media (max-width: 576px) {
-    .book-container { width: 260px; height: 340px; }
-    .book-nav { width: 32px; height: 32px; font-size: 0.8rem; }
-    .book-nav.prev { left: -8px; }
-    .book-nav.next { right: -8px; }
-    .cover-inner {
-        gap: 6px;
-        padding: 20px 12px;
-    }
-    .cover-avatar {
-        width: 70px;
-        height: 70px;
-        margin-bottom: 4px;
-    }
-    .cover-logo {
-        font-size: 3.0rem;
-    }
-    .cover-inner h2 {
-        font-size: 1.2rem;
-        letter-spacing: 2px;
-    }
-    .cover-inner h3 {
-        font-size: 0.9rem;
-        letter-spacing: 1px;
-    }
-    .cover-divider {
-        width: 40px;
-        margin: 4px 0;
-    }
-    .project-info-inner h3 { font-size: 0.95rem; }
-    .project-desc { font-size: 0.7rem; }
-    .btn-preview, .btn-details { font-size: 0.65rem; padding: 4px 12px; }
-    .book-indicator { font-size: 0.7rem; padding: 2px 12px; bottom: -26px; }
-}
-
 /* ============================================================
    قواعد مضافة للتوافق الكامل
    ============================================================ */
@@ -1729,12 +1612,7 @@ ul {
 
 /* Hover-only effects */
 @media (hover: hover) and (pointer: fine) {
-    .book-container:hover .book {
-        transform: rotateY(-4deg) rotateX(2deg) scale(1.01);
-    }
     .book-container:hover .book-shadow {
-        width: 90%;
-        left: 5%;
         opacity: 0.8;
     }
 }
@@ -1747,9 +1625,6 @@ ul {
     .cursor,
     .cursor-follower {
         display: none !important;
-    }
-    .book-container:hover .book {
-        transform: rotateY(-8deg) rotateX(4deg);
     }
     .book-cover:hover .cover-avatar {
         transform:
@@ -2063,18 +1938,18 @@ ul {
    ============================================================ */
 
 /* تسريع الانتقال أثناء التراجع */
-.book.is-reversing .page {
+.book-container.is-reversing .page {
     transition: transform 0.5s cubic-bezier(0.5, 0, 0.75, 0) !important;
 }
 
 /* اهتزاز خفيف للكتاب عند بدء التراجع */
 @keyframes bookShakeReverse {
-    0%   { transform: rotateY(-8deg) rotateX(4deg) scale(1); }
-    25%  { transform: rotateY(-10deg) rotateX(5deg) scale(1.02); }
-    50%  { transform: rotateY(-6deg) rotateX(3deg) scale(0.99); }
-    100% { transform: rotateY(-8deg) rotateX(4deg) scale(1); }
+    0%   { transform: rotateX(4deg) rotateY(-3deg) scale(1); }
+    25%  { transform: rotateX(5deg) rotateY(-6deg) scale(1.02); }
+    50%  { transform: rotateX(3deg) rotateY(0deg) scale(0.99); }
+    100% { transform: rotateX(4deg) rotateY(-3deg) scale(1); }
 }
-.book.is-reversing {
+.book-container.is-reversing .book-tilt {
     animation: bookShakeReverse 0.6s ease-in-out;
 }
 
@@ -2090,11 +1965,11 @@ ul {
 
 /* احترام تفضيل تقليل الحركة */
 @media (prefers-reduced-motion: reduce) {
-    .book.is-reversing,
+    .book-container.is-reversing .book-tilt,
     .book-container.is-resetting {
         animation: none;
     }
-    .book.is-reversing .page {
+    .book-container.is-reversing .page {
         transition-duration: 0.2s !important;
     }
 }
@@ -2114,4 +1989,262 @@ ul {
     height: auto;
     max-height: 380px;
     object-fit: contain;
+}
+
+/* ============================================================
+   الكتاب ثلاثي الأبعاد — نسخة متجاوبة ومتمركزة تماماً
+   ------------------------------------------------------------
+   • --book-w     عرض الصفحة الواحدة. يُحسب تلقائياً من المساحة المتاحة
+                  بحيث يتّسع الكتاب وهو مفتوح (صفحتان = 2 × --book-w)
+                  دون أن يخرج من الشاشة، على الكمبيوتر والجوال.
+   • --book-ratio نسبة ارتفاع الصفحة ÷ عرضها (صور المشاريع 9:20 تقريباً).
+   • عرض الحاوية = صفحتان، والكتاب يُزاح أفقياً حسب حالته
+     (مغلق أمامي / مفتوح / مغلق خلفي) فيبقى دائماً في المنتصف.
+   • الحالة تُحدَّد من main.js عبر data-state على .book-container.
+   ============================================================ */
+
+/* ---- المنطقة المرجعية: عمود الكتاب في الـ hero ---- */
+.hero-visual {
+    container-type: inline-size;
+    min-height: 0;
+}
+
+.book-wrapper {
+    --book-ratio: 2;
+    --book-max-w: 300px;
+    --book-gutter: 10px;
+
+    /* احتياطي للمتصفحات التي لا تدعم وحدات cqw */
+    --avail-w: calc(100vw - 40px);
+    --avail-h: 100vh;
+
+    /* عرض الصفحة = الأصغر بين: نصف العرض المتاح، ما يناسب ارتفاع الشاشة، والحد الأعلى */
+    --book-w: max(
+        100px,
+        min(
+            calc((var(--avail-w) - 2 * var(--book-gutter)) / 2),
+            calc((var(--avail-h) - 190px) / var(--book-ratio)),
+            var(--book-max-w)
+        )
+    );
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 0;
+    padding: 6px 0 60px;
+}
+@media (min-width: 993px) {
+    .book-wrapper { --avail-w: calc((min(100vw, 1200px) - 80px) / 2); }
+}
+@supports (width: 1cqw) {
+    .book-wrapper { --avail-w: 100cqw; }
+}
+@supports (height: 100svh) {
+    .book-wrapper { --avail-h: 100svh; }
+}
+
+/* ---- الحاوية: عرض صفحتين بالضبط، مركز المنظور = مركز الكتاب ---- */
+.book-container {
+    --u: calc(var(--book-w) / 100);   /* 1% من عرض الصفحة: لتحجيم النصوص تناسبياً */
+    position: relative;
+    flex: none;
+    width: calc(var(--book-w) * 2);
+    height: calc(var(--book-w) * var(--book-ratio));
+    perspective: calc(var(--book-w) * 6.5);
+    perspective-origin: 50% 50%;
+    /* مهم: لا contain / isolation / overflow هنا — كلها تُسطّح الـ 3D */
+    contain: none;
+    isolation: auto;
+}
+.book-container[data-state="closed-front"] { --shift: -50%; --shadow-w: 52%; }
+.book-container[data-state="open"]         { --shift: 0%;   --shadow-w: 94%; }
+.book-container[data-state="closed-back"]  { --shift: 50%;  --shadow-w: 52%; }
+
+/* ---- طبقة الإمالة (تتحكم بها main.js عبر --rx / --ry) ---- */
+.book-tilt {
+    --rx: 4deg;
+    --ry: -3deg;
+    position: absolute;
+    inset: 0;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    transform: rotateX(var(--rx)) rotateY(var(--ry));
+    transition: transform 0.45s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* ---- الكتاب: عمود الكتاب (gutter) عند منتصف الحاوية، ثم إزاحة حسب الحالة ---- */
+.book {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: var(--book-w);
+    height: 100%;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    transform: translateX(var(--shift, -50%));
+    transition: transform 0.9s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.book-shadow {
+    position: absolute;
+    left: 50%;
+    bottom: calc(var(--book-w) * -0.1);
+    width: var(--shadow-w, 52%);
+    height: calc(var(--book-w) * 0.14);
+    background: radial-gradient(ellipse, rgba(0, 0, 0, 0.6) 0%, transparent 70%);
+    filter: blur(7px);
+    border-radius: 50%;
+    transform: translateX(-50%);
+    z-index: 0;
+    transition: width 0.9s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.45s ease;
+}
+
+/* ---- الصفحات: ترتيب عمق دقيق لمنع التداخل (z-fighting) ---- */
+.book .page {
+    --z: 0px;
+    transform: translateZ(var(--z)) rotateY(0deg);
+}
+.book .page.flipped {
+    transform: translateZ(var(--z)) rotateY(-180deg);
+}
+
+/* ---- وجوه الصفحات: الصورة تملأ الصفحة كاملة وبنسبتها الأصلية ---- */
+.book .page .page-front,
+.book .page .page-back {
+    padding: 0;
+    overflow: hidden;
+}
+.book .page .page-front > img,
+.book .page .page-back > img {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: contain;
+    object-position: center;
+    pointer-events: none;
+    -webkit-user-drag: none;
+    user-select: none;
+}
+/* ظل خفيف عند عمود الكتاب لإحساس أعمق */
+.book .page .page-front::after,
+.book .page .page-back::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+}
+.book .page .page-front::after {
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.32), transparent 9%);
+}
+.book .page .page-back::after {
+    background: linear-gradient(to left, rgba(0, 0, 0, 0.32), transparent 9%);
+}
+
+/* ---- الغلاف الأمامي: وجه أمامي + وجه داخلي حقيقيان ---- */
+.book .book-cover {
+    background: none;
+    border: 0;
+    box-shadow: none;
+    border-radius: 0;
+    overflow: visible;
+}
+.book .book-cover > .cover-front {
+    display: block;
+    padding: 0;
+    overflow: hidden;
+    background: linear-gradient(145deg, #1a2a2e, #0f1a1d);
+    border: 1px solid rgba(69, 162, 158, 0.15);
+    border-radius: 12px 4px 4px 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+.book .book-cover > .cover-inside {
+    flex-direction: column;
+    gap: calc(var(--u) * 3);
+    background: linear-gradient(145deg, #142126, #0d171a);
+    border: 1px solid rgba(69, 162, 158, 0.12);
+    border-radius: 4px 12px 12px 4px;
+}
+.inside-mark {
+    font-size: calc(var(--u) * 16);
+    font-weight: 900;
+    color: #66fcf1;
+    opacity: 0.45;
+    line-height: 1;
+}
+.book .book-cover > .cover-inside .cover-divider { margin: 0; }
+.book .book-cover > .cover-inside::after { display: none; }
+.book .book-cover > .cover-front::after { display: none; }
+
+/* ---- محتوى الغلاف: يتحجّم مع عرض الصفحة (لا قياسات ثابتة) ---- */
+.book-container .cover-inner {
+    gap: calc(var(--u) * 2.2);
+    padding: calc(var(--u) * 7) calc(var(--u) * 5);
+    flex-wrap: nowrap;
+}
+.book-container .cover-avatar {
+    width: calc(var(--u) * 42);
+    height: calc(var(--u) * 42);
+    margin: 0 auto calc(var(--u) * 1);
+}
+.book-container .cover-logo {
+    font-size: calc(var(--u) * 13);
+    margin-bottom: calc(var(--u) * 1);
+    max-width: 100%;
+    white-space: nowrap;
+}
+.book-container .cover-inner h2 {
+    font-size: calc(var(--u) * 9);
+    letter-spacing: calc(var(--u) * 1.2);
+    margin: 0;
+}
+.book-container .cover-inner h3 {
+    font-size: calc(var(--u) * 6);
+    letter-spacing: calc(var(--u) * 1);
+    margin: 0;
+}
+.book-container .cover-divider {
+    width: calc(var(--u) * 22);
+    margin: calc(var(--u) * 1.5) 0;
+}
+.book-container .cover-inner p {
+    font-size: max(10px, calc(var(--u) * 4.6));
+    letter-spacing: 0.5px;
+    margin: 0;
+}
+.book-container .back-description {
+    font-size: max(9px, calc(var(--u) * 4.2));
+    max-width: 84%;
+    margin-top: calc(var(--u) * 3);
+}
+
+/* ---- أزرار التنقل والمؤشر ---- */
+.book-nav.prev { left: -22px; }
+.book-nav.next { right: -22px; }
+.book-indicator { bottom: -34px; }
+
+/* ---- شاشات صغيرة: الأزرار تنتقل أسفل الكتاب حتى لا تخرج من الشاشة ---- */
+@media (max-width: 640px) {
+    .hero-visual { margin-inline: -8px; }
+    .book-wrapper { --book-gutter: 6px; padding-bottom: 84px; }
+
+    .book-nav {
+        top: auto;
+        bottom: -58px;
+        transform: none;
+        width: 42px;
+        height: 42px;
+        font-size: 1rem;
+    }
+    .book-nav:hover { transform: scale(1.05); }
+    .book-nav.prev { left: calc(50% - 92px); }
+    .book-nav.next { right: calc(50% - 92px); }
+    .book-indicator { bottom: -52px; font-size: 0.8rem; }
+}
+
+/* ---- هواتف بالعرض (ارتفاع منخفض) ---- */
+@media (max-height: 480px) and (orientation: landscape) {
+    .book-wrapper { --avail-h: 560px; }
 }

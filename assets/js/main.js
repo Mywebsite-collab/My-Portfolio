@@ -399,7 +399,8 @@
     // ===== كود الكتاب ثلاثي الأبعاد (3D Book) =====
     // =============================================
     const book = document.querySelector('.book');
-    const pages = document.querySelectorAll('.book');
+    const bookContainer = document.querySelector('.book-container');
+    const bookTilt = document.querySelector('.book-tilt');
     const allPages = document.querySelectorAll('.page');
     const prevBtn = document.querySelector('.book-nav.prev');
     const nextBtn = document.querySelector('.book-nav.next');
@@ -430,12 +431,20 @@
                 nextBtn.style.opacity = isLast ? '0.4' : '1';
                 nextBtn.style.cursor = isLast ? 'default' : 'pointer';
             }
+            // حالة الكتاب تحدّد إزاحة التوسيط في CSS:
+            // مغلق أمامي (غلاف فقط) / مفتوح (صفحتان) / مغلق خلفي (الغلاف الخلفي فقط)
+            if (bookContainer) {
+                bookContainer.dataset.state =
+                    currentPage === 0 ? 'closed-front' :
+                    currentPage === totalPages ? 'closed-back' : 'open';
+            }
+
             pageEls.forEach((page, index) => {
-                if (page.classList.contains('flipped')) {
-                    page.style.zIndex = 10 + index;
-                } else {
-                    page.style.zIndex = totalPages - index;
-                }
+                const flipped = page.classList.contains('flipped');
+                page.style.zIndex = flipped ? 10 + index : totalPages - index;
+                // فرق عمق صغير جداً يمنع تداخل الصفحات (z-fighting) في المتصفحات
+                const depth = flipped ? (index + 1) : (totalPages - index);
+                page.style.setProperty('--z', (depth * 0.3).toFixed(1) + 'px');
             });
         }
 
@@ -475,17 +484,25 @@
         }
 
         // التنقل بالأسهم (RTL: يسار = التالي، يمين = السابق)
+        const isBookInView = () => {
+            if (!bookContainer) return false;
+            const r = bookContainer.getBoundingClientRect();
+            return r.bottom > 0 && r.top < window.innerHeight;
+        };
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
-                e.preventDefault();
-                if (e.key === 'ArrowLeft') flipPage(1);
-                else flipPage(-1);
-            }
+            if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+            if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+            const t = e.target;
+            // لا نعطّل الأسهم داخل حقول النموذج (تحريك المؤشر)
+            if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+            if (!isBookInView()) return;
+            e.preventDefault();
+            if (e.key === 'ArrowLeft') flipPage(1);
+            else flipPage(-1);
         });
 
         // السحب بالماوس واللمس
         let startX = 0, isDragging = false;
-        const bookContainer = document.querySelector('.book-container');
 
         if (bookContainer) {
             const handleStart = (clientX) => { startX = clientX; isDragging = true; };
@@ -515,15 +532,20 @@
             bookContainer.addEventListener('mousemove', (e) => {
                 if (tiltRaf) cancelAnimationFrame(tiltRaf);
                 tiltRaf = requestAnimationFrame(() => {
+                    if (!bookTilt) return;
                     const rect = bookContainer.getBoundingClientRect();
                     const x = (e.clientX - rect.left) / rect.width - 0.5;
                     const y = (e.clientY - rect.top) / rect.height - 0.5;
-                    book.style.transform = `rotateY(${x * 5}deg) rotateX(${-y * 3}deg)`;
+                    bookTilt.style.setProperty('--ry', (x * 6).toFixed(2) + 'deg');
+                    bookTilt.style.setProperty('--rx', (4 - y * 5).toFixed(2) + 'deg');
                 });
             });
             bookContainer.addEventListener('mouseleave', () => {
                 if (tiltRaf) cancelAnimationFrame(tiltRaf);
-                book.style.transform = 'rotateY(-4deg) rotateX(2deg)';
+                if (!bookTilt) return;
+                // العودة للوضع الافتراضي المعرّف في CSS
+                bookTilt.style.removeProperty('--ry');
+                bookTilt.style.removeProperty('--rx');
             });
         }
 

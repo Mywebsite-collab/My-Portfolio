@@ -2,10 +2,10 @@
     "name": "بلال – بورتفوليو",
     "short_name": "بورتفوليو",
     "description": "مطور ومصمم مواقع احترافي",
-    "start_url": "/index.html",
+    "start_url": "./index.html",
     "display": "standalone",
     "background_color": "#0b0c10",
-    "theme_color": "#45a29e",
+    "theme_color": "#c9a227",
     "icons": [
         {
             "src": "assets/icons/icon-192.png",

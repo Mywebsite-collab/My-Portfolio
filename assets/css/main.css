@@ -2248,3 +2248,15 @@ ul {
 @media (max-height: 480px) and (orientation: landscape) {
     .book-wrapper { --avail-h: 560px; }
 }
+
+
+/* Keep the current gold color for the welcome title only */
+.loading-logo {
+    background: linear-gradient(110deg, #fff4c4 0%, #e6c65c 28%, #9b741b 55%, #f7e7a4 78%, #b88a21 100%);
+    background-size: 220% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    filter: drop-shadow(0 5px 20px rgba(201, 162, 39, .18));
+}

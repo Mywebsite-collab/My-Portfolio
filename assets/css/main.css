@@ -2250,29 +2250,32 @@ ul {
 }
 
 
-/* Welcome title: animated black-and-gold luxury finish (title only) */
+/* Welcome title: high-visibility black & gold animated finish */
 .loading-logo {
+    display: inline-block;
+    color: #f5d879;
     background: linear-gradient(
-        110deg,
-        #090909 0%,
-        #5b4510 13%,
-        #f7e7a4 27%,
-        #b88a21 39%,
-        #080808 52%,
-        #d7b64b 66%,
-        #fff4c4 79%,
-        #4b380d 91%,
-        #090909 100%
+        105deg,
+        #8a6418 0%,
+        #fff3b0 16%,
+        #d5aa35 30%,
+        #fff9d8 43%,
+        #17120a 50%,
+        #c99a25 61%,
+        #ffed9b 76%,
+        #8b671b 90%,
+        #fff2b3 100%
     );
-    background-size: 280% auto;
+    background-size: 250% 100%;
+    background-position: 100% 50%;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    color: transparent;
     filter:
-        drop-shadow(0 0 5px rgba(218, 180, 67, .42))
-        drop-shadow(0 5px 18px rgba(0, 0, 0, .75));
-    animation: pulse 1.5s ease-in-out infinite, welcomeGoldShimmer 5s ease-in-out infinite;
+        drop-shadow(0 0 2px rgba(255, 224, 130, .95))
+        drop-shadow(0 0 12px rgba(212, 164, 48, .65))
+        drop-shadow(0 5px 18px rgba(0, 0, 0, .9));
+    animation: pulse 1.5s ease-in-out infinite, welcomeGoldShimmer 3.8s ease-in-out infinite;
     will-change: transform, opacity, background-position, filter;
 }
 
@@ -2280,13 +2283,22 @@ ul {
     0%, 100% {
         background-position: 100% 50%;
         filter:
-            drop-shadow(0 0 4px rgba(218, 180, 67, .32))
-            drop-shadow(0 5px 18px rgba(0, 0, 0, .75));
+            drop-shadow(0 0 3px rgba(255, 224, 130, .8))
+            drop-shadow(0 0 10px rgba(212, 164, 48, .5))
+            drop-shadow(0 5px 18px rgba(0, 0, 0, .9));
     }
     50% {
         background-position: 0% 50%;
         filter:
-            drop-shadow(0 0 11px rgba(255, 215, 105, .72))
-            drop-shadow(0 5px 22px rgba(0, 0, 0, .85));
+            drop-shadow(0 0 7px rgba(255, 239, 174, 1))
+            drop-shadow(0 0 19px rgba(255, 190, 55, .85))
+            drop-shadow(0 5px 22px rgba(0, 0, 0, .95));
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .loading-logo {
+        animation: none;
+        background-position: 50% 50%;
     }
 }

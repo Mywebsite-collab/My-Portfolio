@@ -2250,13 +2250,43 @@ ul {
 }
 
 
-/* Keep the current gold color for the welcome title only */
+/* Welcome title: animated black-and-gold luxury finish (title only) */
 .loading-logo {
-    background: linear-gradient(110deg, #fff4c4 0%, #e6c65c 28%, #9b741b 55%, #f7e7a4 78%, #b88a21 100%);
-    background-size: 220% auto;
+    background: linear-gradient(
+        110deg,
+        #090909 0%,
+        #5b4510 13%,
+        #f7e7a4 27%,
+        #b88a21 39%,
+        #080808 52%,
+        #d7b64b 66%,
+        #fff4c4 79%,
+        #4b380d 91%,
+        #090909 100%
+    );
+    background-size: 280% auto;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     color: transparent;
-    filter: drop-shadow(0 5px 20px rgba(201, 162, 39, .18));
+    filter:
+        drop-shadow(0 0 5px rgba(218, 180, 67, .42))
+        drop-shadow(0 5px 18px rgba(0, 0, 0, .75));
+    animation: pulse 1.5s ease-in-out infinite, welcomeGoldShimmer 5s ease-in-out infinite;
+    will-change: transform, opacity, background-position, filter;
+}
+
+@keyframes welcomeGoldShimmer {
+    0%, 100% {
+        background-position: 100% 50%;
+        filter:
+            drop-shadow(0 0 4px rgba(218, 180, 67, .32))
+            drop-shadow(0 5px 18px rgba(0, 0, 0, .75));
+    }
+    50% {
+        background-position: 0% 50%;
+        filter:
+            drop-shadow(0 0 11px rgba(255, 215, 105, .72))
+            drop-shadow(0 5px 22px rgba(0, 0, 0, .85));
+    }
 }

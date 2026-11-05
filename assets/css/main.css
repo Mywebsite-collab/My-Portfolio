@@ -2620,3 +2620,144 @@ ul {
         animation: none !important;
     }
 }
+
+
+/* Developer-grade wordmark and hero typewriter */
+.header .logo {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    isolation: isolate;
+}
+
+.header .logo::before {
+    content: "";
+    position: absolute;
+    inset: -12px -20px;
+    z-index: -1;
+    border-radius: 18px;
+    background: radial-gradient(ellipse at center, rgba(69, 162, 158, .17), transparent 72%);
+    opacity: .65;
+    filter: blur(10px);
+    transition: opacity .35s ease, transform .35s ease;
+}
+
+.header .logo:hover::before {
+    opacity: 1;
+    transform: scale(1.08);
+}
+
+.developer-brand {
+    position: relative;
+    display: inline-grid;
+    grid-template-columns: auto auto auto auto;
+    align-items: center;
+    column-gap: 2px;
+    padding: 5px 9px 17px;
+    font-family: "Space Grotesk", "Trebuchet MS", Arial, sans-serif;
+    font-size: clamp(1.38rem, 5.6vw, 2.15rem);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: .035em;
+    background: none !important;
+    -webkit-text-fill-color: initial !important;
+    color: var(--accent-glow);
+    filter: drop-shadow(0 0 10px rgba(69, 220, 207, .22));
+}
+
+.brand-code {
+    color: var(--accent);
+    font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+    font-weight: 500;
+    transition: transform .35s ease, color .35s ease;
+}
+
+.brand-name {
+    color: #e9ffff;
+    text-shadow: 0 0 15px rgba(102, 252, 241, .22);
+}
+
+.brand-tech {
+    margin-left: 3px;
+    color: var(--accent-glow);
+    font-weight: 700;
+    text-shadow: 0 0 16px rgba(102, 252, 241, .38);
+}
+
+.brand-role {
+    position: absolute;
+    right: 12px;
+    bottom: 2px;
+    color: var(--text-secondary);
+    font: 700 8px/1 "Space Grotesk", Arial, sans-serif;
+    letter-spacing: .29em;
+    white-space: nowrap;
+    opacity: .82;
+}
+
+.developer-brand::after {
+    content: "";
+    position: absolute;
+    right: 8px;
+    bottom: 0;
+    width: 38%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent-glow), transparent);
+    box-shadow: 0 0 9px var(--accent-glow);
+    transform-origin: right;
+    animation: brandScan 3.2s ease-in-out infinite;
+}
+
+.header .logo:hover .brand-code:first-child {
+    transform: translateX(-4px);
+    color: var(--accent-glow);
+}
+.header .logo:hover .brand-code:nth-of-type(4) {
+    transform: translateX(4px);
+    color: var(--accent-glow);
+}
+
+@keyframes brandScan {
+    0%, 100% { transform: scaleX(.35); opacity: .45; }
+    50% { transform: scaleX(1); opacity: 1; }
+}
+
+.typewriter-title .text-line {
+    min-height: 1.2em;
+    white-space: nowrap;
+    direction: rtl;
+}
+
+.typewriter-title.is-typing .text-line::after {
+    content: "";
+    display: inline-block;
+    width: 2px;
+    height: .82em;
+    margin-right: 5px;
+    vertical-align: -.06em;
+    background: var(--accent-glow);
+    box-shadow: 0 0 10px var(--accent-glow);
+    animation: typewriterCaret .75s steps(1) infinite;
+}
+
+@keyframes typewriterCaret {
+    50% { opacity: 0; }
+}
+
+@media (max-width: 480px) {
+    .developer-brand {
+        font-size: clamp(1.28rem, 6vw, 1.65rem);
+        column-gap: 1px;
+        padding-inline: 5px;
+    }
+    .brand-role { font-size: 7px; right: 8px; }
+    .typewriter-title .text-line { white-space: nowrap; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .developer-brand::after,
+    .typewriter-title.is-typing .text-line::after {
+        animation: none;
+    }
+}

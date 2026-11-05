@@ -6,7 +6,7 @@
     // ===== أدوات مساعدة للأداء (60fps) =====
     // Throttle: يحد من تكرار التنفيذ للوظائف المرتبطة بالـ scroll
     function throttle(fn, limit) {
-        let inThrottle = false, lastArgs = null, rafScheduled = false;
+        let inThrottle = false, lastArgs = null;
         return function() {
             const ctx = this, args = arguments;
             if (inThrottle) {
@@ -29,17 +29,18 @@
     const loading = document.getElementById('loading-screen');
     const progressBar = loading ? loading.querySelector('.loading-progress span') : null;
     const welcomeEnter = document.getElementById('welcomeEnter');
+    const prefersReducedMotion = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
     if (loading) {
         document.body.style.overflow = 'hidden';
         let progress = 0;
-        const startedAt = Date.now();
         const progressTimer = progressBar ? setInterval(() => {
-            progress = Math.min(100, progress + 4);
+            progress = Math.min(100, progress + (100 / 60));
             progressBar.style.width = progress + '%';
             if (progress >= 100) clearInterval(progressTimer);
-        }, 45) : null;
+        }, 100) : null;
 
         let welcomeClosed = false;
+        let welcomeTimeout = null;
         const closeWelcome = () => {
             if (welcomeClosed) return;
             welcomeClosed = true;
@@ -47,11 +48,15 @@
             if (progressBar) progressBar.style.width = '100%';
             loading.classList.add('hidden');
             document.body.style.overflow = '';
+            if (welcomeTimeout) window.clearTimeout(welcomeTimeout);
             if (welcomeEnter) welcomeEnter.blur();
         };
         if (welcomeEnter) welcomeEnter.addEventListener('click', closeWelcome);
+        loading.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') closeWelcome();
+        });
         // لا نترك طبقة الترحيب تحجب الصفحة أكثر من 6 ثوانٍ
-        window.setTimeout(closeWelcome, Math.max(0, 6000 - (Date.now() - startedAt)));
+        welcomeTimeout = window.setTimeout(closeWelcome, 6000);
         if (welcomeEnter) welcomeEnter.focus({ preventScroll: true });
     }
 
@@ -210,7 +215,15 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const el = entry.target;
-                    const target = parseInt(el.dataset.count, 10) || 0;
+                    if (!el.hasAttribute('data-count')) {
+                        counterObserver.unobserve(el);
+                        return;
+                    }
+                    const target = Number.parseInt(el.dataset.count, 10);
+                    if (!Number.isFinite(target) || target < 0) {
+                        counterObserver.unobserve(el);
+                        return;
+                    }
                     let current = 0;
                     const increment = Math.ceil(target / 60);
                     const timer = setInterval(() => {
@@ -279,7 +292,7 @@
             toast.className = 'toast ' + type;
             setTimeout(() => { toast.className = 'toast'; }, 4000);
         }
-        form.addEventListener('submit', async (e) => {
+        form.addEventListener('submit', (e) => {
             e.preventDefault();
             const name = document.getElementById('name').value.trim();
             const email = document.getElementById('email').value.trim();
@@ -299,7 +312,7 @@
             const subject = encodeURIComponent('رسالة جديدة من الموقع - ' + name);
             const body = encodeURIComponent('الاسم: ' + name + '\nالبريد: ' + email + '\n\nالرسالة:\n' + message);
             const mailto = 'mailto:' + recipient + '?subject=' + subject + '&body=' + body;
-            showToast('سيتم فتح تطبيق البريد لإتمام إرسال رسالتك.', 'success');
+            showToast('سيتم فتح تطبيق البريد لإكمال الإرسال. إذا لم يفتح، استخدم البريد الظاهر بجانب النموذج.', 'info');
             window.location.href = mailto;
         });
     }
@@ -355,7 +368,7 @@
             const heroObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     isHeroVisible = entry.isIntersecting;
-                    if (isHeroVisible && !animationId) animateParticles();
+                    if (isHeroVisible && !animationId && !prefersReducedMotion && !document.hidden) animateParticles();
                     else if (!isHeroVisible && animationId) { cancelAnimationFrame(animationId); animationId = null; }
                 });
             }, { threshold: 0 });
@@ -386,7 +399,21 @@
             }
             if (isHeroVisible) animationId = requestAnimationFrame(animateParticles);
         }
-        animateParticles();
+        if (prefersReducedMotion) {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(particle => particle.draw());
+        } else {
+            animateParticles();
+        }
+
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden && animationId) {
+                cancelAnimationFrame(animationId);
+                animationId = null;
+            } else if (!document.hidden && isHeroVisible && !prefersReducedMotion && !animationId) {
+                animateParticles();
+            }
+        });
 
         // إعادة التحجيم بـ throttle
         const onResize = throttle(() => {
@@ -468,7 +495,7 @@
 
             currentPage = newPage;
             updateUI();
-            setTimeout(() => { isAnimating = false; }, 850);
+            setTimeout(() => { isAnimating = false; }, 950);
         }
 
         if (nextBtn) {
@@ -565,9 +592,11 @@
         updateUI();
 
         // فتح الصفحة الأولى تلقائياً بعد 1.5 ثانية
-        setTimeout(() => {
-            if (totalPages > 1) flipPage(1);
-        }, 1500);
+        if (!prefersReducedMotion) {
+            setTimeout(() => {
+                if (totalPages > 1) flipPage(1);
+            }, 1500);
+        }
 
         // منع تحديد النص أثناء السحب
         document.addEventListener('selectstart', (e) => {

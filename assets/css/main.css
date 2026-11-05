@@ -2399,3 +2399,224 @@ ul {
         font-size: clamp(3rem, 6vw, 4rem);
     }
 }
+
+
+/* Full-screen premium welcome interface: ambient light, orbit and progress details */
+#loading-screen {
+    isolation: isolate;
+    overflow: hidden;
+    background:
+        radial-gradient(ellipse at 50% 46%, rgba(128, 91, 19, .17) 0%, transparent 42%),
+        radial-gradient(ellipse at 12% 18%, rgba(69, 162, 158, .07) 0%, transparent 32%),
+        radial-gradient(ellipse at 88% 82%, rgba(194, 147, 39, .08) 0%, transparent 34%),
+        #08090d;
+}
+
+#loading-screen::before {
+    content: "";
+    position: absolute;
+    inset: -35%;
+    z-index: -1;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at 25% 35%, rgba(255, 210, 105, .12), transparent 17%),
+        radial-gradient(circle at 72% 60%, rgba(202, 155, 48, .12), transparent 20%),
+        radial-gradient(circle at 50% 50%, rgba(255, 244, 196, .055), transparent 38%);
+    filter: blur(22px);
+    animation: welcomeAmbient 12s ease-in-out infinite alternate;
+}
+
+#loading-screen::after {
+    content: "";
+    position: absolute;
+    inset: 14px;
+    z-index: 5;
+    pointer-events: none;
+    border: 1px solid rgba(215, 178, 82, .13);
+    border-radius: 18px;
+    box-shadow:
+        inset 0 0 45px rgba(196, 150, 44, .035),
+        0 0 30px rgba(196, 150, 44, .025);
+}
+
+.welcome-orbit {
+    position: relative;
+    width: clamp(116px, 34vw, 172px);
+    height: clamp(116px, 34vw, 172px);
+    margin-bottom: 22px;
+    display: grid;
+    place-items: center;
+    flex: 0 0 auto;
+    animation: welcomeFloat 5s ease-in-out infinite;
+}
+
+.orbit-ring {
+    position: absolute;
+    inset: 7%;
+    border: 1px solid rgba(226, 190, 99, .36);
+    border-radius: 50%;
+    box-shadow: 0 0 20px rgba(207, 161, 58, .09), inset 0 0 20px rgba(207, 161, 58, .06);
+}
+
+.orbit-ring-one {
+    transform: rotateX(62deg) rotate(-24deg);
+    animation: welcomeOrbitSpin 12s linear infinite;
+}
+
+.orbit-ring-two {
+    inset: 17%;
+    border-color: rgba(255, 231, 163, .27);
+    transform: rotateX(62deg) rotate(42deg);
+    animation: welcomeOrbitSpinReverse 9s linear infinite;
+}
+
+.orbit-core {
+    width: 27%;
+    height: 27%;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #fff5c8 0%, #d8ae4c 28%, #75500f 66%, #171108 100%);
+    box-shadow:
+        0 0 14px rgba(255, 222, 137, .85),
+        0 0 38px rgba(218, 169, 61, .42),
+        0 0 75px rgba(218, 169, 61, .18);
+    animation: welcomeCorePulse 2.8s ease-in-out infinite;
+}
+
+.orbit-spark {
+    position: absolute;
+    color: #ffe9a6;
+    text-shadow: 0 0 9px rgba(255, 221, 130, .95), 0 0 22px rgba(218, 169, 61, .7);
+    line-height: 1;
+}
+
+.orbit-spark-one {
+    top: 4%;
+    right: 16%;
+    font-size: 17px;
+    animation: welcomeSparkFloat 3s ease-in-out infinite;
+}
+
+.orbit-spark-two {
+    bottom: 9%;
+    left: 12%;
+    font-size: 22px;
+    animation: welcomeSparkFloat 3.8s ease-in-out infinite reverse;
+}
+
+.welcome-kicker {
+    margin-bottom: 7px;
+    color: rgba(239, 211, 145, .7);
+    font: 600 9px/1.4 Arial, sans-serif;
+    letter-spacing: .34em;
+    text-align: center;
+    direction: ltr;
+}
+
+.welcome-caption {
+    margin-top: 2px;
+    color: rgba(236, 218, 177, .68);
+    font-size: clamp(11px, 3vw, 13px);
+    letter-spacing: .08em;
+    text-align: center;
+}
+
+#loading-screen .loading-logo {
+    margin-block: 2px 0;
+}
+
+#loading-screen .loading-progress {
+    position: relative;
+    width: min( min(260px, 66vw), 320px);
+    height: 5px;
+    margin-top: 27px;
+    border: 1px solid rgba(255, 223, 143, .16);
+    border-radius: 20px;
+    background: rgba(255, 255, 255, .075);
+    overflow: hidden;
+    box-shadow: 0 0 18px rgba(202, 155, 48, .08);
+}
+
+#loading-screen .loading-progress span {
+    position: relative;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #6e4d13 0%, #c99a2e 38%, #fff0ad 72%, #a87b20 100%);
+    box-shadow: 0 0 12px rgba(255, 211, 104, .65);
+}
+
+#loading-screen .loading-progress span::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,.85), transparent);
+    transform: translateX(-100%);
+    animation: welcomeProgressShine 1.7s ease-in-out infinite;
+}
+
+.welcome-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 13px;
+    color: rgba(222, 205, 164, .62);
+    font-size: 10px;
+    letter-spacing: .04em;
+}
+
+.welcome-status span {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #d9b34e;
+    box-shadow: 0 0 9px rgba(255, 215, 110, .9);
+    animation: welcomeStatusBlink 1.2s ease-in-out infinite;
+}
+
+@keyframes welcomeAmbient {
+    from { transform: translate3d(-2%, -1%, 0) scale(.96) rotate(-3deg); opacity: .65; }
+    to { transform: translate3d(2%, 2%, 0) scale(1.06) rotate(3deg); opacity: 1; }
+}
+@keyframes welcomeFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+@keyframes welcomeOrbitSpin { to { transform: rotateX(62deg) rotate(336deg); } }
+@keyframes welcomeOrbitSpinReverse { to { transform: rotateX(62deg) rotate(-318deg); } }
+@keyframes welcomeCorePulse {
+    0%, 100% { transform: scale(.9); filter: brightness(.95); }
+    50% { transform: scale(1.08); filter: brightness(1.25); }
+}
+@keyframes welcomeSparkFloat {
+    0%, 100% { transform: translateY(0) scale(.85); opacity: .55; }
+    50% { transform: translateY(-7px) scale(1.15); opacity: 1; }
+}
+@keyframes welcomeProgressShine {
+    0% { transform: translateX(-110%); }
+    65%, 100% { transform: translateX(110%); }
+}
+@keyframes welcomeStatusBlink {
+    0%, 100% { opacity: .45; }
+    50% { opacity: 1; }
+}
+
+@media (max-height: 620px) {
+    .welcome-orbit {
+        width: 92px;
+        height: 92px;
+        margin-bottom: 10px;
+    }
+    .welcome-kicker { margin-bottom: 2px; }
+    #loading-screen .loading-progress { margin-top: 15px; }
+    .welcome-caption { margin-top: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #loading-screen::before,
+    .welcome-orbit,
+    .orbit-ring,
+    .orbit-core,
+    .orbit-spark,
+    .welcome-status span,
+    #loading-screen .loading-progress span::after {
+        animation: none !important;
+    }
+}

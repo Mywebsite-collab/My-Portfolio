@@ -2440,3 +2440,16 @@ a:hover { color: var(--accent-glow); }
     .welcome-orbit, .welcome-card, .loading-logo { animation: none !important; }
     .welcome-enter, .book-tilt { transition: none !important; }
 }
+
+
+/* ===== Repairs: empty-image fallbacks, touch devices and accessibility ===== */
+.welcome-portrait-art { display:block; width:100%; height:100%; border:3px solid #11100c; border-radius:50%; background:#15120b; }
+.cover-avatar { background:radial-gradient(circle at 35% 25%, #3b3018, #0c0b08 72%); border-color:rgba(230,198,92,.62); box-shadow:0 0 0 4px rgba(201,162,39,.06), 0 0 24px rgba(201,162,39,.24), 0 12px 35px rgba(0,0,0,.45); }
+.cover-avatar-monogram { display:grid; place-items:center; width:100%; height:100%; color:#f4d77d; font-family:var(--font-en); font-size:clamp(1.8rem,4vw,3rem); font-weight:900; letter-spacing:.08em; text-shadow:0 0 18px rgba(201,162,39,.5); background:radial-gradient(circle at 50% 30%, rgba(244,215,125,.17), transparent 60%); }
+.about-image .image-wrapper { min-height:280px; display:grid; place-items:center; background:radial-gradient(circle at 50% 30%, rgba(201,162,39,.18), transparent 45%), linear-gradient(145deg,#211b10,#080808); border:1px solid rgba(230,198,92,.2); }
+.about-avatar-art { width:min(100%,330px); min-height:280px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; border-radius:16px; color:#f4d77d; background:radial-gradient(circle at 50% 35%, rgba(244,215,125,.16), transparent 35%), linear-gradient(145deg,rgba(201,162,39,.07),rgba(0,0,0,.2)); }
+.about-avatar-art span { width:142px; height:142px; display:grid; place-items:center; border-radius:50%; border:2px solid rgba(244,215,125,.72); color:#f4d77d; font:900 3rem var(--font-en); letter-spacing:.08em; box-shadow:0 0 0 9px rgba(201,162,39,.06), 0 0 42px rgba(201,162,39,.2), inset 0 0 28px rgba(201,162,39,.1); }
+.about-avatar-art small { color:#bba15c; font:700 .7rem var(--font-en); letter-spacing:.22em; }
+.testimonial-avatar-fallback { width:50px; height:50px; flex:0 0 50px; display:grid; place-items:center; border-radius:50%; color:#171108; background:linear-gradient(135deg,#fff0ad,#c99d27); border:2px solid rgba(255,240,173,.65); font-size:.72rem; font-weight:900; }
+@media (hover:none), (pointer:coarse) { body { cursor:auto !important; } .cursor, .cursor-follower { display:none !important; } }
+@media (prefers-reduced-motion:reduce) { .loading-screen,.welcome-orbit,.welcome-card,.loading-logo { animation:none !important; } .book-tilt,.book,.book .page { transition-duration:.01ms !important; } }

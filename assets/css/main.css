@@ -2453,3 +2453,17 @@ a:hover { color: var(--accent-glow); }
 .testimonial-avatar-fallback { width:50px; height:50px; flex:0 0 50px; display:grid; place-items:center; border-radius:50%; color:#171108; background:linear-gradient(135deg,#fff0ad,#c99d27); border:2px solid rgba(255,240,173,.65); font-size:.72rem; font-weight:900; }
 @media (hover:none), (pointer:coarse) { body { cursor:auto !important; } .cursor, .cursor-follower { display:none !important; } }
 @media (prefers-reduced-motion:reduce) { .loading-screen,.welcome-orbit,.welcome-card,.loading-logo { animation:none !important; } .book-tilt,.book,.book .page { transition-duration:.01ms !important; } }
+
+/* Welcome-screen failsafe: if JavaScript is blocked, the overlay still dismisses. */
+@keyframes welcomeFailsafe {
+    0%, 94% { opacity: 1; visibility: visible; }
+    100% { opacity: 0; visibility: hidden; pointer-events: none; }
+}
+.loading-screen { animation: welcomeFailsafe 8s linear forwards; }
+.loading-screen.hidden { animation: none !important; }
+.toast.info {
+    display: block;
+    color: #f4d77d;
+    background: rgba(201,162,39,.12);
+    border: 1px solid rgba(201,162,39,.45);
+}

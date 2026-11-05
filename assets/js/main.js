@@ -239,6 +239,10 @@
             });
         }, { threshold: 0.5 });
         statNumbers.forEach(num => counterObserver.observe(num));
+    } else {
+        statNumbers.forEach(num => {
+            if (num.hasAttribute('data-count')) num.textContent = num.dataset.count;
+        });
     }
 
     // ===== FAQ Accordion =====
@@ -307,7 +311,7 @@
                 return;
             }
 
-            // إرسال فعلي عبر تطبيق البريد الافتراضي بدلاً من إظهار نجاح وهمي
+            // فتح تطبيق البريد برسالة مجهزة؛ يجب على الزائر الضغط على إرسال
             const recipient = 'achirbilal10@gmail.com';
             const subject = encodeURIComponent('رسالة جديدة من الموقع - ' + name);
             const body = encodeURIComponent('الاسم: ' + name + '\nالبريد: ' + email + '\n\nالرسالة:\n' + message);
@@ -419,6 +423,10 @@
         const onResize = throttle(() => {
             resizeCanvas();
             initParticles();
+            if (prefersReducedMotion) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                particles.forEach(particle => particle.draw());
+            }
         }, 200);
         window.addEventListener('resize', onResize, { passive: true });
     }
@@ -495,7 +503,7 @@
 
             currentPage = newPage;
             updateUI();
-            setTimeout(() => { isAnimating = false; }, 950);
+            setTimeout(() => { isAnimating = false; }, prefersReducedMotion ? 50 : 950);
         }
 
         if (nextBtn) {

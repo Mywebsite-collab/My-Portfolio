@@ -2248,3 +2248,195 @@ ul {
 @media (max-height: 480px) and (orientation: landscape) {
     .book-wrapper { --avail-h: 560px; }
 }
+
+
+/* ============================================================
+   PREMIUM BLACK & GOLD REFRESH + HUMAN WELCOME EXPERIENCE
+   ============================================================ */
+:root {
+    --accent: #c9a227;
+    --accent-glow: #f4d77d;
+    --gold-deep: #7d5c12;
+    --gold-soft: rgba(201, 162, 39, .16);
+}
+a:hover { color: var(--accent-glow); }
+.loading-screen {
+    overflow: hidden;
+    isolation: isolate;
+    padding: 24px;
+    background:
+        radial-gradient(ellipse at 50% 42%, rgba(201,162,39,.18), transparent 38%),
+        radial-gradient(ellipse at 10% 90%, rgba(201,162,39,.08), transparent 34%),
+        linear-gradient(145deg, #030303 0%, #10100e 52%, #050505 100%);
+    transition: opacity .85s ease, visibility .85s ease, transform .85s ease;
+}
+.loading-screen.hidden { transform: scale(1.025); }
+.welcome-orbit {
+    position: absolute;
+    width: min(78vw, 620px);
+    aspect-ratio: 1;
+    border: 1px solid rgba(230,198,92,.12);
+    border-radius: 50%;
+    box-shadow: 0 0 90px rgba(201,162,39,.08), inset 0 0 80px rgba(201,162,39,.04);
+    animation: welcomeOrbit 18s linear infinite;
+    pointer-events: none;
+}
+.welcome-orbit::before, .welcome-orbit::after {
+    content: "";
+    position: absolute;
+    inset: 8%;
+    border: 1px dashed rgba(230,198,92,.12);
+    border-radius: 50%;
+}
+.welcome-orbit::after { inset: 18%; border-style: solid; opacity: .55; }
+@keyframes welcomeOrbit { to { transform: rotate(360deg); } }
+.welcome-card {
+    position: relative;
+    z-index: 1;
+    width: min(100%, 440px);
+    padding: 38px 30px 24px;
+    text-align: center;
+    border: 1px solid rgba(230,198,92,.22);
+    border-radius: 30px;
+    background: linear-gradient(145deg, rgba(30,26,17,.88), rgba(8,8,8,.88));
+    box-shadow: 0 30px 100px rgba(0,0,0,.6), 0 0 55px rgba(201,162,39,.10), inset 0 1px rgba(255,255,255,.07);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    animation: welcomeRise .9s cubic-bezier(.2,.8,.2,1) both;
+}
+@keyframes welcomeRise { from { opacity: 0; transform: translateY(28px) scale(.96); } to { opacity: 1; transform: translateY(0) scale(1); } }
+.welcome-portrait-wrap {
+    position: relative;
+    width: 112px;
+    height: 112px;
+    margin: 0 auto 20px;
+    padding: 5px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, #fff0ad, #c99d27 48%, #61440b);
+    box-shadow: 0 0 0 8px rgba(201,162,39,.07), 0 0 42px rgba(201,162,39,.25);
+}
+.welcome-portrait {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+    border: 3px solid #11100c;
+}
+.welcome-status {
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    bottom: 8px;
+    right: 6px;
+    border: 3px solid #15120b;
+    border-radius: 50%;
+    background: #d6b64f;
+    box-shadow: 0 0 12px rgba(214,182,79,.7);
+}
+.welcome-kicker, .welcome-signature {
+    display: block;
+    color: #c9ad60;
+    letter-spacing: 2px;
+    font-size: .72rem;
+    font-weight: 700;
+}
+.loading-logo {
+    margin: 10px 0 8px;
+    font-size: clamp(2rem, 7vw, 2.8rem);
+    line-height: 1.25;
+    font-weight: 900;
+    background: linear-gradient(110deg, #fff4c4 0%, #e6c65c 28%, #9b741b 55%, #f7e7a4 78%, #b88a21 100%);
+    background-size: 220% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: goldFlow 5s ease-in-out infinite alternate;
+    filter: drop-shadow(0 5px 20px rgba(201,162,39,.18));
+}
+@keyframes goldFlow { to { background-position: 100% center; } }
+.welcome-copy {
+    max-width: 330px;
+    margin: 0 auto 23px;
+    color: #c7c0ad;
+    font-size: .98rem;
+    line-height: 1.9;
+}
+.welcome-enter {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    min-width: 190px;
+    padding: 13px 22px;
+    border: 1px solid rgba(255,239,180,.5);
+    border-radius: 50px;
+    color: #151108;
+    font: inherit;
+    font-weight: 900;
+    cursor: pointer;
+    background: linear-gradient(115deg, #fff0ad, #d2aa3c 48%, #f4d77d);
+    box-shadow: 0 10px 30px rgba(201,162,39,.22);
+    transition: transform .3s ease, box-shadow .3s ease, filter .3s ease;
+}
+.welcome-enter:hover { transform: translateY(-3px); filter: brightness(1.08); box-shadow: 0 15px 38px rgba(201,162,39,.32); }
+.welcome-enter:focus-visible { outline: 3px solid #fff0ad; outline-offset: 4px; }
+.loading-progress {
+    width: min(190px, 70%);
+    height: 3px;
+    margin: 22px auto 14px;
+    background: rgba(255,255,255,.10);
+}
+.loading-progress span { background: linear-gradient(90deg, #8d6716, #fff0ad, #c99d27); }
+.welcome-signature { color: #76643a; font-size: .58rem; letter-spacing: 2.5px; }
+.gradient-text {
+    background: linear-gradient(110deg, #fff1b5, #d3aa3e 45%, #8e6918 70%, #f6e4a0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.book-container { filter: drop-shadow(0 24px 30px rgba(0,0,0,.42)); }
+.book-tilt { transition: transform .55s cubic-bezier(.2,.8,.2,1); }
+.book-shadow {
+    background: radial-gradient(ellipse, rgba(201,162,39,.22) 0%, rgba(0,0,0,.48) 42%, transparent 72%);
+    filter: blur(11px);
+}
+.book .page {
+    border: 1px solid rgba(230,198,92,.20);
+    box-shadow: 0 8px 24px rgba(0,0,0,.28), inset 0 0 18px rgba(201,162,39,.035);
+}
+.book .page .page-front::after,
+.book .page .page-back::after {
+    background: linear-gradient(90deg, rgba(0,0,0,.24), transparent 18%, transparent 82%, rgba(201,162,39,.08));
+}
+.book-nav {
+    color: #f1d77f;
+    background: linear-gradient(145deg, rgba(35,29,15,.96), rgba(9,9,8,.96));
+    border-color: rgba(230,198,92,.32);
+    box-shadow: 0 8px 24px rgba(0,0,0,.35), 0 0 18px rgba(201,162,39,.08);
+}
+.book-nav:hover {
+    background: linear-gradient(145deg, #d9b84f, #8e6918);
+    border-color: #f4d77d;
+    color: #080706;
+}
+.book-indicator {
+    color: #a89a70;
+    border-color: rgba(230,198,92,.18);
+    box-shadow: 0 8px 24px rgba(0,0,0,.28);
+}
+.book-indicator .current-page { color: #f4d77d; }
+.scroll-progress { background: linear-gradient(90deg, #76550e, #c9a227, #fff0ad); box-shadow: 0 0 12px rgba(201,162,39,.45); }
+.btn-preview { background: linear-gradient(135deg, #e6c65c, #9b741b); color: #100d06; box-shadow: 0 4px 15px rgba(201,162,39,.2); }
+.btn-preview:hover { box-shadow: 0 8px 25px rgba(201,162,39,.32); }
+@media (max-width: 600px) {
+    body { cursor: auto !important; }
+    .cursor, .cursor-follower { display: none !important; }
+    .welcome-card { padding: 30px 20px 22px; }
+    .welcome-portrait-wrap { width: 96px; height: 96px; }
+    .book-nav { width: 38px; height: 38px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .welcome-orbit, .welcome-card, .loading-logo { animation: none !important; }
+    .welcome-enter, .book-tilt { transition: none !important; }
+}

@@ -2250,6 +2250,64 @@ ul {
 }
 
 
+
+/* Extra premium details around the welcome title only */
+.loading-logo {
+    position: relative;
+    isolation: isolate;
+    padding: 8px 18px;
+}
+
+.loading-logo::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: -22px -34px;
+    border-radius: 50%;
+    background:
+        radial-gradient(ellipse at center,
+            rgba(220, 174, 55, .22) 0%,
+            rgba(160, 115, 25, .10) 38%,
+            transparent 72%);
+    filter: blur(9px);
+    opacity: .8;
+    animation: welcomeHalo 3.8s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.loading-logo::after {
+    content: "✦";
+    position: absolute;
+    top: -11px;
+    right: -9px;
+    color: #ffe9a0;
+    font-size: .34em;
+    line-height: 1;
+    -webkit-text-fill-color: #ffe9a0;
+    text-shadow:
+        0 0 5px rgba(255, 231, 157, .95),
+        0 0 13px rgba(219, 170, 49, .85);
+    animation: welcomeSparkle 2.2s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes welcomeHalo {
+    0%, 100% { opacity: .42; transform: scale(.96); }
+    50% { opacity: 1; transform: scale(1.06); }
+}
+
+@keyframes welcomeSparkle {
+    0%, 100% { opacity: .45; transform: scale(.78) rotate(0deg); }
+    50% { opacity: 1; transform: scale(1.22) rotate(18deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .loading-logo::before,
+    .loading-logo::after {
+        animation: none;
+    }
+}
+
 /* Welcome title: high-visibility black & gold animated finish */
 .loading-logo {
     display: inline-block;

@@ -11,7 +11,7 @@
     <meta property="og:title" content="بورتفوليو – تصميم وتطوير مواقع احترافية" />
     <meta property="og:description" content="تصاميم فريدة وتجارب مستخدم ساحرة – فريق متخصص في إنشاء مواقع الجيل التالي" />
     <meta property="og:image" content="assets/images/og-image.jpg" />
-    <meta property="og:url" content="https://portfolio-example.com" />
+    <meta property="og:url" content="https://mywebsite-collab.github.io/My-Portfolio/" />
 
     <meta name="twitter:card" content="summary_large_image" />
 
@@ -28,16 +28,16 @@
         "@type": "Person",
         "name": "بلال عشير",
         "jobTitle": "مطور واجهات أمامية ومصمم تجربة مستخدم",
-        "url": "https://portfolio-example.com",
+        "url": "https://mywebsite-collab.github.io/My-Portfolio/",
         "sameAs": [
             "https://github.com/Mywebsite-collab?tab=repositories",
-            "https://www.linkedin.com/me?trk=p_mwlite_feed-secondary_nav",
             "https://x.com/Buffi97174487"
         ]
     }
     </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
     <link
@@ -55,10 +55,21 @@
 
 <body>
 
-    <div id="loading-screen" class="loading-screen" aria-hidden="true">
-        <div class="loading-logo">⊹˚مرحباً بكم˚⊹</div>
-        <div class="loading-progress">
-            <span></span>
+    <div id="loading-screen" class="loading-screen" role="dialog" aria-modal="true" aria-label="مرحباً بك في معرض بلال">
+        <div class="welcome-orbit" aria-hidden="true"></div>
+        <div class="welcome-card">
+            <div class="welcome-portrait-wrap">
+                <img class="welcome-portrait" src="assets/avatar%20book%20%F0%9F%93%9A/wmremove-transformed.png" alt="صورة بلال عشير" fetchpriority="high" decoding="async" />
+                <span class="welcome-status" aria-hidden="true"></span>
+            </div>
+            <span class="welcome-kicker">مساحة إبداعية • تصميم وتطوير</span>
+            <h2 class="loading-logo">أهلاً بك في عالمي</h2>
+            <p class="welcome-copy">أنا بلال عشير، أصنع تجارب رقمية تجمع بين الفكرة والجمال والتقنية.</p>
+            <button class="welcome-enter" id="welcomeEnter" type="button">
+                <span>اكتشف أعمالي</span><span aria-hidden="true">←</span>
+            </button>
+            <div class="loading-progress" aria-hidden="true"><span></span></div>
+            <span class="welcome-signature">BILAL ACHIR · PORTFOLIO 2026</span>
         </div>
     </div>
 
@@ -1136,7 +1147,7 @@
                             </a>
 
                             <a
-                                href="https://www.linkedin.com/me?trk=p_mwlite_feed-secondary_nav"
+                                href="https://www.linkedin.com/"
                                 class="social-link glass"
                                 target="_blank"
                                 rel="noopener"

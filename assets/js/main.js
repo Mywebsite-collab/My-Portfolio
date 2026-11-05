@@ -54,6 +54,51 @@
         }, 5000);
     }
 
+
+    // ===== Hero headline: Arabic typewriter animation =====
+    const typewriterTitle = document.querySelector('.typewriter-title');
+    if (typewriterTitle) {
+        const typewriterLines = Array.from(typewriterTitle.querySelectorAll('[data-typewriter]'));
+        const reduceTypeMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        if (reduceTypeMotion) {
+            typewriterLines.forEach((line) => {
+                line.textContent = line.getAttribute('data-typewriter') || '';
+            });
+        } else {
+            typewriterTitle.classList.add('is-typing');
+            typewriterLines.forEach((line) => { line.textContent = ''; });
+
+            let lineIndex = 0;
+            let charIndex = 0;
+            const typeNextCharacter = () => {
+                if (lineIndex >= typewriterLines.length) {
+                    typewriterTitle.classList.remove('is-typing');
+                    return;
+                }
+
+                const currentLine = typewriterLines[lineIndex];
+                const fullText = Array.from(currentLine.getAttribute('data-typewriter') || '');
+
+                if (charIndex < fullText.length) {
+                    currentLine.textContent += fullText[charIndex];
+                    charIndex += 1;
+                    setTimeout(typeNextCharacter, 105);
+                } else {
+                    lineIndex += 1;
+                    charIndex = 0;
+                    if (lineIndex < typewriterLines.length) {
+                        setTimeout(typeNextCharacter, 230);
+                    } else {
+                        typewriterTitle.classList.remove('is-typing');
+                    }
+                }
+            };
+
+            setTimeout(typeNextCharacter, 550);
+        }
+    }
+
     // ===== Custom Cursor =====
     const cursor = document.getElementById('cursor');
     const follower = document.getElementById('cursor-follower');

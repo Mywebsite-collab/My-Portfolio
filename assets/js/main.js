@@ -25,33 +25,34 @@
         };
     }
 
-    // ===== Loading Screen (مع حماية ضد العناصر المفقودة) =====
+    // ===== Welcome / Entry Screen =====
     const loading = document.getElementById('loading-screen');
     const progressBar = loading ? loading.querySelector('.loading-progress span') : null;
-    if (loading && progressBar) {
+    const welcomeEnter = document.getElementById('welcomeEnter');
+    if (loading) {
         document.body.style.overflow = 'hidden';
         let progress = 0;
-        const loadingInterval = setInterval(() => {
-            progress += Math.floor(Math.random() * 15) + 5;
-            if (progress >= 100) {
-                progress = 100;
-                clearInterval(loadingInterval);
-                progressBar.style.width = '100%';
-                setTimeout(() => {
-                    loading.classList.add('hidden');
-                    document.body.style.overflow = '';
-                }, 300);
-            } else {
-                progressBar.style.width = progress + '%';
-            }
-        }, 200);
-        // أمان: إخفاء شاشة التحميل بعد 5 ثوانٍ في أي حال
-        setTimeout(() => {
-            if (loading && !loading.classList.contains('hidden')) {
-                loading.classList.add('hidden');
-                document.body.style.overflow = '';
-            }
-        }, 5000);
+        const startedAt = Date.now();
+        const progressTimer = progressBar ? setInterval(() => {
+            progress = Math.min(100, progress + 4);
+            progressBar.style.width = progress + '%';
+            if (progress >= 100) clearInterval(progressTimer);
+        }, 45) : null;
+
+        let welcomeClosed = false;
+        const closeWelcome = () => {
+            if (welcomeClosed) return;
+            welcomeClosed = true;
+            if (progressTimer) clearInterval(progressTimer);
+            if (progressBar) progressBar.style.width = '100%';
+            loading.classList.add('hidden');
+            document.body.style.overflow = '';
+            if (welcomeEnter) welcomeEnter.blur();
+        };
+        if (welcomeEnter) welcomeEnter.addEventListener('click', closeWelcome);
+        // لا نترك طبقة الترحيب تحجب الصفحة أكثر من 6 ثوانٍ
+        window.setTimeout(closeWelcome, Math.max(0, 6000 - (Date.now() - startedAt)));
+        if (welcomeEnter) welcomeEnter.focus({ preventScroll: true });
     }
 
     // ===== Custom Cursor =====
@@ -293,13 +294,13 @@
                 return;
             }
 
-            submitBtn.classList.add('loading');
-            submitBtn.disabled = true;
-            await new Promise(resolve => setTimeout(resolve, 2000));
-            submitBtn.classList.remove('loading');
-            submitBtn.disabled = false;
-            showToast('تم إرسال رسالتك بنجاح! سأتواصل معك قريباً.', 'success');
-            form.reset();
+            // إرسال فعلي عبر تطبيق البريد الافتراضي بدلاً من إظهار نجاح وهمي
+            const recipient = 'achirbilal10@gmail.com';
+            const subject = encodeURIComponent('رسالة جديدة من الموقع - ' + name);
+            const body = encodeURIComponent('الاسم: ' + name + '\nالبريد: ' + email + '\n\nالرسالة:\n' + message);
+            const mailto = 'mailto:' + recipient + '?subject=' + subject + '&body=' + body;
+            showToast('سيتم فتح تطبيق البريد لإتمام إرسال رسالتك.', 'success');
+            window.location.href = mailto;
         });
     }
 
@@ -333,7 +334,7 @@
                 else if (this.y < 0) this.y = canvas.height;
             }
             draw() {
-                ctx.fillStyle = 'rgba(69, 162, 158, 0.6)';
+                ctx.fillStyle = 'rgba(220, 184, 77, 0.58)';
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                 ctx.fill();
@@ -341,7 +342,7 @@
         }
 
         function initParticles() {
-            const count = Math.min(100, Math.floor(canvas.width * canvas.height / 9000));
+            const count = Math.min(55, Math.floor(canvas.width * canvas.height / 16000));
             particles = [];
             for (let i = 0; i < count; i++) particles.push(new Particle());
         }
@@ -374,7 +375,7 @@
                     const dy = particles[i].y - particles[j].y;
                     const dist = Math.sqrt(dx * dx + dy * dy);
                     if (dist < 150) {
-                        ctx.strokeStyle = `rgba(69, 162, 158, ${1 - dist / 150})`;
+                        ctx.strokeStyle = `rgba(201, 162, 39, ${0.55 * (1 - dist / 150)})`;
                         ctx.lineWidth = 0.5;
                         ctx.beginPath();
                         ctx.moveTo(particles[i].x, particles[i].y);

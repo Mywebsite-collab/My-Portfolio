@@ -10,8 +10,10 @@
 
     <meta property="og:title" content="بورتفوليو – تصميم وتطوير مواقع احترافية" />
     <meta property="og:description" content="تصاميم فريدة وتجارب مستخدم ساحرة – فريق متخصص في إنشاء مواقع الجيل التالي" />
-    <meta property="og:image" content="assets/images/og-image.jpg" />
+    <meta property="og:image" content="https://mywebsite-collab.github.io/My-Portfolio/assets/images/og-image.jpg" />
     <meta property="og:url" content="https://mywebsite-collab.github.io/My-Portfolio/" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:image" content="https://mywebsite-collab.github.io/My-Portfolio/assets/images/og-image.jpg" />
 
     <meta name="twitter:card" content="summary_large_image" />
 
@@ -20,7 +22,7 @@
     <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/icon-192.png" />
     <link rel="manifest" href="manifest.json" />
 
-    <title>بورتفيليو المصمم – UI/UX & Front-End Developer</title>
+    <title>بورتفوليو بلال عشير – تصميم وتطوير الواجهات</title>
 
     <script type="application/ld+json">
     {
@@ -58,7 +60,15 @@
         <div class="welcome-orbit" aria-hidden="true"></div>
         <div class="welcome-card">
             <div class="welcome-portrait-wrap">
-                <img class="welcome-portrait" src="assets/avatar%20book%20%F0%9F%93%9A/wmremove-transformed.png" alt="صورة بلال عشير" fetchpriority="high" decoding="async" />
+                <svg class="welcome-portrait-art" viewBox="0 0 120 120" role="img" aria-label="رسم رمزي لشخص">
+                    <defs><linearGradient id="portraitGold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff1b5"/><stop offset=".52" stop-color="#d2aa3c"/><stop offset="1" stop-color="#75510d"/></linearGradient></defs>
+                    <circle cx="60" cy="60" r="58" fill="#15120b"/>
+                    <path d="M17 112c5-24 20-36 43-36s38 12 43 36" fill="url(#portraitGold)"/>
+                    <path d="M39 48c0-19 9-30 22-30s22 11 22 30v7c0 17-10 28-22 28S39 72 39 55z" fill="#d6ad70"/>
+                    <path d="M37 47c-1-22 10-34 26-34 16 0 24 11 23 31-6-2-11-8-13-14-9 10-20 14-36 17z" fill="#17120c"/>
+                    <path d="M48 57h5m14 0h5" stroke="#4a321d" stroke-width="2.5" stroke-linecap="round"/>
+                    <path d="M53 69c4 3 10 3 14 0" fill="none" stroke="#70451f" stroke-width="2" stroke-linecap="round"/>
+                </svg>
                 <span class="welcome-status" aria-hidden="true"></span>
             </div>
             <span class="welcome-kicker">مساحة إبداعية • تصميم وتطوير</span>
@@ -171,13 +181,7 @@
                                         </div>
 
                                         <div class="cover-avatar">
-                                            <img
-                                                src="assets/avatar book 📚/wmremove-transformed.png"
-                                                alt="Bilal Achir"
-                                                loading="eager"
-                                                decoding="async"
-                                                fetchpriority="high"
-                                            />
+                                            <span class="cover-avatar-monogram" aria-label="Bilal Achir">BA</span>
                                         </div>
 
                                         <h2>PORTFOLIO</h2>
@@ -605,41 +609,40 @@
 
                     <div class="about-image reveal">
                         <div class="image-wrapper glass">
-                            <img
-                                src="assets/images/placeholder-avatar.jpg"
-                                alt="بلال 🄳🄴🅅"
-                                loading="lazy"
-                            />
+                            <div class="about-avatar-art" role="img" aria-label="رمز شخصي لبلال عشير">
+                                <span>BA</span>
+                                <small>DESIGN · CODE</small>
+                            </div>
                         </div>
                     </div>
 
                     <div class="about-text reveal">
 
                         <p class="about-paragraph">
-                            أكثر من 4 عملاء راضيين من تصميم وتطوير الواجهات الأمامية. أعمل مع شركات ناشئة
-                            ووكالات عالمية لأصنع مواقع تفاعلية سريعة، متجاوبة، ومليئة بالتفاصيل الدقيقة.
+                            أعمل على تصميم وتطوير واجهات المواقع والمتاجر، مع التركيز على تجربة استخدام واضحة،
+                            سرعة التصفح، والتوافق مع الهواتف والأجهزة المختلفة.
                         </p>
 
                         <p class="about-paragraph">
-                            أؤمن بأن كل بكسل يجب أن يكون هادفًا. أستخدم أحدث التقنيات مثل Glassmorphism،
-                            Three.js، و GSAP لأقدّم تجارب لا تشبه أي شيء آخر.
+                            أهتم بالتفاصيل البصرية والحركة المدروسة، وأختار الأدوات المناسبة لكل مشروع
+                            لبناء تجربة رقمية متناسقة وسهلة الاستخدام.
                         </p>
 
                         <div class="about-stats">
 
                             <div class="stat glass">
-                                <span class="stat-number" data-count="8">0</span>
-                                <span class="stat-label">+ مشروع</span>
+                                <span class="stat-number" data-count="3">0</span>
+                                <span class="stat-label">مشاريع معروضة</span>
                             </div>
 
                             <div class="stat glass">
-                                <span class="stat-number" data-count="20">0</span>
-                                <span class="stat-label">عميل راضٍ</span>
+                                <span class="stat-number">RTL</span>
+                                <span class="stat-label">دعم الواجهة العربية</span>
                             </div>
 
                             <div class="stat glass">
-                                <span class="stat-number" data-count="2">0</span>
-                                <span class="stat-label">سنوات خبرة</span>
+                                <span class="stat-number">Mobile</span>
+                                <span class="stat-label">تصميم متجاوب</span>
                             </div>
 
                         </div>
@@ -925,11 +928,7 @@
 
                         <!-- معلومات العميل -->
                         <div class="testimonial-author">
-                            <img
-                                src="assets/images/client1.jpg"
-                                alt="صورة العميل"
-                                loading="lazy"
-                            />
+                            <span class="testimonial-avatar-fallback" role="img" aria-label="الأحرف الأولى لحنان زناتي">حنان</span>
 
                             <div>
                                 <strong>حنان زناتي</strong>
@@ -1166,7 +1165,7 @@
                                 <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
                                     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                                 </svg>
-                                <span>Twitter </span>
+                                <span>X </span>
                             </a>
 
                             <a
@@ -1218,7 +1217,7 @@
         <div class="container footer-inner">
 
             <p>
-                © 2025 موقع من تصميم_ المصمم.𝖇𝖎𝖑𝖆𝖑
+                © 2026 موقع من تصميم المصمم بلال عشير
                 <a href="#hero">
                     # 𝕯𝖊𝖛 # |جميع الحقوق محفوظة ®
                 </a>

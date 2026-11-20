@@ -2950,3 +2950,15 @@ body.intro-open { overflow: hidden; }
     width: 100%;
     box-sizing: border-box;
 }
+
+
+/* Keep the entire welcome composition as one vertically centered group. */
+.loading-screen .loading-content {
+    display: grid;
+    grid-template-rows: auto auto auto;
+    align-content: center;
+    gap: clamp(24px, 4.5vh, 48px);
+}
+.loading-screen .loading-centerpiece {
+    padding-block: 0;
+}

@@ -1,11 +1,11 @@
 {
-    "name": "بلال – بورتفوليو",
-    "short_name": "بورتفوليو",
-    "description": "مطور ومصمم مواقع احترافي",
-    "start_url": "/index.html",
+    "name": "بلال عشير — Portfolio",
+    "short_name": "Bilal Achir",
+    "description": "الموقع الشخصي لبلال عشير: تطوير الواجهات وتصميم تجربة المستخدم.",
+    "start_url": "./",
     "display": "standalone",
-    "background_color": "#0b0c10",
-    "theme_color": "#45a29e",
+    "background_color": "#f2f0e9",
+    "theme_color": "#f2f0e9",
     "icons": [
         {
             "src": "assets/icons/icon-192.png",
@@ -13,5 +13,6 @@
             "type": "image/png",
             "purpose": "any maskable"
         }
-    ]
+    ],
+    "scope": "./"
 }

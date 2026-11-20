@@ -4,14 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <meta name="description" content="بورتفوليو احترافي لمطور ومصمم مواقع – نعمل على تحويل أفكارك إلى تجارب رقمية استثنائية" />
-    <meta name="keywords" content="مطور مواقع, مصمم UI/UX, بورتفوليو, تصميم مواقع, تطوير واجهات, تجربة المستخدم" />
-    <meta name="author" content="بلال عشير" />
+    <meta name="description" content="الموقع الشخصي لبلال عشير؛ مطور واجهات أمامية ومصمم UI/UX. استكشف المشاريع والخدمات وتواصل مباشرة." />
+    <meta name="keywords" content="بلال عشير, Bilal Achir, تطوير الويب, Front-End, UI/UX, تصميم واجهات, مشاريع ويب" />
+    <meta name="author" content="بلال عشير | Bilal Achir" />
+    <meta name="theme-color" content="#f2f0e9" />
 
-    <meta property="og:title" content="بورتفوليو – تصميم وتطوير مواقع احترافية" />
-    <meta property="og:description" content="تصاميم فريدة وتجارب مستخدم ساحرة – فريق متخصص في إنشاء مواقع الجيل التالي" />
+    <meta property="og:title" content="بلال عشير | مطور واجهات ومصمم UI/UX" />
+    <meta property="og:description" content="استكشف أعمال بلال عشير في تصميم وتطوير واجهات الويب وتجارب المستخدم." />
     <meta property="og:image" content="assets/images/og-image.jpg" />
-    <meta property="og:url" content="https://portfolio-example.com" />
 
     <meta name="twitter:card" content="summary_large_image" />
 
@@ -20,7 +20,7 @@
     <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/icon-192.png" />
     <link rel="manifest" href="manifest.json" />
 
-    <title>بورتفيليو المصمم – UI/UX & Front-End Developer</title>
+    <title>بلال عشير | مطور واجهات أمامية ومصمم UI/UX</title>
 
     <script type="application/ld+json">
     {
@@ -28,7 +28,6 @@
         "@type": "Person",
         "name": "بلال عشير",
         "jobTitle": "مطور واجهات أمامية ومصمم تجربة مستخدم",
-        "url": "https://portfolio-example.com",
         "sameAs": [
             "https://github.com/Mywebsite-collab?tab=repositories",
             "https://www.linkedin.com/me?trk=p_mwlite_feed-secondary_nav",
@@ -50,26 +49,38 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
 
-    <link rel="stylesheet" href="assets/css/main.css?v=20261105-brand-typewriter" />
+    <link rel="stylesheet" href="assets/css/main.css?v=20261121-editorial-welcome" />
 </head>
 
 <body>
 
-    <div id="loading-screen" class="loading-screen" aria-hidden="true">
-        <div class="welcome-orbit" aria-hidden="true">
-            <span class="orbit-ring orbit-ring-one"></span>
-            <span class="orbit-ring orbit-ring-two"></span>
-            <span class="orbit-core"></span>
-            <span class="orbit-spark orbit-spark-one">✦</span>
-            <span class="orbit-spark orbit-spark-two">✧</span>
+    <div id="loading-screen" class="loading-screen" role="dialog" aria-modal="true" aria-labelledby="welcome-title">
+        <div class="welcome-frame">
+            <div class="welcome-topline">
+                <span>BA <i>/</i> PERSONAL PORTFOLIO</span>
+                <span>DESIGN &amp; DEVELOPMENT <i>—</i> 2026</span>
+            </div>
+            <main class="welcome-main">
+                <div class="welcome-index" aria-hidden="true">
+                    <span>01</span><span>VISUAL DESIGN</span><span>FRONT-END</span>
+                </div>
+                <div class="welcome-copy">
+                    <p class="welcome-eyebrow">ملف أعمال شخصي</p>
+                    <h1 id="welcome-title"><span>بلال</span> عشير<span class="welcome-period">.</span></h1>
+                    <p class="welcome-role">مطور واجهات أمامية <span>/</span> مصمم UI/UX</p>
+                    <div class="welcome-rule" aria-hidden="true"></div>
+                    <p class="welcome-caption">أحوّل الأفكار إلى مواقع واضحة وسهلة الاستخدام، مع اهتمام حقيقي بالتفاصيل والأداء.</p>
+                    <button class="welcome-enter" id="welcome-enter" type="button">
+                        <span>اكتشف أعمالي</span><span class="welcome-arrow" aria-hidden="true">↙</span>
+                    </button>
+                </div>
+                <div class="welcome-monogram" aria-hidden="true">BA</div>
+            </main>
+            <div class="welcome-footer">
+                <span>تصميم وتطوير بلال عشير</span>
+                <button id="welcome-skip" type="button">تخطي المقدمة <span aria-hidden="true">←</span></button>
+            </div>
         </div>
-        <div class="welcome-kicker" aria-hidden="true">A NEW DIGITAL EXPERIENCE</div>
-        <div class="loading-logo">⊹˚مرحباً بكم˚⊹</div>
-        <div class="welcome-caption" aria-hidden="true">نصنع لك تجربة مختلفة</div>
-        <div class="loading-progress">
-            <span></span>
-        </div>
-        <div class="welcome-status" aria-hidden="true"><span></span> جاري تجهيز التجربة</div>
     </div>
 
     <div class="cursor" id="cursor" aria-hidden="true"></div>
@@ -1067,7 +1078,7 @@
 
                 <div class="contact-grid">
 
-                    <form class="contact-form glass reveal" id="contactForm" novalidate>
+                    <form class="contact-form glass reveal" id="contactForm">
 
                         <div class="form-group">
                             <label for="name">الاسم</label>
@@ -1075,6 +1086,8 @@
                                 type="text"
                                 id="name"
                                 name="name"
+                                autocomplete="name"
+                                maxlength="100"
                                 required
                                 placeholder="اسمك الكريم"
                             />
@@ -1086,6 +1099,8 @@
                                 type="email"
                                 id="email"
                                 name="email"
+                                autocomplete="email"
+                                maxlength="160"
                                 required
                                 placeholder="you@example.com"
                             />
@@ -1096,6 +1111,7 @@
                             <textarea
                                 id="message"
                                 name="message"
+                                maxlength="5000"
                                 required
                                 rows="5"
                                 placeholder="صف فكرتك أو استفسارك..."
@@ -1107,7 +1123,7 @@
                             class="btn glass magnetic loading-btn"
                             id="submitBtn"
                         >
-                            <span>📨أرسل رسالة جميلة مثلك 🌺</span>
+                            <span>فتح البريد لإرسال الرسالة</span>
                             <div class="loading-spinner"></div>
                         </button>
 

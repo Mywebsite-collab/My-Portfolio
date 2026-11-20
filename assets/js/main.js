@@ -25,35 +25,33 @@
         };
     }
 
-    // ===== Loading Screen (مع حماية ضد العناصر المفقودة) =====
+    // ===== Editorial Welcome Screen =====
     const loading = document.getElementById('loading-screen');
-    const progressBar = loading ? loading.querySelector('.loading-progress span') : null;
-    if (loading && progressBar) {
-        document.body.style.overflow = 'hidden';
-        let progress = 0;
-        const loadingInterval = setInterval(() => {
-            progress += Math.floor(Math.random() * 15) + 5;
-            if (progress >= 100) {
-                progress = 100;
-                clearInterval(loadingInterval);
-                progressBar.style.width = '100%';
-                setTimeout(() => {
-                    loading.classList.add('hidden');
-                    document.body.style.overflow = '';
-                }, 300);
-            } else {
-                progressBar.style.width = progress + '%';
-            }
-        }, 200);
-        // أمان: إخفاء شاشة التحميل بعد 5 ثوانٍ في أي حال
-        setTimeout(() => {
-            if (loading && !loading.classList.contains('hidden')) {
-                loading.classList.add('hidden');
-                document.body.style.overflow = '';
-            }
-        }, 5000);
-    }
+    const welcomeEnter = document.getElementById('welcome-enter');
+    const welcomeSkip = document.getElementById('welcome-skip');
 
+    if (loading) {
+        let introClosed = false;
+        let introTimer = null;
+        const closeWelcome = () => {
+            if (introClosed) return;
+            introClosed = true;
+            if (introTimer) clearTimeout(introTimer);
+            loading.classList.add('hidden');
+            loading.setAttribute('aria-hidden', 'true');
+            document.body.classList.remove('intro-open');
+            window.setTimeout(() => {
+                if (loading.parentNode) loading.parentNode.removeChild(loading);
+            }, 650);
+        };
+        document.body.classList.add('intro-open');
+        if (welcomeEnter) welcomeEnter.addEventListener('click', closeWelcome);
+        if (welcomeSkip) welcomeSkip.addEventListener('click', closeWelcome);
+        introTimer = window.setTimeout(closeWelcome, 5200);
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            introTimer = window.setTimeout(closeWelcome, 1800);
+        }
+    }
 
     // ===== Hero headline: Arabic typewriter animation =====
     const typewriterTitle = document.querySelector('.typewriter-title');
@@ -206,43 +204,68 @@
 
     // حماية: تأكد أن projectsData معرّفة و أن الشبكة موجودة
     if (projectsGrid && typeof projectsData !== 'undefined') {
+        const escapeHTML = (value) => String(value == null ? '' : value).replace(/[&<>"']/g, (char) => ({
+            '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+        }[char]));
+
+        const safeProjectUrl = (value) => {
+            const url = String(value || '').trim();
+            const allowed = url.startsWith('https://') || url.startsWith('http://')
+                || url.startsWith('./') || url.startsWith('/') || url.startsWith('pages/')
+                || url.startsWith('assets/');
+            return allowed ? escapeHTML(url) : '#';
+        };
+
         function renderProjects(category) {
             category = category || 'all';
-            const filtered = category === 'all' ? projectsData : projectsData.filter(p => p.category === category);
-            projectsGrid.innerHTML = filtered.map(project => `
-                <div class="project-card glass" data-category="${project.category}">
-                    <img src="${project.image}" alt="${project.title}" loading="lazy">
-                    <div class="project-info">
-                        <h3>${project.title}</h3>
-                        <p>${project.description}</p>
-                        <div class="project-links">
-                            <a href="${project.live}" target="_blank" rel="noopener">عرض مباشر</a>
-                            <a href="${project.github}" target="_blank" rel="noopener">GitHub</a>
-                            <a href="${project.caseStudy}">دراسة حالة</a>
+            const filtered = category === 'all'
+                ? projectsData
+                : projectsData.filter((project) => project.category === category);
+
+            projectsGrid.innerHTML = filtered.map((project) => {
+                const title = escapeHTML(project.title);
+                const description = escapeHTML(project.description);
+                const image = safeProjectUrl(project.image);
+                const live = safeProjectUrl(project.live);
+                const github = safeProjectUrl(project.github);
+                const caseStudy = safeProjectUrl(project.caseStudy);
+                const projectCategory = escapeHTML(project.category);
+
+                return `
+                    <article class="project-card glass" data-category="${projectCategory}">
+                        <img src="${image}" alt="${title}" loading="lazy" decoding="async">
+                        <div class="project-info">
+                            <h3>${title}</h3>
+                            <p>${description}</p>
+                            <div class="project-links">
+                                <a href="${live}" target="_blank" rel="noopener noreferrer">عرض مباشر</a>
+                                <a href="${github}" target="_blank" rel="noopener noreferrer">GitHub</a>
+                                <a href="${caseStudy}">دراسة حالة</a>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            `).join('');
-            // حركة ظهور البطاقات عبر rAF (أداء سلس)
+                    </article>
+                `;
+            }).join('');
+
             requestAnimationFrame(() => {
-                document.querySelectorAll('.project-card').forEach(card => {
+                projectsGrid.querySelectorAll('.project-card').forEach((card) => {
                     card.style.opacity = '0';
-                    card.style.transform = 'translateY(30px)';
+                    card.style.transform = 'translateY(18px)';
                     requestAnimationFrame(() => {
-                        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                        card.style.transition = 'opacity 0.35s ease, transform 0.35s ease';
                         card.style.opacity = '1';
                         card.style.transform = 'translateY(0)';
                     });
                 });
             });
         }
-        renderProjects();
 
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                renderProjects(btn.dataset.filter);
+        renderProjects();
+        filterBtns.forEach((button) => {
+            button.addEventListener('click', () => {
+                filterBtns.forEach((item) => item.classList.remove('active'));
+                button.classList.add('active');
+                renderProjects(button.dataset.filter);
             });
         });
     }
@@ -312,39 +335,49 @@
         });
     });
 
-    // ===== Contact Form =====
+    // ===== Contact Form: open a real email composer =====
     const form = document.getElementById('contactForm');
     const toast = document.getElementById('toast');
     const submitBtn = document.getElementById('submitBtn');
 
     if (form && toast && submitBtn) {
-        function showToast(msg, type) {
-            toast.textContent = msg;
-            toast.className = 'toast ' + type;
-            setTimeout(() => { toast.className = 'toast'; }, 4000);
+        function showToast(message, type) {
+            toast.textContent = message;
+            toast.className = 'toast ' + (type || 'info');
         }
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
+
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            if (!form.reportValidity()) return;
+
             const name = document.getElementById('name').value.trim();
             const email = document.getElementById('email').value.trim();
             const message = document.getElementById('message').value.trim();
 
             if (!name || !email || !message) {
-                showToast('يرجى ملء جميع الحقول', 'error');
+                showToast('يرجى إكمال جميع الحقول قبل المتابعة.', 'error');
                 return;
             }
             if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-                showToast('يرجى إدخال بريد إلكتروني صحيح', 'error');
+                showToast('يرجى إدخال بريد إلكتروني صحيح.', 'error');
                 return;
             }
 
-            submitBtn.classList.add('loading');
-            submitBtn.disabled = true;
-            await new Promise(resolve => setTimeout(resolve, 2000));
-            submitBtn.classList.remove('loading');
-            submitBtn.disabled = false;
-            showToast('تم إرسال رسالتك بنجاح! سأتواصل معك قريباً.', 'success');
-            form.reset();
+            const subject = 'رسالة جديدة من الموقع الشخصي — ' + name;
+            const body = [
+                'الاسم: ' + name,
+                'البريد الإلكتروني: ' + email,
+                '',
+                'الرسالة:',
+                message
+            ].join('\n');
+
+            const mailto = 'mailto:achirbilal10@gmail.com?subject='
+                + encodeURIComponent(subject)
+                + '&body=' + encodeURIComponent(body);
+
+            showToast('سيتم فتح تطبيق البريد. راجع الرسالة ثم اضغط إرسال لإتمامها.', 'info');
+            window.location.href = mailto;
         });
     }
 

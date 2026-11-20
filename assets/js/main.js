@@ -34,6 +34,26 @@
         const progressBar = document.getElementById('loading-progress');
         const progressFill = document.getElementById('loading-progress-fill');
         const progressNumber = document.getElementById('loading-percent');
+        const welcomeText = document.getElementById('loading-typewriter');
+        let typewriterTimer = null;
+        if (welcomeText) {
+            const welcomePhrase = 'مرحباً بكم في موقعي';
+            const reduceTypeMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (reduceTypeMotion) {
+                welcomeText.textContent = welcomePhrase;
+            } else {
+                welcomeText.textContent = '';
+                let characterIndex = 0;
+                typewriterTimer = window.setInterval(() => {
+                    characterIndex += 1;
+                    welcomeText.textContent = welcomePhrase.slice(0, characterIndex);
+                    if (characterIndex >= welcomePhrase.length) {
+                        window.clearInterval(typewriterTimer);
+                        typewriterTimer = null;
+                    }
+                }, 105);
+            }
+        }
         let progress = 0;
         let loadingFinished = false;
         let progressTimer = null;
@@ -57,6 +77,7 @@
             if (loadingFinished) return;
             loadingFinished = true;
             if (progressTimer) window.clearInterval(progressTimer);
+            if (typewriterTimer) window.clearInterval(typewriterTimer);
             renderProgress(100);
 
             window.setTimeout(() => {

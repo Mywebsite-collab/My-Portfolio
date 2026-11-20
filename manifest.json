@@ -4,8 +4,8 @@
     "description": "الموقع الشخصي لبلال عشير: تطوير الواجهات وتصميم تجربة المستخدم.",
     "start_url": "./",
     "display": "standalone",
-    "background_color": "#0b0c10",
-    "theme_color": "#0b0c10",
+    "background_color": "#f2f0e9",
+    "theme_color": "#f2f0e9",
     "icons": [
         {
             "src": "assets/icons/icon-192.png",

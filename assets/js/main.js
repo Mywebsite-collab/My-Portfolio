@@ -25,32 +25,35 @@
         };
     }
 
-    // ===== Editorial Welcome Screen =====
-    const loading = document.getElementById('loading-screen');
-    const welcomeEnter = document.getElementById('welcome-enter');
-    const welcomeSkip = document.getElementById('welcome-skip');
+    // ===== Minimal page loading screen =====
+    const loadingScreen = document.getElementById('loading-screen');
 
-    if (loading) {
-        let introClosed = false;
-        let introTimer = null;
-        const closeWelcome = () => {
-            if (introClosed) return;
-            introClosed = true;
-            if (introTimer) clearTimeout(introTimer);
-            loading.classList.add('hidden');
-            loading.setAttribute('aria-hidden', 'true');
-            document.body.classList.remove('intro-open');
-            window.setTimeout(() => {
-                if (loading.parentNode) loading.parentNode.removeChild(loading);
-            }, 650);
-        };
+    if (loadingScreen) {
         document.body.classList.add('intro-open');
-        if (welcomeEnter) welcomeEnter.addEventListener('click', closeWelcome);
-        if (welcomeSkip) welcomeSkip.addEventListener('click', closeWelcome);
-        introTimer = window.setTimeout(closeWelcome, 5200);
-        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            introTimer = window.setTimeout(closeWelcome, 1800);
+        let loadingFinished = false;
+
+        const finishLoading = () => {
+            if (loadingFinished) return;
+            loadingFinished = true;
+            loadingScreen.classList.add('hidden');
+            loadingScreen.setAttribute('aria-hidden', 'true');
+            document.body.classList.remove('intro-open');
+
+            window.setTimeout(() => {
+                loadingScreen.remove();
+            }, 500);
+        };
+
+        // Wait for the page assets, but never leave the loader stuck.
+        if (document.readyState === 'complete') {
+            window.setTimeout(finishLoading, 350);
+        } else {
+            window.addEventListener('load', () => {
+                window.setTimeout(finishLoading, 350);
+            }, { once: true });
         }
+
+        window.setTimeout(finishLoading, 4500);
     }
 
     // ===== Hero headline: Arabic typewriter animation =====

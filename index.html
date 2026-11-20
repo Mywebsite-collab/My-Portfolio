@@ -57,9 +57,19 @@
     <div id="loading-screen" class="loading-screen" role="status" aria-live="polite" aria-label="جاري تحميل الموقع">
         <div class="loading-content">
             <div class="loading-mark" aria-hidden="true">B<span>.</span></div>
-            <div class="loading-spinner" aria-hidden="true"></div>
+            <p class="loading-kicker">DIGITAL EXPERIENCE <span>—</span> 2026</p>
             <p class="loading-label">جاري تجهيز التجربة</p>
-            <span class="loading-subtitle">BILAL ACHIR · PORTFOLIO</span>
+            <div class="loading-progress-meta">
+                <span class="loading-progress-caption">LOADING EXPERIENCE</span>
+                <span class="loading-percent" id="loading-percent">00%</span>
+            </div>
+            <div class="loading-progress" id="loading-progress" role="progressbar" aria-label="تقدم تحميل الموقع" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                <span id="loading-progress-fill"></span>
+            </div>
+            <div class="loading-footer">
+                <span class="loading-subtitle">BILAL ACHIR · PORTFOLIO</span>
+                <span class="loading-index">BA / 001</span>
+            </div>
         </div>
     </div>
 

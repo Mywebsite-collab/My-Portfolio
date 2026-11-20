@@ -25,7 +25,7 @@
         };
     }
 
-    // ===== Editorial loading progress =====
+    // ===== Portfolio hacker-style entry sequence =====
     const loadingScreen = document.getElementById('loading-screen');
 
     if (loadingScreen) {
@@ -33,72 +33,70 @@
 
         const progressBar = document.getElementById('loading-progress');
         const progressFill = document.getElementById('loading-progress-fill');
-        const progressNumber = document.getElementById('loading-percent');
         const welcomeText = document.getElementById('loading-typewriter');
-        let typewriterTimer = null;
-        if (welcomeText) {
-            const welcomePhrase = 'مرحباً بكم في موقعي';
-            const reduceTypeMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-            if (reduceTypeMotion) {
-                welcomeText.textContent = welcomePhrase;
-            } else {
-                welcomeText.textContent = '';
-                let characterIndex = 0;
-                typewriterTimer = window.setInterval(() => {
-                    characterIndex += 1;
-                    welcomeText.textContent = welcomePhrase.slice(0, characterIndex);
-                    if (characterIndex >= welcomePhrase.length) {
-                        window.clearInterval(typewriterTimer);
-                        typewriterTimer = null;
-                    }
-                }, 105);
-            }
-        }
-        let progress = 0;
-        let loadingFinished = false;
-        let progressTimer = null;
+        const resourceLine = document.getElementById('loading-resource');
+        const registerLine = document.getElementById('loading-register');
+        const confirmLine = document.getElementById('loading-confirm');
 
-        const renderProgress = (value) => {
-            progress = Math.max(progress, Math.min(100, Math.round(value)));
-            if (progressFill) progressFill.style.width = progress + '%';
-            if (progressNumber) progressNumber.textContent = String(progress).padStart(2, '0') + '%';
-            if (progressBar) progressBar.setAttribute('aria-valuenow', String(progress));
+        const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const reveal = (element, active = false) => {
+            if (!element) return;
+            element.classList.add('is-visible');
+            if (active) element.classList.add('is-active');
         };
 
-        // A restrained simulated ramp while browser assets are loading.
+        if (welcomeText && !reduceMotion) {
+            const phrase = 'مرحبا بكم في موقعي الشخصي';
+            welcomeText.textContent = '';
+            let index = 0;
+            const typingTimer = window.setInterval(() => {
+                index += 1;
+                welcomeText.textContent = phrase.slice(0, index);
+                if (index >= phrase.length) window.clearInterval(typingTimer);
+            }, 95);
+        }
+
+        reveal(resourceLine, true);
+        window.setTimeout(() => {
+            reveal(registerLine, true);
+            if (resourceLine) resourceLine.classList.remove('is-active');
+        }, reduceMotion ? 0 : 950);
+
+        let progress = 0;
+        let finished = false;
         const startedAt = Date.now();
-        progressTimer = window.setInterval(() => {
+        const progressTimer = window.setInterval(() => {
             const elapsed = Date.now() - startedAt;
-            const estimated = Math.min(94, 8 + (1 - Math.exp(-elapsed / 1350)) * 88);
-            renderProgress(estimated);
+            progress = Math.min(92, 10 + (1 - Math.exp(-elapsed / 1800)) * 86);
+            if (progressFill) progressFill.style.width = progress + '%';
+            if (progressBar) progressBar.setAttribute('aria-valuenow', String(Math.round(progress)));
         }, 70);
 
         const finishLoading = () => {
-            if (loadingFinished) return;
-            loadingFinished = true;
-            if (progressTimer) window.clearInterval(progressTimer);
-            if (typewriterTimer) window.clearInterval(typewriterTimer);
-            renderProgress(100);
+            if (finished) return;
+            finished = true;
+            window.clearInterval(progressTimer);
+            if (progressFill) progressFill.style.width = '100%';
+            if (progressBar) progressBar.setAttribute('aria-valuenow', '100');
+            if (registerLine) registerLine.classList.remove('is-active');
+            reveal(confirmLine, true);
 
             window.setTimeout(() => {
                 loadingScreen.classList.add('hidden');
                 loadingScreen.setAttribute('aria-hidden', 'true');
                 document.body.classList.remove('intro-open');
-
-                window.setTimeout(() => {
-                    loadingScreen.remove();
-                }, 500);
-            }, 220);
+                window.setTimeout(() => loadingScreen.remove(), 600);
+            }, 850);
         };
 
-        // Complete only when the page load event fires; keep a safety fallback.
         if (document.readyState === 'complete') {
-            window.setTimeout(finishLoading, 260);
+            window.setTimeout(finishLoading, 1600);
         } else {
-            window.addEventListener('load', finishLoading, { once: true });
+            window.addEventListener('load', () => {
+                window.setTimeout(finishLoading, 350);
+            }, { once: true });
         }
-
-        window.setTimeout(finishLoading, 4500);
+        window.setTimeout(finishLoading, 6000);
     }
 
     // ===== Hero headline: Arabic typewriter animation =====

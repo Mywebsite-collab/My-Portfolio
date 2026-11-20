@@ -2938,3 +2938,15 @@ body.intro-open { overflow: hidden; }
         min-height: calc(100svh - 64px);
     }
 }
+
+
+/* Final viewport centering: let the full-screen shell give its content the entire available height. */
+.loading-screen {
+    display: flex;
+    flex-direction: column;
+}
+.loading-screen .loading-content {
+    flex: 1 1 auto;
+    width: 100%;
+    box-sizing: border-box;
+}

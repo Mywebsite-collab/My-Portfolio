@@ -25,32 +25,56 @@
         };
     }
 
-    // ===== Minimal page loading screen =====
+    // ===== Editorial loading progress =====
     const loadingScreen = document.getElementById('loading-screen');
 
     if (loadingScreen) {
         document.body.classList.add('intro-open');
+
+        const progressBar = document.getElementById('loading-progress');
+        const progressFill = document.getElementById('loading-progress-fill');
+        const progressNumber = document.getElementById('loading-percent');
+        let progress = 0;
         let loadingFinished = false;
+        let progressTimer = null;
+
+        const renderProgress = (value) => {
+            progress = Math.max(progress, Math.min(100, Math.round(value)));
+            if (progressFill) progressFill.style.width = progress + '%';
+            if (progressNumber) progressNumber.textContent = String(progress).padStart(2, '0') + '%';
+            if (progressBar) progressBar.setAttribute('aria-valuenow', String(progress));
+        };
+
+        // A restrained simulated ramp while browser assets are loading.
+        const startedAt = Date.now();
+        progressTimer = window.setInterval(() => {
+            const elapsed = Date.now() - startedAt;
+            const estimated = Math.min(94, 8 + (1 - Math.exp(-elapsed / 1350)) * 88);
+            renderProgress(estimated);
+        }, 70);
 
         const finishLoading = () => {
             if (loadingFinished) return;
             loadingFinished = true;
-            loadingScreen.classList.add('hidden');
-            loadingScreen.setAttribute('aria-hidden', 'true');
-            document.body.classList.remove('intro-open');
+            if (progressTimer) window.clearInterval(progressTimer);
+            renderProgress(100);
 
             window.setTimeout(() => {
-                loadingScreen.remove();
-            }, 500);
+                loadingScreen.classList.add('hidden');
+                loadingScreen.setAttribute('aria-hidden', 'true');
+                document.body.classList.remove('intro-open');
+
+                window.setTimeout(() => {
+                    loadingScreen.remove();
+                }, 500);
+            }, 220);
         };
 
-        // Wait for the page assets, but never leave the loader stuck.
+        // Complete only when the page load event fires; keep a safety fallback.
         if (document.readyState === 'complete') {
-            window.setTimeout(finishLoading, 350);
+            window.setTimeout(finishLoading, 260);
         } else {
-            window.addEventListener('load', () => {
-                window.setTimeout(finishLoading, 350);
-            }, { once: true });
+            window.addEventListener('load', finishLoading, { once: true });
         }
 
         window.setTimeout(finishLoading, 4500);

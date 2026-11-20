@@ -90,10 +90,10 @@
         };
 
         if (document.readyState === 'complete') {
-            window.setTimeout(finishLoading, 1600);
+            window.setTimeout(finishLoading, 1700);
         } else {
             window.addEventListener('load', () => {
-                window.setTimeout(finishLoading, 350);
+                window.setTimeout(finishLoading, 1450);
             }, { once: true });
         }
         window.setTimeout(finishLoading, 6000);

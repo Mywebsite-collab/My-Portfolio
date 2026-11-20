@@ -3026,3 +3026,109 @@ body { cursor: auto !important; }
     }
     html { scroll-behavior: auto !important; }
 }
+
+
+/* =========================================================
+   Welcome screen refinement — personal editorial direction
+   ========================================================= */
+.welcome-frame {
+    width: min(1160px, 100%);
+    min-height: min(700px, calc(100svh - 40px));
+    padding: clamp(22px, 4.2vw, 54px);
+    border-color: rgba(39, 55, 46, .18);
+    box-shadow: 0 28px 90px rgba(21, 31, 25, .10);
+}
+.welcome-topline {
+    font-size: 9px;
+    letter-spacing: .13em;
+}
+.welcome-main {
+    grid-template-columns: 76px minmax(0, 1fr) minmax(190px, 270px);
+    gap: clamp(24px, 4vw, 64px);
+}
+.welcome-copy h1 {
+    font-size: clamp(58px, 8.8vw, 108px);
+    letter-spacing: -.045em;
+}
+.welcome-portrait {
+    position: relative;
+    width: min(100%, 258px);
+    aspect-ratio: 4 / 5;
+    justify-self: center;
+    align-self: center;
+    margin: 0;
+    padding: 8px;
+    border: 1px solid rgba(45, 61, 51, .22);
+    background: #ebe9e1;
+    transform: rotate(-1.2deg);
+}
+.welcome-portrait::before {
+    content: "";
+    position: absolute;
+    inset: 14px -7px -7px 14px;
+    z-index: -1;
+    border: 1px solid rgba(166, 119, 83, .45);
+}
+.welcome-portrait img {
+    display: block;
+    width: 100%;
+    height: calc(100% - 25px);
+    object-fit: cover;
+    object-position: center 28%;
+    background: #deded5;
+}
+.welcome-portrait figcaption {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    height: 25px;
+    color: #536258;
+    font: 700 8px/1 var(--font-en);
+    letter-spacing: .13em;
+}
+.welcome-portrait figcaption span { color: #a87858; }
+.welcome-footer { color: #657168; }
+.welcome-enter { min-width: 174px; justify-content: space-between; }
+@media (max-width: 700px) {
+    .welcome-frame {
+        min-height: calc(100svh - 24px);
+        padding: 20px 18px;
+    }
+    .welcome-topline { font-size: 8px; letter-spacing: .08em; }
+    .welcome-main {
+        grid-template-columns: minmax(0, 1fr) clamp(88px, 25vw, 124px);
+        align-content: center;
+        align-items: center;
+        gap: 14px;
+        padding: 28px 0;
+    }
+    .welcome-index { grid-column: 1 / -1; }
+    .welcome-copy { grid-column: 1; grid-row: 2; }
+    .welcome-copy h1 { font-size: clamp(46px, 12vw, 66px); line-height: 1.12; }
+    .welcome-role { margin-top: 14px; font-size: 13px; line-height: 1.8; }
+    .welcome-rule { width: 38px; margin: 17px 0 10px; }
+    .welcome-caption { font-size: 12px; line-height: 1.8; }
+    .welcome-enter { min-width: 0; min-height: 46px; gap: 14px; margin-top: 18px; padding-inline: 13px; font-size: 12px; }
+    .welcome-portrait {
+        grid-column: 2;
+        grid-row: 2;
+        width: 100%;
+        padding: 5px;
+        align-self: center;
+        transform: rotate(1deg);
+    }
+    .welcome-portrait::before { inset: 10px -5px -5px 10px; }
+    .welcome-portrait figcaption { gap: 3px; font-size: 6px; letter-spacing: .05em; }
+    .welcome-footer { gap: 8px; font-size: 9px; }
+    .welcome-footer button { font-size: 11px; white-space: nowrap; }
+}
+@media (max-width: 360px) {
+    .welcome-topline span:last-child { display: none; }
+    .welcome-main { grid-template-columns: minmax(0, 1fr) 82px; gap: 10px; }
+    .welcome-copy h1 { font-size: 44px; }
+    .welcome-caption { font-size: 11px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .welcome-portrait { transform: none; }
+}

@@ -6,7 +6,7 @@
     // ===== أدوات مساعدة للأداء (60fps) =====
     // Throttle: يحد من تكرار التنفيذ للوظائف المرتبطة بالـ scroll
     function throttle(fn, limit) {
-        let inThrottle = false, lastArgs = null, rafScheduled = false;
+        let inThrottle = false, lastArgs = null;
         return function() {
             const ctx = this, args = arguments;
             if (inThrottle) {
@@ -32,25 +32,46 @@
 
     if (loading) {
         let introClosed = false;
+        const reduceIntroMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         let introTimer = null;
         const closeWelcome = () => {
             if (introClosed) return;
             introClosed = true;
-            if (introTimer) clearTimeout(introTimer);
+            if (introTimer) window.clearTimeout(introTimer);
             loading.classList.add('hidden');
             loading.setAttribute('aria-hidden', 'true');
             document.body.classList.remove('intro-open');
+            window.dispatchEvent(new Event('portfolio:intro-closed'));
             window.setTimeout(() => {
                 if (loading.parentNode) loading.parentNode.removeChild(loading);
+                const firstAction = document.querySelector('.hero-actions a');
+                if (firstAction) firstAction.focus({ preventScroll: true });
             }, 650);
         };
         document.body.classList.add('intro-open');
         if (welcomeEnter) welcomeEnter.addEventListener('click', closeWelcome);
         if (welcomeSkip) welcomeSkip.addEventListener('click', closeWelcome);
-        introTimer = window.setTimeout(closeWelcome, 5200);
-        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            introTimer = window.setTimeout(closeWelcome, 1800);
-        }
+        if (welcomeEnter) window.requestAnimationFrame(() => welcomeEnter.focus({ preventScroll: true }));
+        loading.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                event.preventDefault();
+                closeWelcome();
+                return;
+            }
+            if (event.key !== 'Tab') return;
+            const focusable = [welcomeEnter, welcomeSkip].filter(Boolean);
+            if (focusable.length < 2) return;
+            const first = focusable[0];
+            const last = focusable[focusable.length - 1];
+            if (event.shiftKey && document.activeElement === first) {
+                event.preventDefault();
+                last.focus();
+            } else if (!event.shiftKey && document.activeElement === last) {
+                event.preventDefault();
+                first.focus();
+            }
+        });
+        introTimer = window.setTimeout(closeWelcome, reduceIntroMotion ? 1200 : 6800);
     }
 
     // ===== Hero headline: Arabic typewriter animation =====
@@ -385,6 +406,7 @@
     const canvas = document.getElementById('particles-canvas');
     if (canvas && canvas.getContext) {
         const ctx = canvas.getContext('2d');
+        const reduceParticleMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         let particles = [];
         let animationId = null;
 
@@ -419,7 +441,8 @@
         }
 
         function initParticles() {
-            const count = Math.min(100, Math.floor(canvas.width * canvas.height / 9000));
+            const particleLimit = window.matchMedia && window.matchMedia('(max-width: 768px)').matches ? 36 : 70;
+            const count = Math.min(particleLimit, Math.floor(canvas.width * canvas.height / 11000));
             particles = [];
             for (let i = 0; i < count; i++) particles.push(new Particle());
         }
@@ -432,8 +455,11 @@
             const heroObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     isHeroVisible = entry.isIntersecting;
-                    if (isHeroVisible && !animationId) animateParticles();
-                    else if (!isHeroVisible && animationId) { cancelAnimationFrame(animationId); animationId = null; }
+                    if (isHeroVisible && !document.hidden && !reduceParticleMotion && !animationId) animateParticles();
+                    else if ((!isHeroVisible || document.hidden || reduceParticleMotion) && animationId) {
+                        cancelAnimationFrame(animationId);
+                        animationId = null;
+                    }
                 });
             }, { threshold: 0 });
             heroObserver.observe(heroSection);
@@ -461,9 +487,19 @@
                     }
                 }
             }
-            if (isHeroVisible) animationId = requestAnimationFrame(animateParticles);
+            if (isHeroVisible && !document.hidden && !reduceParticleMotion) {
+                animationId = requestAnimationFrame(animateParticles);
+            }
         }
-        animateParticles();
+        if (!reduceParticleMotion) animateParticles();
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden && animationId) {
+                cancelAnimationFrame(animationId);
+                animationId = null;
+            } else if (!document.hidden && isHeroVisible && !reduceParticleMotion && !animationId) {
+                animateParticles();
+            }
+        });
 
         // إعادة التحجيم بـ throttle
         const onResize = throttle(() => {
@@ -490,6 +526,7 @@
         let currentPage = 0;
         const totalPages = pageEls.length;
         let isAnimating = false;
+        let hasUserInteracted = false;
 
         if (totalPagesEl) totalPagesEl.textContent = '/ ' + totalPages;
 
@@ -551,12 +588,14 @@
         if (nextBtn) {
             nextBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
+                hasUserInteracted = true;
                 flipPage(1);
             });
         }
         if (prevBtn) {
             prevBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
+                hasUserInteracted = true;
                 flipPage(-1);
             });
         }
@@ -575,6 +614,7 @@
             if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
             if (!isBookInView()) return;
             e.preventDefault();
+            hasUserInteracted = true;
             if (e.key === 'ArrowLeft') flipPage(1);
             else flipPage(-1);
         });
@@ -583,7 +623,7 @@
         let startX = 0, isDragging = false;
 
         if (bookContainer) {
-            const handleStart = (clientX) => { startX = clientX; isDragging = true; };
+            const handleStart = (clientX) => { startX = clientX; isDragging = true; hasUserInteracted = true; };
             const handleMove = (clientX) => {
                 if (!isDragging) return;
                 const deltaX = clientX - startX;
@@ -630,6 +670,7 @@
         // النقر على الصفحة للتنقل
         pageEls.forEach((page, index) => {
             page.addEventListener('click', (e) => {
+                hasUserInteracted = true;
                 if (e.target.closest('a') || e.target.closest('.btn-preview') || e.target.closest('.btn-details')) return;
                 if (!page.classList.contains('flipped')) {
                     if (currentPage <= index) flipPage(1);
@@ -641,10 +682,20 @@
 
         updateUI();
 
-        // فتح الصفحة الأولى تلقائياً بعد 1.5 ثانية
-        setTimeout(() => {
-            if (totalPages > 1) flipPage(1);
-        }, 1500);
+        // معاينة هادئة للكتاب بعد إغلاق المقدمة، ثم العودة تلقائياً إذا لم يتفاعل الزائر.
+        const startBookPreview = () => {
+            window.setTimeout(() => {
+                if (!hasUserInteracted && currentPage === 0 && totalPages > 1) flipPage(1);
+            }, 900);
+            window.setTimeout(() => {
+                if (!hasUserInteracted && currentPage === 1) flipPage(-1);
+            }, 6100);
+        };
+        if (document.getElementById('loading-screen')) {
+            window.addEventListener('portfolio:intro-closed', startBookPreview, { once: true });
+        } else {
+            startBookPreview();
+        }
 
         // منع تحديد النص أثناء السحب
         document.addEventListener('selectstart', (e) => {

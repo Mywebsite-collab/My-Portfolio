@@ -1,9 +1,11 @@
+
 // assets/js/data.js
-// بيانات المشاريع و الشهادات و المدونة - يمكن تعديلها حسب المحتوى الحقيقي
+// بيانات المشاريع والشهادات والمدونة
+
 const projectsData = [
     {
         id: 1,
-        title: 'منصة شخصية ',
+        title: 'منصة شخصية',
         category: 'full',
         image: 'pages/photos/هوية.jpg',
         description: 'تصميم وتطوير كامل لمنصة بتجربة مستخدم استثنائية ومؤثرات بصرية.',
@@ -30,9 +32,8 @@ const projectsData = [
         live: 'https://mywebsite-collab.github.io/HANANWebLauxary.dz/',
         github: 'https://github.com/Mywebsite-collab/HANANWebLauxary.dz',
         caseStudy: 'pages/project-3.html'
-    }
-];
-{
+    },
+    {
         id: 4,
         title: 'تطبيق هاتف مخصص في تحويل 🖼صورة عادية لنموذج ثلاثي الأبعاد',
         category: '𝗮𝗽𝗽 ᎠᎬᏉᏝᎾᏢᎬᏒ',
@@ -43,5 +44,3 @@ const projectsData = [
         caseStudy: 'pages/project-4.html'
     }
 ];
-
-{

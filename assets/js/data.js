@@ -36,11 +36,11 @@ const projectsData = [
     {
         id: 4,
         title: 'تطبيق هاتف مخصص في تحويل 🖼صورة عادية لنموذج ثلاثي الأبعاد',
-        category: '𝗮𝗽𝗽 ᎠᎬᏉᏝᎾᏢᎬᏒ',
+        category: '𝗔𝗣𝗣-ᎠᎬᏉᏝᎾᏢᎬᏒ',
         image: 'assets/images/project4.jpg',
         description: 'تطبيق كامل متكامل يعمل بنظام 𝐀𝐏𝐈 𝐊𝐄𝐘 معقد نظام مخصص لإنشاء نماذج 🅶🅻🅱.',
-        live: 'https://mywebsite-collab.github.io/HANANWebLauxary.dz/',
-        github: 'https://github.com/Mywebsite-collab/HANANWebLauxary.dz',
+        live: 'https://achirbilal27-wq.github.io/My-app-link/photoforge-app-interface-.html',
+        github: 'https://achirbilal27-wq.github.io/My-app-link/',
         caseStudy: 'pages/project-4.html'
     }
 ];

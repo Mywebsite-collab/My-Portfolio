@@ -1,39 +1,16 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Checkout | الدفع</title>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#08110f">
+<title>ACHIR STUDIO — تفاصيل العرض</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0;font-family:'Cairo',sans-serif}
-body{background:linear-gradient(135deg,#eef4ff,#f7f9fc);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
-.container{width:100%;max-width:480px}.card{background:#fff;border-radius:18px;padding:22px;box-shadow:0 20px 40px rgba(0,0,0,.08)}
-.header{text-align:center;margin-bottom:18px}.header h1{font-size:22px;color:#1e3a8a}.header p{font-size:13px;color:#666;margin-top:6px}
-.badge{display:inline-block;background:#e8f0ff;color:#1e3a8a;padding:5px 10px;border-radius:20px;font-size:12px;margin-bottom:10px}
-.btn{width:100%;border:none;padding:12px;border-radius:12px;margin-top:12px;font-size:15px;font-weight:600;cursor:pointer;transition:.2s}.btn:hover{transform:translateY(-2px)}
-.primary{background:#2563eb;color:#fff}.whatsapp{background:#25D366;color:#fff;text-decoration:none;display:block;text-align:center}
-.note{font-size:12px;color:#777;margin-top:12px;text-align:center}
-.ticket{position:relative;border:2px dashed #2563eb;padding:15px;border-radius:15px;background:#f8fbff}.ticket h3{margin-bottom:10px}.ticket p{margin:8px 0;color:#333}
-.ticket::before{content:"✂";position:absolute;top:-12px;right:10px;font-size:18px}.ticket::after{content:"✂";position:absolute;bottom:-12px;left:10px;font-size:18px}
-</style>
-</head>
-<body>
-<div class="container"><div class="card">
-<div class="header"><div class="badge">🛡 نظام الدفع الآمن</div><h1>💳 إتمام عملية الدفع</h1><p>ادفع عبر CCP أو BaridiMob ثم أكد 🛎 طلبك 🛒</p></div>
-<div class="ticket"><h3>🎟 معلومات الدفع</h3>
-<p><b>👤 الاسم:</b> ACHIR BILAL</p><p><b>💳 RIP:</b> 00799999004057961256</p><p><b>📠 CCP:</b> 0040579612 (Clé 56)</p><hr><p><b>🪪 يرجى التحويل إلى:</b></p><p><b>💳 RIP:</b> 00799999004057961256</p><hr>
-<p style="color:#d32f2f;font-weight:bold;font-size:18px">📲 المبلغ المطلوب: 💵 𝟭𝟱𝟬 دج </p><p style="color:#555">📥 لتحميل التطبيق 🪦</p></div>
-<button class="btn primary" onclick="copyData()">🖨 نسخ معلومات الدفع</button>
-<a class="btn whatsapp" href="https://wa.me/213795619382?text=مرحبا، أريد الاستفسار عن طلب التطبيق">📩 التواصل بخصوص الطلب</a>
-<p class="note">يرجى عدم إرسال معلومات مالية حساسة عبر الرسائل.</p>
-</div></div>
-<script>
-function copyData(){
- const data="الاسم: ACHIR BILAL\nRIP: 00799999004057961256\nCCP: 0040579612 (Clé 56)\nالمبلغ المطلوب: 150ألف";
- if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(data).then(()=>alert("تم نسخ معلومات الدفع"));}
- else{const area=document.createElement("textarea");area.value=data;document.body.appendChild(area);area.select();document.execCommand("copy");area.remove();alert("تم نسخ معلومات الدفع");}
-}
-</script></body></html>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+:root{--bg:#080f0d;--surface:#101a17;--surface2:#15221e;--ink:#f2f5f0;--muted:#9baaa3;--gold:#d6b46b;--goldlight:#f3dfaa;--line:rgba(255,255,255,.09);--green:#b8d5c4}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:'IBM Plex Sans Arabic',sans-serif;overflow-x:hidden}.ambient{position:fixed;inset:0;pointer-events:none;background:radial-gradient(ellipse at 80% -10%,rgba(184,213,196,.12),transparent 45%),radial-gradient(ellipse at 10% 75%,rgba(214,180,107,.07),transparent 35%);z-index:-1}.wrap{width:min(1100px,100%);margin:auto;padding:26px 24px 60px}.nav{display:flex;justify-content:space-between;align-items:center;padding:12px 0 38px}.brand{direction:ltr;display:flex;align-items:center;gap:12px;font-family:Manrope,sans-serif;font-weight:800;letter-spacing:2px}.brandmark{width:40px;height:40px;border:1px solid rgba(214,180,107,.45);border-radius:12px;display:grid;place-items:center;color:var(--goldlight);font-size:18px}.brand small{display:block;color:var(--muted);letter-spacing:1.5px;font-size:10px;font-weight:500;margin-top:4px}.navbadge{border:1px solid var(--line);border-radius:30px;padding:9px 14px;color:var(--muted);font-size:12px}.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:stretch}.hero-copy{padding:42px 0 36px}.kicker{color:var(--gold);font-size:13px;letter-spacing:.5px;display:flex;align-items:center;gap:10px}.kicker:before{content:'';width:26px;height:1px;background:var(--gold)}h1{font-size:clamp(34px,5.5vw,64px);line-height:1.25;letter-spacing:-1px;margin:24px 0 18px;font-weight:700}h1 span{color:var(--goldlight)}.lead{font-size:16px;color:#bac7c0;line-height:2;max-width:560px}.hero-visual{min-height:340px;border:1px solid rgba(214,180,107,.2);border-radius:28px;background:linear-gradient(145deg,#182722,#0c1512 75%);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:26px}.orb{position:absolute;width:280px;height:280px;border-radius:50%;border:1px solid rgba(214,180,107,.13);box-shadow:0 0 0 38px rgba(214,180,107,.025),0 0 0 76px rgba(214,180,107,.018)}.hero-symbol{font:800 110px Manrope;color:rgba(243,223,170,.16);position:relative;z-index:1}.visual-caption{position:absolute;bottom:24px;right:24px;left:24px;display:flex;justify-content:space-between;color:#9aa9a1;font-size:12px;direction:ltr}.visual-caption strong{color:var(--goldlight)}.price-card{margin-top:25px;padding:28px;border-radius:22px;background:linear-gradient(120deg,rgba(214,180,107,.13),rgba(214,180,107,.04));border:1px solid rgba(214,180,107,.28);display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}.price-label{font-size:13px;color:#c1c9c3}.price{direction:ltr;font:800 clamp(30px,6vw,45px) Manrope;color:var(--goldlight);margin-top:8px}.price span{font-size:15px;font-family:'IBM Plex Sans Arabic';font-weight:500}.price-side{text-align:left}.amountwords{color:var(--muted);font-size:13px;margin-top:9px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:26px}.panel{border:1px solid var(--line);background:linear-gradient(145deg,rgba(20,31,27,.95),rgba(12,20,17,.95));border-radius:22px;padding:26px}.panel h2{font-size:20px;margin:0 0 22px}.info{display:flex;align-items:center;gap:15px;padding:15px 0;border-bottom:1px solid var(--line)}.info:last-child{border:0;padding-bottom:0}.icon{width:42px;height:42px;display:grid;place-items:center;border-radius:14px;background:rgba(214,180,107,.09);color:var(--goldlight);font-size:18px;flex:none}.info-label{font-size:12px;color:var(--muted);margin-bottom:4px}.info-value{font-size:15px;font-weight:600}.pill{display:inline-flex;padding:6px 10px;border-radius:20px;border:1px solid rgba(184,213,196,.18);background:rgba(184,213,196,.05);color:#c3d8cb;font-size:11px;margin-bottom:16px}.note{line-height:1.9;color:var(--muted);font-size:13px;padding:16px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.025)}.foot{margin-top:28px;border-top:1px solid var(--line);padding:24px 4px;display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;color:#718078;font:11px Manrope;letter-spacing:1.2px}.foot strong{color:var(--goldlight)}@media(max-width:760px){.wrap{padding:16px 16px 40px}.nav{padding-bottom:24px}.hero{grid-template-columns:1fr}.hero-copy{padding:24px 0 5px}.hero-visual{min-height:230px}.hero-symbol{font-size:80px}.grid{grid-template-columns:1fr}.price-card{padding:22px}.price-side{text-align:right;width:100%}.price{font-size:36px}.navbadge{font-size:11px}}
+</style></head>
+<body><div class="ambient"></div><main class="wrap">
+<nav class="nav"><div class="brand"><div class="brandmark">B.</div><div>ACHIR / STUDIO<small>DESIGN · DIGITAL</small></div></div><div class="navbadge">تفاصيل العرض</div></nav>
+<section class="hero"><div class="hero-copy"><div class="kicker">عرض خاص · 2026</div><h1>تفاصيل واضحة.<br><span>تجربة احترافية.</span></h1><p class="lead">عرض مصمم بعناية لتقديم المعلومات الأساسية في مساحة أنيقة، منظمة، وسهلة القراءة على الهاتف والحاسوب.</p></div><div class="hero-visual"><div class="orb"></div><div class="hero-symbol">B.</div><div class="visual-caption"><span>ACHIR STUDIO</span><strong>EST. 2026</strong></div></div></section>
+<section class="price-card"><div><div class="price-label">المبلغ المحدد في العرض</div><div class="amountwords">مائة وخمسون ألف دينار جزائري</div></div><div class="price-side"><div class="price">150,000 <span>دج</span></div></div></section>
+<section class="grid"><article class="panel"><span class="pill">بيانات العرض</span><h2>المعلومات الأساسية</h2><div class="info"><div class="icon">✦</div><div><div class="info-label">صاحب العرض</div><div class="info-value">ACHIR BILAL</div></div></div><div class="info"><div class="icon">▤</div><div><div class="info-label">مرجع العرض</div><div class="info-value" dir="ltr">ACHIR / 2026</div></div></div><div class="info"><div class="icon">◈</div><div><div class="info-label">القيمة</div><div class="info-value" dir="ltr">150,00 DZD</div></div></div></article>
+<article class="panel"><span class="pill">ملاحظة</span><h2>قبل أي إجراء</h2><p class="note">هذه واجهة تصميم توضيحية لبنود الدفع، وليست بوابة دفع أو تأكيدًا لعملية مالية. يجب أن تكون تفاصيل الخدمة أو المنتج، وشروط الاتفاق متوافقة مع إتفاقية الزبون، وأي وسيلة دفع واضحة ومتحققًا منها قبل اتخاذ القرار.</p></article></section>
+<footer class="foot"><span>DESIGNED WITH DETAIL</span><strong>BILAL ACHIR</strong><span>ACHIR / STUDIO</span></footer></main></body></html>

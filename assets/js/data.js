@@ -39,7 +39,7 @@ const projectsData = [
         category: 'app',
         image: 'assets/images/appproject4.jpg',
         description: 'تطبيق كامل متكامل يعمل بنظام 𝐀𝐏𝐈 𝐊𝐄𝐘 معقد نظام مخصص لإنشاء نماذج 🅶🅻🅱.',
-        live: 'https://achirbilal27-wq.github.io/My-app-link/photoforge-app-interface-.html',
+        live: 'https://achirbilal27-wq.github.io/My-app-link/',
         github: 'https://achirbilal27-wq.github.io/My-app-link/',
         caseStudy: 'pages/project-4.html'
     }

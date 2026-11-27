@@ -275,8 +275,9 @@
                 const description = escapeHTML(project.description);
                 const image = safeProjectUrl(project.image);
                 const live = safeProjectUrl(project.live);
-                const github = safeProjectUrl(project.github);
-                const caseStudy = safeProjectUrl(project.caseStudy);
+                const github = project.github ? safeProjectUrl(project.github) : null;
+                const payment = project.payment ? safeProjectUrl(project.payment) : null;
+                const caseStudy = project.caseStudy ? safeProjectUrl(project.caseStudy) : null;
                 const projectCategory = escapeHTML(project.category);
 
                 return `
@@ -286,9 +287,10 @@
                             <h3>${title}</h3>
                             <p>${description}</p>
                             <div class="project-links">
-                                <a href="${live}" target="_blank" rel="noopener noreferrer">عرض مباشر</a>
-                                <a href="${github}" target="_blank" rel="noopener noreferrer">GitHub</a>
-                                <a href="${caseStudy}">دراسة حالة</a>
+                                ${project.live ? `<a href="${live}" target="_blank" rel="noopener noreferrer">عرض مباشر</a>` : ''}
+                                ${github ? `<a href="${github}" target="_blank" rel="noopener noreferrer">GitHub</a>` : ''}
+                                ${caseStudy ? `<a href="${caseStudy}">دراسة حالة</a>` : ''}
+                                ${payment ? `<a href="${payment}">الشراء الآن</a>` : ''}
                             </div>
                         </div>
                     </article>

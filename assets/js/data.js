@@ -40,7 +40,7 @@ const projectsData = [
         image: 'assets/images/appproject4.jpg',
         description: 'تطبيق كامل متكامل يعمل بنظام 𝐀𝐏𝐈 𝐊𝐄𝐘 معقد نظام مخصص لإنشاء نماذج 🅶🅻🅱.',
         live: 'https://achirbilal27-wq.github.io/My-app-link/',
-        قم بلشراء الأن🛒: 'https://github.com/Mywebsite-collab/My-Portfolio/payments2.html',
+        payment: 'pages/copy-payments.html',
         caseStudy: 'pages/project-4.html'
     }
 ];
